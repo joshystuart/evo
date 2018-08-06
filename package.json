@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "bootstrap": "npx lerna bootstrap --npm-client=yarn",
+    "start:client": "cd ./packages/evo-client && yarn start",
+    "start:server": "cd ./packages/evo-server && yarn start"
+  },
+  "devDependencies": {
+    "lerna": "^3.0.0-rc.0"
+  }
+}
