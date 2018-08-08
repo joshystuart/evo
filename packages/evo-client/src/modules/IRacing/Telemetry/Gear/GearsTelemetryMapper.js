@@ -1,17 +1,17 @@
 // @flow
-import get from 'lodash/get';
-import GearsDto from 'src/modules/IRacing/Telemetry/Gear/GearsDto';
+import GearsDto from '@evo/server/lib/IRacing/Telemetry/Gear/GearsDto';
 
-export const DATA_POINTS = {
-    CURRENT_GEAR: 'Gear'
+export type GearsData = {
+    currentGear: string,
+    allGears?: string,
 };
 
 export default class GearsTelemetryMapper {
-    convert(data: any): GearsDto {
+    convert(data: GearsData): GearsDto {
         const gears = new GearsDto();
 
-        gears.currentGear = get(data, DATA_POINTS.CURRENT_GEAR);
-        // gears.totalGears = get(data, DATA_POINTS.BRAKE);
+        gears.currentGear = data.currentGear;
+        gears.allGears = data.allGears;
 
         return gears;
     }

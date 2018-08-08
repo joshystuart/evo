@@ -1,9 +1,5 @@
 // @flow
 
-export type SessionInfoData = {
-    Sessions: SessionData[]
-};
-
 export type PositionData = {
     LapsDriven: number,
     LapsComplete: number,
@@ -49,3 +45,6 @@ export type SessionData = {
     ResultsLapsComplete: number
 }
 
+export type SessionInfoData = {
+    Sessions: SessionData[]
+};

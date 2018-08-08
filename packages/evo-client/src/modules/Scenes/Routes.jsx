@@ -33,6 +33,7 @@ const RouteWithSubRoutes = (route: RouteType) => {
 
 class Routes extends Component<Props> {
     render() {
+        const {location} = this.props;
         return (
             <Switch location={location}>
                 {routeConfig.map(route => (

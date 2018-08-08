@@ -1,17 +1,17 @@
 // @flow
-import get from 'lodash/get';
-import SpeedDto, {UOM} from 'src/modules/IRacing/Telemetry/Speed/SpeedDto';
+import SpeedDto from '@evo/server/lib/IRacing/Telemetry/Speed/SpeedDto';
 
-export const DATA_POINTS = {
-    SPEED: 'Speed'
+export type SpeedData = {
+    speed: string,
+    uom: string,
 };
 
 export default class SpeedTelemetryMapper {
-    convert(data: any): SpeedDto {
+    convert(data: SpeedData): SpeedDto {
         const speed = new SpeedDto();
 
-        speed.speed = get(data, DATA_POINTS.SPEED);
-        speed.uom = UOM.KMH;
+        speed.speed = data.speed;
+        speed.uom = data.uom;
 
         return speed;
     }

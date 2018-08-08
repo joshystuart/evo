@@ -1,10 +1,10 @@
 // @flow
-import PedalsDto from 'src/modules/IRacing/Telemetry/Pedals/PedalsDto';
+import PedalsDto from '@evo/server/lib/IRacing/Telemetry/Pedals/PedalsDto';
 
-type PedalData = {
-    Throttle: string,
-    Brake: string,
-    Clutch: string,
+export type PedalData = {
+    throttle: string,
+    brake: string,
+    clutch: string,
 };
 
 export default class PedalsTelemetryMapper {
@@ -12,9 +12,9 @@ export default class PedalsTelemetryMapper {
         // pedals telemetry
         const pedals = new PedalsDto();
 
-        pedals.throttle = data.Throttle;
-        pedals.brake = data.Brake;
-        pedals.clutch = data.Clutch;
+        pedals.throttle = data.throttle;
+        pedals.brake = data.brake;
+        pedals.clutch = data.clutch;
 
         return pedals;
     }

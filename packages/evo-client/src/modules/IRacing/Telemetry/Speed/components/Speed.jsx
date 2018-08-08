@@ -2,7 +2,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {UOM} from 'src/modules/IRacing/Telemetry/Speed/SpeedDto';
+import {UOM} from '@evo/server/lib/IRacing/Telemetry/Speed/SpeedDto';
 
 type Props = {
     classes: any,
@@ -22,7 +22,7 @@ const styles = () => ({
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        right: '-4%',
+        right: '-4%'
     },
     content: {
         display: 'flex',
@@ -31,7 +31,7 @@ const styles = () => ({
     speed: {
         color: '#fff',
         fontWeight: 700,
-        fontSize: '9vw',
+        fontSize: '9vw'
     },
     uom: {
         color: '#fff',
@@ -41,7 +41,7 @@ const styles = () => ({
         textTransform: 'uppercase',
         position: 'relative',
         left: 10,
-        fontSize: '4vw',
+        fontSize: '4vw'
     }
 });
 

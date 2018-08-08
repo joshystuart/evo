@@ -4,7 +4,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {NAMESPACE, TYPES} from 'src/modules/IRacing/iRacingReducers';
 import withWebSocket from 'src/modules/Utils/withWebSocket';
-import type DriverDto from 'src/modules/IRacing/Drivers/DriverDto';
+import type DriverDto from '@evo/server/lib/IRacing/Drivers/DriverDto';
 import {getCurrentDriver} from 'src/modules/IRacing/Drivers/Dao/driverActions';
 
 export const mapStateToProps = (state: any) => ({
@@ -16,24 +16,22 @@ type Props = {
     currentDriver: DriverDto,
 };
 
-const withCurrentDriver = (WrappedComponent: Component) => {
-    return class WithDriver extends Component<Props> {
-        componentDidMount() {
-            const {dispatch, currentDriver} = this.props;
-            if (!currentDriver) {
-                dispatch(getCurrentDriver());
-            }
+const withCurrentDriver = (WrappedComponent: Component) => class WithDriver extends Component<Props> {
+    componentDidMount() {
+        const {dispatch, currentDriver} = this.props;
+        if (!currentDriver) {
+            dispatch(getCurrentDriver());
+        }
+    }
+
+    render() {
+        const {currentDriver, ...rest} = this.props;
+        if (currentDriver) {
+            return <WrappedComponent currentDriver={currentDriver} {...rest}/>;
         }
 
-        render() {
-            const {currentDriver, ...rest} = this.props;
-            if (currentDriver) {
-                return <WrappedComponent currentDriver={currentDriver} {...rest}/>;
-            }
-
-            return <div>Waiting for driver data...</div>;
-        }
-    };
+        return <div>Waiting for driver data...</div>;
+    }
 };
 
 export default compose(connect(mapStateToProps), withWebSocket, withCurrentDriver);

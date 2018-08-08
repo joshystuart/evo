@@ -4,8 +4,8 @@ import {withStyles} from '@material-ui/core/styles';
 import withCurrentSession from 'src/modules/IRacing/Session/withCurrentSession';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import type SessionDto from 'src/modules/IRacing/Session/SessionDto';
-import type DriverDto from 'src/modules/IRacing/Drivers/DriverDto';
+import type SessionDto from '@evo/server/lib/IRacing/Session/SessionDto';
+import type DriverDto from '@evo/server/lib/IRacing/Drivers/DriverDto';
 
 type Props = {
     currentSession: SessionDto,

@@ -1,5 +1,5 @@
 // @flow
-import SessionDto from 'src/modules/IRacing/Session/SessionDto';
+import SessionDto from '@evo/server/lib/IRacing/Session/SessionDto';
 import type {SessionData} from 'src/modules/IRacing/Session/Dao/SessionInfoData';
 import type LapMapper from 'src/modules/IRacing/Session/Laps/LapMapper';
 
@@ -15,7 +15,6 @@ export default class SessionMapper {
         return drivers;
     };
     _convertSingle = (message: SessionData): SessionDto => {
-        console.log('----------', message);
         const session = new SessionDto();
         session.type = message.SessionType;
         session.fastestLaps = this._lapMapper.convert(message.ResultsFastestLap);

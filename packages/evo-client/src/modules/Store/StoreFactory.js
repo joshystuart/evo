@@ -8,7 +8,7 @@ import {webSocketMiddleware} from 'src/modules/Utils/webSocketMiddleware';
 import {ENV} from 'src/modules/Utils/ApplicationContstants';
 import config from 'src/config/config';
 
-let middlewareConfig = [thunk, webSocketMiddleware];
+const middlewareConfig = [thunk, webSocketMiddleware];
 let middleware;
 
 if (config.env === ENV.DEVELOPMENT) {

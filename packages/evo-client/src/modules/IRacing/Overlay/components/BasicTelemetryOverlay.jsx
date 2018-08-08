@@ -7,7 +7,7 @@ import {withStyles} from '@material-ui/core/styles';
 import PedalsTelemetry from 'src/modules/IRacing/Telemetry/Pedals/components/PedalsTelemetry';
 import GearList from 'src/modules/IRacing/Telemetry/Gear/components/GearList';
 import Speed from 'src/modules/IRacing/Telemetry/Speed/components/Speed';
-import type TelemetryDto from '../../Telemetry/TelemetryDto';
+import type TelemetryDto from '@evo/server/lib/IRacing/Telemetry/TelemetryDto';
 import withTelemetry from 'src/modules/IRacing/Telemetry/withTelemetry';
 
 type Props = {

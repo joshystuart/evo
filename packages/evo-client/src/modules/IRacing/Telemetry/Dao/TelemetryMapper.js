@@ -1,8 +1,14 @@
 // @flow
-import TelemetryDto from 'src/modules/IRacing/Telemetry/TelemetryDto';
-import type PedalsTelemetryMapper from 'src/modules/IRacing/Telemetry/Pedals/PedalsTelemetryMapper';
-import GearsTelemetryMapper from '../Gear/GearsTelemetryMapper';
-import SpeedTelemetryMapper from 'src/modules/IRacing/Telemetry/Speed/SpeedTelemetryMapper';
+import TelemetryDto from '@evo/server/lib/IRacing/Telemetry/TelemetryDto';
+import type PedalsTelemetryMapper, {PedalData} from 'src/modules/IRacing/Telemetry/Pedals/PedalsTelemetryMapper';
+import type GearsTelemetryMapper, {GearsData} from 'src/modules/IRacing/Telemetry/Gear/GearsTelemetryMapper';
+import type SpeedTelemetryMapper, {SpeedData} from 'src/modules/IRacing/Telemetry/Speed/SpeedTelemetryMapper';
+
+type TelemetryData = {
+    pedals: PedalData,
+    gears: GearsData,
+    speed: SpeedData,
+};
 
 export default class TelemetryMapper {
     _pedalsTelemetryMapper: PedalsTelemetryMapper;
@@ -19,12 +25,12 @@ export default class TelemetryMapper {
         this._speedTelemetryMapper = speedTelemetryMapper;
     }
 
-    convert(data: any): TelemetryDto {
+    convert(data: TelemetryData): TelemetryDto {
         const telemetry = new TelemetryDto();
 
-        telemetry.pedals = this._pedalsTelemetryMapper.convert(data);
-        telemetry.gears = this._gearsTelemetryMapper.convert(data);
-        telemetry.speed = this._speedTelemetryMapper.convert(data);
+        telemetry.pedals = this._pedalsTelemetryMapper.convert(data.pedals);
+        telemetry.gears = this._gearsTelemetryMapper.convert(data.gears);
+        telemetry.speed = this._speedTelemetryMapper.convert(data.speed);
 
         return telemetry;
     }

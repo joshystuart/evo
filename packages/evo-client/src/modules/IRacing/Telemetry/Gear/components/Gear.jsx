@@ -8,7 +8,7 @@ type Props = {
     gear: string | number,
 };
 
-const styles = (theme) => ({
+const styles = () => ({
     tabRoot: {
         minWidth: 40
     },

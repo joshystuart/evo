@@ -2,11 +2,13 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "bootstrap": "npx lerna bootstrap --npm-client=yarn",
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
     "start:client": "cd ./packages/evo-client && yarn start",
     "start:server": "cd ./packages/evo-server && yarn start"
   },
   "devDependencies": {
-    "lerna": "^3.0.0-rc.0"
+    "lerna": "^3.0.0-rc.0",
+    "babel-preset-env": "1.7.0"
   }
 }

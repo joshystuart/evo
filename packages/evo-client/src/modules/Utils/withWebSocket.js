@@ -14,24 +14,22 @@ type Props = {
     isWebsocketConnected: boolean,
 };
 
-const withWebSocket = (WrappedComponent: Component) => {
-    return class WithWebSocket extends Component<Props> {
-        componentDidMount() {
-            const {dispatch, isWebsocketConnected} = this.props;
-            if (!isWebsocketConnected) {
-                dispatch({type: ACTIONS.CONNECT});
-            }
+const withWebSocket = (WrappedComponent: Component) => class WithWebSocket extends Component<Props> {
+    componentDidMount() {
+        const {dispatch, isWebsocketConnected} = this.props;
+        if (!isWebsocketConnected) {
+            dispatch({type: ACTIONS.CONNECT});
+        }
+    }
+
+    render() {
+        const {isWebsocketConnected, ...rest} = this.props;
+        if (isWebsocketConnected) {
+            return <WrappedComponent {...rest}/>;
         }
 
-        render() {
-            const {isWebsocketConnected, ...rest} = this.props;
-            if (isWebsocketConnected) {
-                return <WrappedComponent {...rest}/>;
-            }
-
-            return <div>Loading websocket...</div>;
-        }
-    };
+        return <div>Loading websocket...</div>;
+    }
 };
 
 export default compose(connect(mapStateToProps), withWebSocket);

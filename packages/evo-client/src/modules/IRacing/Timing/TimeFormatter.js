@@ -1,12 +1,12 @@
-import TimeDto from 'src/modules/IRacing/Timing/TimeDto';
+// @flow
+import TimeDto from '@evo/server/lib/IRacing/Timing/TimeDto';
 
 export default class TimeFormatter {
     format(time: number): TimeDto {
         const timeDto = new TimeDto();
 
         const tempSeconds = parseInt(time, 10);
-        console.log(tempSeconds);
-        timeDto.milliseconds = parseInt((time - tempSeconds) * 1000);
+        timeDto.milliseconds = parseInt((time - tempSeconds) * 1000, 10);
 
         timeDto.hours = Math.floor(tempSeconds / (60 * 60));
 

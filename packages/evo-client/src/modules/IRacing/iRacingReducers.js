@@ -1,4 +1,5 @@
-import {ACTIONS} from '../Utils/webSocketMiddleware';
+// @flow
+import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
 import {iRacingMessageHelper} from 'src/modules/IRacing/IRacingMessageHelperFactory';
 import {diverMapper} from 'src/modules/IRacing/Drivers/Dao/DiverMapperFactory';
 import {driverDaoHelper} from 'src/modules/IRacing/Drivers/Dao/DriverDaoHelperFactory';
@@ -28,7 +29,6 @@ export const NAMESPACE = 'iracing';
 
 export const iRacingReducers = (state = {}, action) => {
     const {payload} = action;
-
     // look at the data and try to figure out what it is.
     if (action.type === ACTIONS.MESSAGE) {
         const {data} = payload;

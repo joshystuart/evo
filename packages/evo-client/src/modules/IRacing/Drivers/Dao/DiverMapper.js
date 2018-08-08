@@ -1,5 +1,5 @@
 // @flow
-import DriverDto from 'src/modules/IRacing/Drivers/DriverDto';
+import DriverDto from '@evo/server/lib/IRacing/Drivers/DriverDto';
 import type {DriverData} from 'src/modules/IRacing/Drivers/Dao/DriverInfoData';
 
 export default class DiverMapper {
