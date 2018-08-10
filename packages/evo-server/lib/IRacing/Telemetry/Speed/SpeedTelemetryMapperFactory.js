@@ -6,4 +6,4 @@ import SpeedTelemetryMapper from 'lib/IRacing/Telemetry/Speed/SpeedTelemetryMapp
  */
 const speedTelemetryMapper = new SpeedTelemetryMapper();
 
-export {speedTelemetryMapper};
+export { speedTelemetryMapper };

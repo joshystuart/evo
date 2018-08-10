@@ -6,4 +6,4 @@ import GearsTelemetryMapper from 'lib/IRacing/Telemetry/Gear/GearsTelemetryMappe
  */
 const gearsTelemetryMapper = new GearsTelemetryMapper();
 
-export {gearsTelemetryMapper};
+export { gearsTelemetryMapper };

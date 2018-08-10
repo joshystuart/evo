@@ -1,6 +1,6 @@
 // @flow
 import DriverDto from 'lib/IRacing/Drivers/DriverDto';
-import type {DriverData} from 'lib/IRacing/Drivers/DriverInfoData';
+import type { DriverData } from 'lib/IRacing/Drivers/DriverInfoData';
 
 export default class DiverMapper {
     _convertMultiple = (messages: DriverData[]): DriverDto[] => {

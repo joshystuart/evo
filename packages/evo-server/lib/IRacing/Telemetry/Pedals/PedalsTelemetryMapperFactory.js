@@ -6,4 +6,4 @@ import PedalsTelemetryMapper from 'lib/IRacing/Telemetry/Pedals/PedalsTelemetryM
  */
 const pedalsTelemetryMapper = new PedalsTelemetryMapper();
 
-export {pedalsTelemetryMapper};
+export { pedalsTelemetryMapper };

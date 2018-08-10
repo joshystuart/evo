@@ -1,6 +1,6 @@
 // @flow
 
-export type TrackState = {}
+export type TrackState = {};
 
 export default class TrackDto {
     _id: string;

@@ -1,5 +1,5 @@
 // @flow
-import type {FastestLapData} from 'lib/IRacing/Session/SessionInfoData';
+import type { FastestLapData } from 'lib/IRacing/Session/SessionInfoData';
 import LapDto from 'lib/IRacing/Session/Laps/LapDto';
 import type TimeFormatter from 'lib/IRacing/Timing/TimeFormatter';
 

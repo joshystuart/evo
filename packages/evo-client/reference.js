@@ -73,7 +73,7 @@ const changeCamera = (cameraGroup) => {
             cameraGroup,
             0
         );
-        console.log('Changing the camera to ' + cameraGroup + ' on driver ' + currentDriver.UserName);
+        console.info('Changing the camera to ' + cameraGroup + ' on driver ' + currentDriver.UserName);
     } else {
         // else just change camera on current
         sendCommand(
@@ -82,7 +82,7 @@ const changeCamera = (cameraGroup) => {
             cameraGroup,
             0
         );
-        console.log('Changing the camera to ' + cameraGroup);
+        console.info('Changing the camera to ' + cameraGroup);
     }
 };
 
@@ -104,7 +104,7 @@ const rotateCameraGroups = () => {
 };
 
 const hideUi = () => {
-    console.log('Hiding the UI elements');
+    console.info('Hiding the UI elements');
     // hide
     sendCommand(
         COMMANDS.CAMERA_SET_STATE,
@@ -113,7 +113,7 @@ const hideUi = () => {
     // make sure we hide it if it pops up again
     setInterval(
         () => {
-            console.log('Hiding the UI elements');
+            console.info('Hiding the UI elements');
             sendCommand(
                 COMMANDS.CAMERA_SET_STATE,
                 8
@@ -130,7 +130,7 @@ const handleDriverInfoData = (driverInfo) => {
         currentDriver = _.find(drivers, (driver) => {
             return driver.UserID === MY_DRIVER_ID;
         });
-        console.log('Found driver', currentDriver);
+        console.info('Found driver', currentDriver);
     }
 };
 
@@ -149,7 +149,7 @@ const parseData = (message) => {
 };
 
 ws.onopen = () => {
-    console.log('Starting camera rotator');
+    console.info('Starting camera rotator');
     // hide the UI
     hideUi();
 

@@ -1,5 +1,5 @@
 // @flow
-import SpeedDto, {UOM} from 'lib/IRacing/Telemetry/Speed/SpeedDto';
+import SpeedDto, { UOM } from 'lib/IRacing/Telemetry/Speed/SpeedDto';
 
 export type SpeedData = {
     Speed: string,

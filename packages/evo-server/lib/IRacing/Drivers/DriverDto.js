@@ -12,6 +12,6 @@ export default class DriverDto {
 
     get avatar(): string {
         // return this.avatar;
-        return `http://members.iracing.com/membersite/member/GetProfileImage?custid=${this.id}`
+        return `http://members.iracing.com/membersite/member/GetProfileImage?custid=${this.id}`;
     }
 }

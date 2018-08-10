@@ -2,8 +2,8 @@
 import EventEmitter from 'events';
 import irsdk from 'node-irsdk';
 import type TelemetryMapper from 'lib/IRacing/Telemetry/TelemetryMapper';
-import type {TelemetryData} from 'lib/IRacing/Telemetry/TelemetryData';
-import type {SessionInfoData} from 'lib/IRacing/Session/SessionInfoData';
+import type { TelemetryData } from 'lib/IRacing/Telemetry/TelemetryData';
+import type { SessionInfoData } from 'lib/IRacing/Session/SessionInfoData';
 import SessionMapper from 'lib/IRacing/Session/SessionMapper';
 
 const INTERNAL_EVENTS = {
@@ -11,7 +11,7 @@ const INTERNAL_EVENTS = {
     DISCONNECTED: 'Disconnected',
     UPDATE: 'update',
     TELEMETRY: 'Telemetry',
-    SESSION: 'SessionInfo'
+    SESSION: 'SessionInfo',
 };
 export const EVENTS = {
     CONNECTED: 'CONNECTED',
@@ -19,7 +19,7 @@ export const EVENTS = {
     UPDATE: 'UPDATE',
     TELEMETRY: 'TELEMETRY',
     SESSION: 'SESSION',
-    DRIVER: 'DRIVER'
+    DRIVER: 'DRIVER',
 };
 
 export default class IRacingService extends EventEmitter {
@@ -44,30 +44,22 @@ export default class IRacingService extends EventEmitter {
     };
     formatMessage = (event, data) => ({
         type: event,
-        data
+        data,
     });
 
-    constructor(
-        telemetryMapper: TelemetryMapper,
-        sessionMapper: SessionMapper,
-        telemetryUpdateInterval: number = 100,
-        sessionInfoUpdateInterval: number = 100
-    ) {
+    constructor(telemetryMapper: TelemetryMapper, sessionMapper: SessionMapper, telemetryUpdateInterval: number = 100, sessionInfoUpdateInterval: number = 100) {
         super();
 
         this._telemetryMapper = telemetryMapper;
         this._sessionMapper = sessionMapper;
         irsdk.init({
             telemetryUpdateInterval,
-            sessionInfoUpdateInterval
+            sessionInfoUpdateInterval,
         });
     }
 
     emitMessage(event, data) {
-        this.emit(
-            event,
-            this.formatMessage(event, data)
-        );
+        this.emit(event, this.formatMessage(event, data));
     }
 
     connect() {
@@ -79,7 +71,7 @@ export default class IRacingService extends EventEmitter {
     }
 
     getCurrentSession() {
-        const {sessionInfo} = this._iracing;
+        const { sessionInfo } = this._iracing;
         if (sessionInfo && sessionInfo.data) {
             return this.formatMessage(EVENTS.SESSION, this._sessionMapper.convert(sessionInfo.data.SessionInfo.Sessions));
         }

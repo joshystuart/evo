@@ -1,7 +1,7 @@
 // @flow
 export const UOM = {
     KMH: 'kmh',
-    MPH: 'mph'
+    MPH: 'mph',
 };
 
 export default class SpeedDto {

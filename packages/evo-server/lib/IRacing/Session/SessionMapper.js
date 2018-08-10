@@ -1,6 +1,6 @@
 // @flow
 import SessionDto from 'lib/IRacing/Session/SessionDto';
-import type {SessionData} from 'lib/IRacing/Session/SessionInfoData';
+import type { SessionData } from 'lib/IRacing/Session/SessionInfoData';
 import type LapMapper from 'lib/IRacing/Session/Laps/LapMapper';
 
 export default class SessionMapper {

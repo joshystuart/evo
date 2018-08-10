@@ -1,3 +1,4 @@
+// @flow
 import TimeDto from 'lib/IRacing/Timing/TimeDto';
 
 export default class TimeFormatter {
