@@ -13,7 +13,8 @@
     "homepage": "./",
     "main": "src/electron.js",
     "scripts": {
-        "start": "node scripts/start.js",
+        "start": "yarn build && node scripts/start.js",
+        "start:dev": "node scripts/start.js",
         "build": "node scripts/build.js",
         "test": "node scripts/test.js --env=jsdom",
         "test:types": "./node_modules/.bin/flow",
@@ -56,6 +57,7 @@
         "babel-jest": "23.0.1",
         "babel-preset-env": "1.7.0",
         "babel-preset-react-app": "3.1.1",
+        "babel-plugin-module-resolver": "3.1.1",
         "babel-runtime": "6.26.0",
         "case-sensitive-paths-webpack-plugin": "2.1.1",
         "copy-webpack-plugin": "4.5.1",

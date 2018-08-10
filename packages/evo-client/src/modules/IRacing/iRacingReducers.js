@@ -8,6 +8,7 @@ import {sessionMapper} from 'src/modules/IRacing/Session/Dao/SessionMapperFactor
 import {sessionDaoHelper} from 'src/modules/IRacing/Session/Dao/SessionDaoHelperFactory';
 
 export const TYPES = {
+    ERROR: 'error',
     CAMERA: 'camera',
     RADIO: 'radio',
     TELEMETRY: 'telemetry',
@@ -70,7 +71,11 @@ export const iRacingReducers = (state = {}, action) => {
         }
 
         return newState;
+    } else if (action.type === ACTIONS.ERROR) {
+        // TODO make the error contextual
+        const newState = {...state};
+        newState[TYPES.ERROR] = payload;
+        return newState;
     }
-
     return state;
 };

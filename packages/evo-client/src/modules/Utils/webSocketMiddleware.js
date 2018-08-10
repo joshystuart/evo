@@ -9,6 +9,7 @@ export const ACTIONS = {
     CONNECTED: `${NAMESPACE}:CONNECTED`,
     CLOSED: `${NAMESPACE}:CLOSED`,
     MESSAGE: `${NAMESPACE}:MESSAGE`,
+    ERROR: `${NAMESPACE}:ERROR`,
     DISCONNECT: `${NAMESPACE}:DISCONNECT`
 };
 
@@ -20,6 +21,7 @@ export const webSocketMiddleware = ({dispatch}) => next => action => {
             webSocketDao.on(WEBSOCKET_EVENTS.CONNECTED, () => dispatch({type: ACTIONS.CONNECTED}));
             webSocketDao.on(WEBSOCKET_EVENTS.CLOSED, (event) => dispatch({type: ACTIONS.CLOSED, payload: event}));
             webSocketDao.on(WEBSOCKET_EVENTS.MESSAGE, (event) => dispatch({type: ACTIONS.MESSAGE, payload: event}));
+            webSocketDao.on(WEBSOCKET_EVENTS.ERROR, (event) => dispatch({type: ACTIONS.ERROR, payload: event}));
             webSocketDao.connect();
 
             break;

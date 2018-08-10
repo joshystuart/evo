@@ -4,7 +4,8 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "start:client": "cd ./packages/evo-client && yarn start",
+    "start:dev": "lerna run start:dev",
+    "start:client": "cd ./packages/evo-client && yarn start:dev",
     "start:server": "cd ./packages/evo-server && yarn start"
   },
   "devDependencies": {

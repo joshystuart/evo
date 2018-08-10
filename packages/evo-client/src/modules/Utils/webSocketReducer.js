@@ -9,6 +9,11 @@ export const webSocketReducer = (state = {}, action) => {
                 isConnected: true,
                 ...state
             };
+        case ACTIONS.ERROR:
+            return {
+                hasError: true,
+                ...state
+            };
         default:
             return state;
     }

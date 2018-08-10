@@ -11,6 +11,9 @@
     ],
     "private": true,
     "main": "./build/server.js",
+    "directories": {
+        "lib": "./build/server.js"
+    },
     "scripts": {
         "build": "yarn build:clean && yarn build:lib && yarn build:config && yarn build:server",
         "build:clean": "rm -rf ./build",

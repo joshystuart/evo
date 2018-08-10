@@ -122,6 +122,44 @@ module.exports = {
                         loader: require.resolve('babel-loader'),
                         options: {
                             presets: [require.resolve('babel-preset-react-app')],
+                            plugins: [
+                                [
+                                    'module-resolver',
+                                    {
+                                        'root': [
+                                            paths.appSrc
+                                        ],
+                                        'alias': {
+                                            'src': paths.appSrc,
+                                            'config': './config'
+                                        }
+                                    }
+                                ]
+                            ],
+                            cacheDirectory: true
+                        }
+                    },
+                    // Process EVO Server
+                    {
+                        test: /\.(js|jsx|mjs)$/,
+                        include: [/evo-server/], // package dir
+                        loader: require.resolve('babel-loader'),
+                        options: {
+                            presets: [require.resolve('babel-preset-react-app')],
+                            plugins: [
+                                [
+                                    'module-resolver',
+                                    {
+                                        'root': [
+                                            `${paths.evoServer}`
+                                        ],
+                                        'alias': {
+                                            'lib': `${paths.evoServer}/lib`,
+                                            'config': `${paths.evoServer}/config`,
+                                        }
+                                    }
+                                ]
+                            ],
                             cacheDirectory: true
                         }
                     },

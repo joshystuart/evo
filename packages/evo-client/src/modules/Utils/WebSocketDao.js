@@ -20,10 +20,10 @@ export default class WebSocketDao extends EventEmitter {
 
     onMessage = (message: any): void => {
         const {data} = message;
-        if (data) {
+        if (data && data.type !== '') {
             this.emit(EVENTS.MESSAGE, JSON.parse(data));
         } else {
-            this.emit(EVENTS.ERROR, `Does not contain message data: ${message}`);
+            this.emit(EVENTS.ERROR, `WebSocketDao Does not contain message data`);
         }
     };
 
