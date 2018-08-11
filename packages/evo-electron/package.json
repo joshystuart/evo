@@ -1,0 +1,44 @@
+{
+  "name": "@evo/client",
+  "productName": "EVO: Client",
+  "description": "Enhanced Vision Overlays and heads up displays for iRacing Apps",
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Josh Stuart",
+      "email": "joshstuartx@gmail.com"
+    }
+  ],
+  "private": true,
+  "homepage": "./",
+  "main": "src/electron.js",
+  "scripts": {
+    "start": "yarn build && node scripts/start.js",
+    "start:dev": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js --env=jsdom",
+    "test:types": "./node_modules/.bin/flow",
+    "test:lint": "eslint \"src/**/*.{js,jsx}\"",
+    "format": "./node_modules/.bin/prettier --write \"src/**/*.{js,jsx,json,css,md}\"",
+    "precommit": "lint-staged",
+    "lint": "yarn test:lint"
+  },
+  "dependencies": {
+    "@evo/server": "0.0.1",
+    "@evo/client": "0.0.1"
+  },
+  "devDependencies": {
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": ">=9"
+  }
+}

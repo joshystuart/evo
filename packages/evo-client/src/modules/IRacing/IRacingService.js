@@ -32,16 +32,4 @@ export default class IRacingService extends EventEmitter {
         this._webSocketDao.send(JSON.stringify(request));
         return this;
     }
-
-    getData(requestParams: any[], requestParamsOnce: any []): void {
-        const request = {
-            fps: OPTIONS.FPS,
-            readIbt: false,
-            requestParams,
-            requestParamsOnce
-        };
-
-        this._webSocketDao.send(JSON.stringify(request));
-        return this;
-    }
 }

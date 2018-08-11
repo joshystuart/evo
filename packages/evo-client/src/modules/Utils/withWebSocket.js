@@ -4,6 +4,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
 import {NAMESPACE} from 'src/modules/Utils/webSocketReducer';
+import LoadingMessage from 'src/Components/LoadingMessage';
 
 export const mapStateToProps = (state: any) => ({
     isWebsocketConnected: state[NAMESPACE].isConnected
@@ -28,7 +29,7 @@ const withWebSocket = (WrappedComponent: Component) => class WithWebSocket exten
             return <WrappedComponent {...rest}/>;
         }
 
-        return <div>Loading websocket...</div>;
+        return (<LoadingMessage message=" Waiting for websocket connection..."/>);
     }
 };
 

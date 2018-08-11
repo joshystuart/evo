@@ -10,9 +10,6 @@ type Props = {
     uom: UOM,
 };
 
-// I'm not sure why, but the speed coming back from the telemetry is out by a factor of 3.61. So weird.
-const SPEED_MODIFIER = 3.61;
-
 const styles = () => ({
     card: {
         display: 'flex',
@@ -48,7 +45,7 @@ const styles = () => ({
 function Speed(props: Props) {
     const {speed = 0, uom = UOM.KMH, classes} = props;
 
-    const formattedSpeed = parseInt(SPEED_MODIFIER * speed, 10);
+    const formattedSpeed = parseInt(speed, 10);
 
     return (
         <div className={classes.card}>

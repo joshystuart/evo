@@ -1,22 +1,24 @@
 // @flow
-import http from 'http';
 import EventEmitter from 'events';
-import express from 'express';
-import WebSocket, { Server } from 'ws';
-import IRacingService, { EVENTS } from 'lib/IRacing/IRacingService';
+import WebSocket, {Server} from 'ws';
+import IRacingService from 'lib/IRacing/IRacingService';
+import {EVENTS as IRACING_EVENTS} from 'lib/IRacing/IRacingConstants';
+
+export const EVENTS = {
+    CONNECTION: 'connection'
+};
 
 export default class WebSocketsServer extends EventEmitter {
     _iRacingService: IRacingService;
+    _httpServer: any;
     _port: number;
     _events: string[];
-    _app: any;
-    _server: any;
     _websocketServer: any;
     /**
      */
     initEventListeners = () => {
         console.info(`WebSocketsServer::initEventListeners Initializing events`);
-        // for each event listen and broadcast to call users
+        // for each event listen and broadcast to all users
         this._events.forEach((eventName) => {
             this._iRacingService.on(eventName, (data) => {
                 this._websocketServer.clients.forEach((client) => {
@@ -26,6 +28,23 @@ export default class WebSocketsServer extends EventEmitter {
                 });
             });
         });
+
+        // listen for websocket connections
+        this._websocketServer.on(
+            EVENTS.CONNECTION,
+            (ws: WebSocket) => {
+                console.info(`WebSocketsServer::connect a user has connected to the websocket server`);
+
+                // We need to get the current session because otherwise we have to wait for an update
+                const session = this._iRacingService.getCurrentSession();
+                if (session) {
+                    this.send(
+                        ws,
+                        session
+                    );
+                }
+            }
+        );
     };
     /**
      * @param {WebSocket} ws
@@ -35,36 +54,33 @@ export default class WebSocketsServer extends EventEmitter {
         ws.send(JSON.stringify(data));
     };
 
-    constructor(iRacingService: IRacingService, port: number = 3000, events: string[] = [EVENTS.TELEMETRY, EVENTS.SESSION]) {
+    constructor(
+        iRacingService: IRacingService,
+        httpServer: any,
+        port: number = 3000,
+        events: string[] = [IRACING_EVENTS.TELEMETRY, IRACING_EVENTS.SESSION]
+    ) {
         super();
         this._iRacingService = iRacingService;
+        this._httpServer = httpServer;
         this._events = events;
         this._port = port;
-        // TODO, this isn't great; we should create a Provider to wrap up this stuff.
-        this._app = express();
-        this._server = http.createServer(this._app);
+
     }
 
     connect() {
         console.info(`WebSocketsServer::connect Starting websocket server`);
-        this._websocketServer = new Server({ server: this._server });
+        this._websocketServer = new Server({server: this._httpServer});
 
-        // TODO this doesn't feel great either. I though refactor to make this better to understand.
         this.initEventListeners();
         this._iRacingService.connect();
 
-        // listen for websocket connections
-        this._websocketServer.on('connection', (ws) => {
-            console.info(`WebSocketsServer::connect a user has connected to the websocket server`);
-
-            // TODO init session better
-            const session = this._iRacingService.getCurrentSession();
-            this.send(ws, session);
-        });
-
         // listen to incoming requests
-        this._server.listen(this._port, () => {
-            console.info(`WebSocketsServer::connect Server started on port ${this._server.address().port}`);
-        });
+        this._httpServer.listen(
+            this._port,
+            () => {
+                console.info(`WebSocketsServer::connect Server started on port ${this._port}`);
+            }
+        );
     }
 }

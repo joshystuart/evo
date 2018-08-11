@@ -9,14 +9,19 @@ export type Route = {
     params: string,
     exact: boolean,
     component: React.ComponentType<any>,
-    isPrivate: boolean,
     props?: {},
     subRoutes?: Route[]
 };
 
 export const routes = {
     home: '/',
-    overlays: '/overlays'
+    overlays: {
+        root: '/overlays',
+        telemetry: {
+            root: '/telemetry',
+            basic: '/basic'
+        }
+    }
 };
 
 export const routeConfig: Route[] = [
@@ -25,15 +30,13 @@ export const routeConfig: Route[] = [
         path: routes.home,
         params: '',
         exact: true,
-        component: HomeScene,
-        isPrivate: false
+        component: HomeScene
     },
     {
         name: 'overlays',
-        path: routes.overlays,
+        path: `${routes.overlays.root}${routes.overlays.telemetry.root}${routes.overlays.telemetry.basic}`,
         params: '',
         exact: true,
-        component: BasicTelemetryOverlayScene,
-        isPrivate: false
+        component: BasicTelemetryOverlayScene
     }
 ];
