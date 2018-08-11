@@ -1209,7 +1209,7 @@ cron@^1.3:
   dependencies:
     moment-timezone "^0.5.x"
 
-cross-env@^5.2.0:
+cross-env@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
   dependencies:
@@ -2491,7 +2491,7 @@ node-abi@^2.2.0:
   dependencies:
     semver "^5.4.1"
 
-node-irsdk@2.1.3:
+node-irsdk@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/node-irsdk/-/node-irsdk-2.1.3.tgz#9e0a01172d5f43d845bf64eb1e38fdb54b20e381"
   dependencies:

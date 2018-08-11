@@ -1,6 +1,6 @@
 // @flow
 import type {FastedLapData} from 'src/modules/IRacing/Session/Dao/SessionInfoData';
-import LapDto from '@evo/server/lib/IRacing/Session/Laps/LapDto';
+import {LapDto} from '@evo/common';
 import type TimeFormatter from 'src/modules/IRacing/Timing/TimeFormatter';
 
 export default class LapMapper {

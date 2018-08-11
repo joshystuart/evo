@@ -1,6 +1,6 @@
 // @flow
 import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
-import {EVENTS} from '@evo/server/lib/IRacing/IRacingConstants';
+import {EVENTS} from '@evo/common';
 import {telemetryMapper} from 'src/modules/IRacing/Telemetry/Dao/TelemetryMapperFactory';
 
 export const TYPES = {

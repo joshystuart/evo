@@ -4,7 +4,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {NAMESPACE, TYPES} from 'src/modules/IRacing/iRacingReducers';
 import withWebSocket from 'src/modules/Utils/withWebSocket';
-import type TelemetryDto from '@evo/server/lib/IRacing/Telemetry/TelemetryDto';
+import type {TelemetryDto} from '@evo/common';
 import LoadingMessage from 'src/Components/LoadingMessage';
 
 export const mapStateToProps = (state: any) => ({

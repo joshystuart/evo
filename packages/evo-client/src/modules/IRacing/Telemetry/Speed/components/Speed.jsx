@@ -2,7 +2,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {UOM} from '@evo/server/lib/IRacing/Telemetry/Speed/SpeedDto';
+import {UOM} from '@evo/common';
 
 type Props = {
     classes: any,

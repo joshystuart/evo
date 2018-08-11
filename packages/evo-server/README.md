@@ -29,3 +29,14 @@ Look at only adding the ones we need rather than the whole react preset requirem
 ├─ babel-preset-react-app@3.1.2
 └─ babel-preset-react@6.24.1
 ```
+
+
+TODO; we need to compile node-ir with:
+```
+    "install": "prebuild-install || node-gyp rebuild --build-from-source --runtime=electron --target_arch=x64 --target=2.0.7 --target_platform=win32  --dist-url=https://atom.io/download/electron",
+```
+
+Maybe we need to fork it? Or there is a way to set env vars
+https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md
+https://github.com/mapbox/node-pre-gyp
+

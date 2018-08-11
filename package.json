@@ -11,5 +11,17 @@
   "devDependencies": {
     "lerna": "^3.0.0-rc.0",
     "babel-preset-env": "1.7.0"
+  },
+  "workspaces": {
+    "packages": [
+      "evo-client",
+      "evo-common",
+      "evo-electron",
+      "evo-server"
+    ],
+    "nohoist": [
+      "**/electron",
+      "**/electron/**"
+    ]
   }
 }

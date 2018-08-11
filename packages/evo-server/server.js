@@ -4,4 +4,4 @@ process.env.BABEL_ENV = 'development';
 require('babel-register');
 const {webSocketsServer} = require('./lib/WebSocketsServerFactory');
 
-webSocketsServer.connect();
+export default webSocketsServer;

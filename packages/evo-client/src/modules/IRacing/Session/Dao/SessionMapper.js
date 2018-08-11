@@ -1,5 +1,5 @@
 // @flow
-import SessionDto from '@evo/server/lib/IRacing/Session/SessionDto';
+import {SessionDto} from '@evo/common';
 import type {SessionData} from 'src/modules/IRacing/Session/Dao/SessionInfoData';
 import type LapMapper from 'src/modules/IRacing/Session/Laps/LapMapper';
 
