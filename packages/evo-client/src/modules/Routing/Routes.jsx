@@ -1,10 +1,10 @@
 // @flow
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {Route as RouteType, routeConfig} from 'src/modules/Routing/routeConfig';
+import {RouteConfig, routeConfig} from 'src/modules/Routing/routeConfig';
 
-const RouteWithSubRoutes = (route: RouteType) => {
-    const getSubRoute = (subRoute: RouteType) => (
+const RouteWithSubRoutes = (route: RouteConfig) => {
+    const getSubRoute = (subRoute: RouteConfig) => (
         <Route
             key={subRoute.name}
             exact={subRoute.exact}
@@ -13,23 +13,23 @@ const RouteWithSubRoutes = (route: RouteType) => {
         />
     );
 
+    const path = route.params ? `${route.path}${route.params}` : route.path;
     return (
         <Route
             key={route.name}
             exact={route.exact}
-            path={`${route.path}${route.params}`}
+            path={path}
             render={props => (
                 <route.component {...props} {...route.props}>
                     {// Check for sub routes
-                        route.subRoutes &&
-                        route.subRoutes.length &&
-                        route.subRoutes.map(getSubRoute)}
+                        route.routes &&
+                        route.routes.length &&
+                        route.routes.map(getSubRoute)}
                 </route.component>
             )}
         />
     );
 };
-
 
 class Routes extends Component<Props> {
     render() {

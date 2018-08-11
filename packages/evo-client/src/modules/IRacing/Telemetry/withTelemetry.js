@@ -11,14 +11,21 @@ export const mapStateToProps = (state: any) => ({
     telemetry: state[NAMESPACE][TYPES.TELEMETRY]
 });
 
+export type Config = {
+    showDefault: boolean
+}
+
 type Props = {
     dispatch: any,
     telemetry: TelemetryDto,
+    config?: Config
 };
 
-const withTelemetry = (WrappedComponent: Component) => class WithTelemetry extends Component<Props> {
+const withTelemetry = (WrappedComponent: Component, config: Config = {}) => class WithTelemetry extends Component<Props> {
     render() {
         const {telemetry, ...rest} = this.props;
+        const {showDefault = false} = config;
+
         if (telemetry) {
             return <WrappedComponent telemetry={telemetry} {...rest}/>;
         }

@@ -5,13 +5,16 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {withStyles} from '@material-ui/core/styles';
 import PedalsTelemetry from 'src/modules/IRacing/Telemetry/Pedals/components/PedalsTelemetry';
-import GearList from 'src/modules/IRacing/Telemetry/Gear/components/GearList';
+import GearList from 'src/modules/IRacing/Telemetry/Gear/Components/GearList';
 import Speed from 'src/modules/IRacing/Telemetry/Speed/components/Speed';
-import type TelemetryDto from '@evo/server/lib/IRacing/Telemetry/TelemetryDto';
-import withTelemetry from 'src/modules/IRacing/Telemetry/withTelemetry';
+import type PedalsDto from '@evo/server/lib/IRacing/Telemetry/Pedals/PedalsDto';
+import type GearsDto from '@evo/server/lib/IRacing/Telemetry/Gear/GearsDto';
+import type SpeedDto from '@evo/server/lib/IRacing/Telemetry/Speed/SpeedDto';
 
 type Props = {
-    telemetry: TelemetryDto,
+    pedals: PedalsDto,
+    gears: GearsDto,
+    speed: SpeedDto,
     classes: any,
 };
 
@@ -24,7 +27,7 @@ const styles = () => ({
     },
     gears: {
         marginRight: 5,
-        height: '100%',
+        height: '100%'
     },
     content: {
         // padding: 0
@@ -34,8 +37,7 @@ const styles = () => ({
 
 export class BasicTelemetryOverlay extends Component<Props> {
     render() {
-        const {telemetry, classes} = this.props;
-        const {pedals, gears, speed} = telemetry;
+        const {pedals, gears, speed, classes} = this.props;
 
         return (
             <Grid container spacing={0}>
@@ -50,7 +52,11 @@ export class BasicTelemetryOverlay extends Component<Props> {
                     <Grid item xs={8}>
                         <Card className={classes.pedals}>
                             <CardContent className={classes.content}>
-                                <PedalsTelemetry throttle={pedals.throttle} brake={pedals.brake} clutch={pedals.clutch}/>
+                                <PedalsTelemetry
+                                    throttle={pedals.throttle}
+                                    brake={pedals.brake}
+                                    clutch={pedals.clutch}
+                                />
                             </CardContent>
                         </Card>
                     </Grid>
@@ -65,4 +71,4 @@ export class BasicTelemetryOverlay extends Component<Props> {
     }
 }
 
-export default withStyles(styles)(withTelemetry(BasicTelemetryOverlay));
+export default withStyles(styles)(BasicTelemetryOverlay);

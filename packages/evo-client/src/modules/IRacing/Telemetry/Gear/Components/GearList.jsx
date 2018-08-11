@@ -2,7 +2,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
-import Gear from 'src/modules/IRacing/Telemetry/Gear/components/Gear';
+import Gear from 'src/modules/IRacing/Telemetry/Gear/Components/Gear';
 
 
 type Props = {

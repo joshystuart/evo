@@ -2,7 +2,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import BasicTelemetryOverlay from 'src/modules/IRacing/Overlay/components/BasicTelemetryOverlay';
+import BasicTelemetryOverlayContainer from 'src/modules/IRacing/Overlay/Components/BasicTelemetryOverlayContainer';
 
 type Props = {
     classes: any,
@@ -20,7 +20,7 @@ function BasicTelemetryOverlayScene(props: Props) {
         <div className={classes.root}>
             <Grid container spacing={0}>
                 <Grid item xs={12}>
-                    <BasicTelemetryOverlay/>
+                    <BasicTelemetryOverlayContainer/>
                 </Grid>
             </Grid>
         </div>
