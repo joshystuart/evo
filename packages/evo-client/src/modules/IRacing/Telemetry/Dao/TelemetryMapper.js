@@ -1,8 +1,8 @@
 // @flow
 import {TelemetryDto} from '@evo/common';
-import type PedalsTelemetryMapper, {PedalData} from 'src/modules/IRacing/Telemetry/Pedals/PedalsTelemetryMapper';
-import type GearsTelemetryMapper, {GearsData} from 'src/modules/IRacing/Telemetry/Gear/GearsTelemetryMapper';
-import type SpeedTelemetryMapper, {SpeedData} from 'src/modules/IRacing/Telemetry/Speed/SpeedTelemetryMapper';
+import type PedalsTelemetryMapper, {PedalData} from '../Pedals/PedalsTelemetryMapper';
+import type GearsTelemetryMapper, {GearsData} from '../Gear/GearsTelemetryMapper';
+import type SpeedTelemetryMapper, {SpeedData} from '../Speed/SpeedTelemetryMapper';
 
 type TelemetryData = {
     pedals: PedalData,

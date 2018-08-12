@@ -1,5 +1,5 @@
 // @flow
-import TimeFormatter from 'src/modules/IRacing/Timing/TimeFormatter';
+import TimeFormatter from './TimeFormatter';
 
 /**
  * @type {TimeFormatter} timeFormatter

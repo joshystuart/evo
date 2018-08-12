@@ -2,10 +2,10 @@
 import React, {Component} from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {NAMESPACE, TYPES} from 'src/modules/IRacing/iRacingReducers';
-import withWebSocket from 'src/modules/Utils/withWebSocket';
 import type {DriverDto} from '@evo/common';
-import LoadingMessage from 'src/Components/LoadingMessage';
+import {NAMESPACE, TYPES} from '../iRacingReducers';
+import withWebSocket from '../../Utils/withWebSocket';
+import LoadingMessage from '../../Common/Components/LoadingMessage';
 
 export const mapStateToProps = (state: any) => ({
     currentDriver: state[NAMESPACE][TYPES.CURRENT_DRIVER],

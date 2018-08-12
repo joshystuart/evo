@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import {Route, Switch} from 'react-router-dom';
-import {RouteConfig, routeConfig} from 'src/modules/Routing/routeConfig';
+import {RouteConfig, routeConfig} from './routeConfig';
 
 const RouteWithSubRoutes = (route: RouteConfig) => {
     const getSubRoute = (subRoute: RouteConfig) => (

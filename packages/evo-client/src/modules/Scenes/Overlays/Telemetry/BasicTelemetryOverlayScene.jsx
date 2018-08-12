@@ -2,7 +2,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import BasicTelemetryOverlayContainer from 'src/modules/IRacing/Overlay/Components/BasicTelemetryOverlayContainer';
+import BasicTelemetryOverlayContainer from '../../../IRacing/Overlay/Components/BasicTelemetryOverlayContainer';
 
 type Props = {
     classes: any,

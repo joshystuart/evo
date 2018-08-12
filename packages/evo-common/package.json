@@ -13,19 +13,8 @@
   "homepage": "./",
   "main": "build/index.js",
   "scripts": {
-    "build": "yarn build:clean && yarn build:lib && yarn build:index",
-    "build:clean": "rimraf ./build",
-    "build:lib": "cross-env NODE_ENV=production BABEL_ENV=production babel lib --out-dir ./build/lib",
-    "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js"
   },
   "devDependencies": {
-    "babel-cli": "6.26.0",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react-app": "3.1.2",
-    "cross-env": "5.2.0",
-    "eslint": "5.2.0",
-    "prettier": "1.12.1",
-    "rimraf": "2.6.2"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [

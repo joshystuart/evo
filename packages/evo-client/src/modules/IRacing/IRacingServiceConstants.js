@@ -5,13 +5,6 @@ const EVENTS = {
     CLOSED: 'closed'
 };
 
-const DATA = {
-    DRIVER: 'DriverInfo',
-    QUALIFYING: 'QualifyResultsInfo',
-    SESSION: 'SessionInfo',
-    TELEMETRY: 'AirDensity'
-};
-
 // TODO move to camera service
 const COMMANDS = {
     CHANGE_CAMERA_POSITION: 'cam_switch_pos',
@@ -42,9 +35,4 @@ const CAMERAS = {
     TV_3: 20
 };
 
-const OPTIONS = {
-    FPS: 30,
-    SERVER: '127.0.0.1:8182'
-};
-
-export {EVENTS, COMMANDS, CAMERAS, OPTIONS, DATA};
+export {EVENTS, COMMANDS, CAMERAS};

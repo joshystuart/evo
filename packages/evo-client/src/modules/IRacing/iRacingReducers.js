@@ -1,7 +1,7 @@
 // @flow
-import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
 import {EVENTS} from '@evo/common';
-import {telemetryMapper} from 'src/modules/IRacing/Telemetry/Dao/TelemetryMapperFactory';
+import {ACTIONS} from '../Utils/webSocketMiddleware';
+import {telemetryMapper} from './Telemetry/Dao/TelemetryMapperFactory';
 
 export const TYPES = {
     ERROR: 'error',

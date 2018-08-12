@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
-import BasicTelemetryOverlay from 'src/modules/IRacing/Overlay/Components/BasicTelemetryOverlay';
-import withTelemetry from 'src/modules/IRacing/Telemetry/withTelemetry';
+import BasicTelemetryOverlay from './BasicTelemetryOverlay';
+import withTelemetry from '../../Telemetry/withTelemetry';
 
 type Props = {
     telemetry: TelemetryDto,

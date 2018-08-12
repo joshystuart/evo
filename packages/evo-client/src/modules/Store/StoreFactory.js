@@ -3,10 +3,10 @@ import {applyMiddleware, createStore} from 'redux';
 import {createLogger} from 'redux-logger';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import {reducers} from 'src/modules/Store/ReducerFactory';
-import {webSocketMiddleware} from 'src/modules/Utils/webSocketMiddleware';
-import {ENV} from 'src/modules/Utils/ApplicationContstants';
-import config from 'src/config/config';
+import {reducers} from './ReducerFactory';
+import {webSocketMiddleware} from '../Utils/webSocketMiddleware';
+import {ENV} from '../Utils/ApplicationContstants';
+import config from '../../../config/config';
 
 const middlewareConfig = [thunk, webSocketMiddleware];
 let middleware;

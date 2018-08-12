@@ -1,6 +1,6 @@
 // @flow
-import WebSocketDao from 'src/modules/Utils/WebSocketDao';
-import config from 'src/config/config';
+import WebSocketDao from './WebSocketDao';
+import config from '../../../config/config';
 
 /**
  * @type {WebSocketDao} webSocketDao

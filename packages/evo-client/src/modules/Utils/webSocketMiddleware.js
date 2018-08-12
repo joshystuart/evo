@@ -1,5 +1,6 @@
-import {webSocketDao} from 'src/modules/Utils/WebSocketDaoFactory';
-import {EVENTS as WEBSOCKET_EVENTS} from 'src/modules/Utils/WebSocketDao';
+// @flow
+import {webSocketDao} from './WebSocketDaoFactory';
+import {EVENTS as WEBSOCKET_EVENTS} from './WebSocketDao';
 
 const NAMESPACE = 'WEBSOCKET';
 

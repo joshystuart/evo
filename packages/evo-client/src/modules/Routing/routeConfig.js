@@ -1,7 +1,7 @@
 // @flow
 import {ComponentType} from 'react';
-import HomeScene from 'src/modules/Scenes/Home/HomeScene';
-import BasicTelemetryOverlayScene from 'src/modules/Scenes/Overlays/Telemetry/BasicTelemetryOverlayScene';
+import HomeScene from '../Scenes/Home/HomeScene';
+import BasicTelemetryOverlayScene from '../Scenes/Overlays/Telemetry/BasicTelemetryOverlayScene';
 
 export type RouteConfig = {
     name: string,

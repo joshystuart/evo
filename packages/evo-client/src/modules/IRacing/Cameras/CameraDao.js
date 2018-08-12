@@ -1,6 +1,6 @@
 // @flow
-import {COMMANDS} from 'src/modules/IRacing/IRacingServiceConstants';
-import type IRacingService from 'src/modules/IRacing/IRacingService';
+import {COMMANDS} from '../IRacingServiceConstants';
+import type IRacingService from '../IRacingService';
 
 export default class CameraDao {
     _iRacingService: IRacingService;

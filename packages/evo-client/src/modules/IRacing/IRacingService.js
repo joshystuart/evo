@@ -2,7 +2,7 @@
 import EventEmitter from 'events';
 import type WebSocketDao from 'src/modules/Utils/WebSocketDao';
 import {EVENTS as WS_EVENTS} from 'src/modules/Utils/WebSocketDao';
-import {OPTIONS, EVENTS} from 'src/modules/IRacing/IRacingServiceConstants';
+import {EVENTS} from 'src/modules/IRacing/IRacingServiceConstants';
 
 export default class IRacingService extends EventEmitter {
     _isConnected = false;

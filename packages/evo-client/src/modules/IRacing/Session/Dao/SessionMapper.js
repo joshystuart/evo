@@ -1,7 +1,7 @@
 // @flow
 import {SessionDto} from '@evo/common';
-import type {SessionData} from 'src/modules/IRacing/Session/Dao/SessionInfoData';
-import type LapMapper from 'src/modules/IRacing/Session/Laps/LapMapper';
+import type {SessionData} from './SessionInfoData';
+import type LapMapper from '../Laps/LapMapper';
 
 export default class SessionMapper {
     _lapMapper: LapMapper;

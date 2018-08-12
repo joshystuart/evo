@@ -1,5 +1,5 @@
 // @flow
-import DiverMapper from 'src/modules/IRacing/Drivers/Dao/DiverMapper';
+import DiverMapper from './DiverMapper';
 
 /**
  * @type {DiverMapper} diverMapper

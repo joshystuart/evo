@@ -13,32 +13,16 @@
   "homepage": "./",
   "main": "build/app/index.html",
   "scripts": {
-    "build": "yarn build:clean && yarn build:app",
-    "build:clean": "rimraf ./build",
-    "build:app": "cross-env NODE_ENV=production BABEL_ENV=production babel app --out-dir ./build/app --copy-files",
-    "start": "electron ./build/app/main"
   },
   "dependencies": {
     "@evo/server": "0.0.1",
     "@evo/client": "0.0.1",
-    "electron-config": "1.0.0",
-    "react": "16.3.2",
-    "react-dom": "16.3.2",
-    "react-router-dom": "4.2.2"
+    "electron-config": "1.0.0"
   },
   "devDependencies": {
-    "cross-env": "5.2.0",
     "electron": "2.0.7",
     "electron-builder": "20.27.1",
-    "electron-devtools-installer": "2.2.4",
-    "babel-cli": "6.26.0",
-    "babel-plugin-module-resolver": "3.1.1",
-    "babel-preset-env": "1.7.0",
-    "babel-preset-react": "6.24.1",
-    "babel-preset-react-optimize": "1.0.1",
-    "babel-preset-stage-0": "6.24.1",
-    "babel-register": "6.26.0",
-    "rimraf": "2.6.2"
+    "electron-devtools-installer": "2.2.4"
   },
   "lint-staged": {
     "*.{js,json,css,md}": [

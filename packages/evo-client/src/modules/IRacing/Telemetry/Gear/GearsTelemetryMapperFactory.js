@@ -1,5 +1,5 @@
 // @flow
-import GearsTelemetryMapper from 'src/modules/IRacing/Telemetry/Gear/GearsTelemetryMapper';
+import GearsTelemetryMapper from './GearsTelemetryMapper';
 
 /**
  * @type {GearsTelemetryMapper} gearsTelemetryMapper

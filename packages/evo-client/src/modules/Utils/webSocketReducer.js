@@ -1,4 +1,5 @@
-import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
+// @flow
+import {ACTIONS} from './webSocketMiddleware';
 
 export const NAMESPACE = 'websocket';
 

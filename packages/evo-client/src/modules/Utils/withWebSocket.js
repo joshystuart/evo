@@ -2,9 +2,9 @@
 import React, {Component} from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {ACTIONS} from 'src/modules/Utils/webSocketMiddleware';
-import {NAMESPACE} from 'src/modules/Utils/webSocketReducer';
-import LoadingMessage from 'src/Components/LoadingMessage';
+import {ACTIONS} from './webSocketMiddleware';
+import {NAMESPACE} from './webSocketReducer';
+import LoadingMessage from '../Common/Components/LoadingMessage';
 
 export const mapStateToProps = (state: any) => ({
     isWebsocketConnected: state[NAMESPACE].isConnected

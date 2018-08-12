@@ -4,10 +4,10 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import {withStyles} from '@material-ui/core/styles';
-import PedalsTelemetry from 'src/modules/IRacing/Telemetry/Pedals/components/PedalsTelemetry';
-import GearList from 'src/modules/IRacing/Telemetry/Gear/Components/GearList';
-import Speed from 'src/modules/IRacing/Telemetry/Speed/components/Speed';
 import type {GearsDto, PedalsDto, SpeedDto} from '@evo/common';
+import PedalsTelemetry from '../../Telemetry/Pedals/Components/PedalsTelemetry';
+import GearList from '../../Telemetry/Gear/Components/GearList';
+import Speed from '../../Telemetry/Speed/components/Speed';
 
 type Props = {
     pedals: PedalsDto,

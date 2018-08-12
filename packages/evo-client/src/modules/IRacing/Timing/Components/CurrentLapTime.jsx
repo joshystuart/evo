@@ -1,10 +1,10 @@
 // @flow
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
-import withCurrentSession from 'src/modules/IRacing/Session/withCurrentSession';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import type {DriverDto, SessionDto} from '@evo/common';
+import withCurrentSession from '../../Session/withCurrentSession';
 
 type Props = {
     currentSession: SessionDto,
