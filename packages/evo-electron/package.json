@@ -13,8 +13,12 @@
   "homepage": "./",
   "main": "build/app/index.html",
   "scripts": {
+    "clean": "rimraf ./build",
+    "build": "yarn clean && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
+    "start": "electron ./build/main"
   },
   "dependencies": {
+    "@evo/common": "0.0.1",
     "@evo/server": "0.0.1",
     "@evo/client": "0.0.1",
     "electron-config": "1.0.0"

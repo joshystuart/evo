@@ -1,9 +1,11 @@
 const fs = require('fs');
-const APP_DIR = fs.realpathSync('src');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const APP_DIR = fs.realpathSync('app');
 const EVO_COMMON_DIR = fs.realpathSync('node_modules/@evo/common');
+const EVO_CLIENT_DIR = fs.realpathSync('node_modules/@evo/client');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: `${APP_DIR}/index.js`,
     output: {
         path: `${__dirname}/build`,
         publicPath: '/',
@@ -21,7 +23,8 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 include: [
                     APP_DIR,
-                    EVO_COMMON_DIR
+                    EVO_COMMON_DIR,
+                    EVO_CLIENT_DIR
                 ],
                 use: {
                     loader: require.resolve('babel-loader'),
@@ -53,5 +56,17 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: `${APP_DIR}/index.html`,
+                to: 'index.html'
+            },
+            {
+                from: `${APP_DIR}/main.js`,
+                to: 'main.js'
+            }
+        ])
+    ]
 };
