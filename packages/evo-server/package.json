@@ -10,13 +10,11 @@
         }
     ],
     "private": true,
-    "main": "./build/server.js",
-    "directories": {
-        "src": "./build/server.js"
-    },
+    "main": "./src/index.js",
     "scripts": {
     },
     "dependencies": {
+        "@evo/common": "0.0.1",
         "express": "4.16.3",
         "node-irsdk": "2.1.3",
         "ws": "6.0.0"

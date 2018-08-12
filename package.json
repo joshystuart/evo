@@ -4,12 +4,11 @@
   "scripts": {
     "bootstrap": "lerna bootstrap",
     "build": "lerna run build",
-    "build:client": "cd ./packages/evo-client && yarn build",
-    "build:electron": "cd ./packages/evo-electron && yarn build",
-    "start:dev": "lerna run start:dev",
-    "start:client": "cd ./packages/evo-client && yarn start:dev",
+    "client:build": "cd ./packages/evo-client && yarn build",
+    "client:start": "cd ./packages/evo-client && yarn start",
     "start:server": "cd ./packages/evo-server && yarn start",
-    "start:electron": "cd ./packages/evo-electron && yarn start"
+    "electron:start": "cd ./packages/evo-electron && yarn start",
+    "electron:build": "cd ./packages/evo-electron && yarn build"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.55",

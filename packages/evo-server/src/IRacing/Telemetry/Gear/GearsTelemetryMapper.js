@@ -1,5 +1,5 @@
 // @flow
-import GearsDto from 'packages/evo-server/src/IRacing/Telemetry/Gear/GearsDto';
+import {GearsDto} from '@evo/common';
 
 export type GearData = {
     Gear: string,

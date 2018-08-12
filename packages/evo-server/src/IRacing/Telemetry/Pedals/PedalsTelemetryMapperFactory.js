@@ -1,5 +1,5 @@
 // @flow
-import PedalsTelemetryMapper from 'packages/evo-server/src/IRacing/Telemetry/Pedals/PedalsTelemetryMapper';
+import PedalsTelemetryMapper from './PedalsTelemetryMapper';
 
 /**
  * @type {PedalsTelemetryMapper} pedalsTelemetryMapper

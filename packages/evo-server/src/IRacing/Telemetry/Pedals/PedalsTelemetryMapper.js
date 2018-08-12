@@ -1,5 +1,5 @@
 // @flow
-import PedalsDto from 'packages/evo-server/src/IRacing/Telemetry/Pedals/PedalsDto';
+import {PedalsDto} from '@evo/common';
 
 type PedalData = {
     Throttle: string,

@@ -1,5 +1,5 @@
 // @flow
-import SpeedDto, { UOM } from 'packages/evo-server/src/IRacing/Telemetry/Speed/SpeedDto';
+import {SpeedDto,UOM} from '@evo/common';
 
 export type SpeedData = {
     Speed: string,

@@ -1,6 +1,6 @@
 // @flow
-import DriverDto from 'packages/evo-server/src/IRacing/Drivers/DriverDto';
-import type { DriverData } from 'packages/evo-server/src/IRacing/Drivers/DriverInfoData';
+import {DriverDto} from '@evo/common';
+import type {DriverData} from './DriverInfoData';
 
 export default class DiverMapper {
     _convertMultiple = (messages: DriverData[]): DriverDto[] => {

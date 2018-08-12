@@ -1,12 +1,12 @@
 // @flow
 import EventEmitter from 'events';
 import irsdk from 'node-irsdk';
-import SessionMapper from 'packages/evo-server/src/IRacing/Session/SessionMapper';
-import {EVENTS} from 'packages/evo-server/src/IRacing/IRacingConstants';
-import type TelemetryMapper from 'packages/evo-server/src/IRacing/Telemetry/TelemetryMapper';
-import type {TelemetryData} from 'packages/evo-server/src/IRacing/Telemetry/TelemetryData';
-import type {SessionInfoData} from 'packages/evo-server/src/IRacing/Session/SessionInfoData';
-import type SessionDto from 'packages/evo-server/src/IRacing/Session/SessionDto';
+import {SessionDto} from '@evo/common';
+import SessionMapper from './Session/SessionMapper';
+import {EVENTS} from './IRacingConstants';
+import type TelemetryMapper from './Telemetry/TelemetryMapper';
+import type {TelemetryData} from './Telemetry/TelemetryData';
+import type {SessionInfoData} from './Session/SessionInfoData';
 
 const INTERNAL_EVENTS = {
     CONNECTED: 'Connected',

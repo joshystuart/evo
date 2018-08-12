@@ -1,8 +1,8 @@
 // @flow
 import EventEmitter from 'events';
 import WebSocket, {Server} from 'ws';
-import IRacingService from 'packages/evo-server/src/IRacing/IRacingService';
-import {EVENTS as IRACING_EVENTS} from 'packages/evo-server/src/IRacing/IRacingConstants';
+import {EVENTS as IRACING_EVENTS} from './IRacing/IRacingConstants';
+import IRacingService from './IRacing/IRacingService';
 
 export const EVENTS = {
     CONNECTION: 'connection'

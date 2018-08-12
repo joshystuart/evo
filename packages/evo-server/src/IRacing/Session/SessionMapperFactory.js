@@ -1,6 +1,6 @@
 // @flow
-import SessionMapper from 'packages/evo-server/src/IRacing/Session/SessionMapper';
-import { lapMapper } from 'packages/evo-server/src/IRacing/Session/Laps/LapMapperFactory';
+import SessionMapper from './SessionMapper';
+import { lapMapper } from './Laps/LapMapperFactory';
 
 /**
  * @type {SessionMapper} sessionMapper

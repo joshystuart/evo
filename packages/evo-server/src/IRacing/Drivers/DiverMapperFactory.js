@@ -1,5 +1,5 @@
 // @flow
-import DiverMapper from 'packages/evo-server/src/IRacing/Drivers/DiverMapper';
+import DiverMapper from './DiverMapper';
 
 /**
  * @type {DiverMapper} diverMapper

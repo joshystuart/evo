@@ -1,8 +1,8 @@
 // @flow
-import TelemetryMapper from 'packages/evo-server/src/IRacing/Telemetry/TelemetryMapper';
-import { pedalsTelemetryMapper } from 'packages/evo-server/src/IRacing/Telemetry/Pedals/PedalsTelemetryMapperFactory';
-import { gearsTelemetryMapper } from 'packages/evo-server/src/IRacing/Telemetry/Gear/GearsTelemetryMapperFactory';
-import { speedTelemetryMapper } from 'packages/evo-server/src/IRacing/Telemetry/Speed/SpeedTelemetryMapperFactory';
+import TelemetryMapper from './TelemetryMapper';
+import { pedalsTelemetryMapper } from './Pedals/PedalsTelemetryMapperFactory';
+import { gearsTelemetryMapper } from './Gear/GearsTelemetryMapperFactory';
+import { speedTelemetryMapper } from './Speed/SpeedTelemetryMapperFactory';
 
 /**
  * @type {TelemetryMapper} telemetryMapper

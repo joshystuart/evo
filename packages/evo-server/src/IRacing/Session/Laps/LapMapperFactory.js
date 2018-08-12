@@ -1,6 +1,6 @@
 // @flow
-import LapMapper from 'packages/evo-server/src/IRacing/Session/Laps/LapMapper';
-import { timeFormatter } from 'packages/evo-server/src/IRacing/Timing/TimeFormatterFactory';
+import {timeFormatter} from '../../Timing/TimeFormatterFactory';
+import LapMapper from './LapMapper';
 
 /**
  * @type {LapMapper} lapMapper

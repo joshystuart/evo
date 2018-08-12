@@ -1,7 +1,7 @@
 // @flow
-import type { FastestLapData } from 'packages/evo-server/src/IRacing/Session/SessionInfoData';
-import LapDto from 'packages/evo-server/src/IRacing/Session/Laps/LapDto';
-import type TimeFormatter from 'packages/evo-server/src/IRacing/Timing/TimeFormatter';
+import type { FastestLapData } from '../SessionInfoData';
+import {LapDto} from '@evo/common';
+import type TimeFormatter from '../../Timing/TimeFormatter';
 
 export default class LapMapper {
     _timeFormatter: TimeFormatter;
