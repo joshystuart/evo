@@ -10,14 +10,14 @@
     }
   ],
   "private": true,
-  "homepage": "./",
-  "main": "build/app/index.html",
+  "main": "init.js",
   "scripts": {
     "clean": "rimraf ./build",
+    "clean:dist": "rimraf ./dist",
     "build": "yarn clean && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
     "start": "electron ./build/main",
-    "package": "yarn build && electron-builder build --publish never",
-    "package:win": "yarn build && electron-builder build --win --x64"
+    "package": "electron-builder --win",
+    "package:win": "electron-builder --win --x64"
   },
   "dependencies": {
     "@evo/common": "0.0.1",
@@ -30,13 +30,7 @@
     "electron-builder": "20.27.1",
     "electron-devtools-installer": "2.2.4"
   },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "engines": {
-    "node": ">=9"
+    "node": ">=10"
   }
 }
