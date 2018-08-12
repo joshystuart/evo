@@ -15,7 +15,9 @@
   "scripts": {
     "clean": "rimraf ./build",
     "build": "yarn clean && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
-    "start": "electron ./build/main"
+    "start": "electron ./build/main",
+    "package": "yarn build && electron-builder build --publish never",
+    "package:win": "yarn build && electron-builder build --win --x64"
   },
   "dependencies": {
     "@evo/common": "0.0.1",

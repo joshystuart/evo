@@ -9,6 +9,6 @@
         "@babel/plugin-proposal-object-rest-spread",
         "@babel/plugin-transform-runtime",
         "@babel/plugin-transform-regenerator",
-        "@babel/plugin-syntax-dynamic-import"
+        "plugin-syntax-dynamic-import"
     ]
 }

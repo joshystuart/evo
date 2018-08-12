@@ -1,6 +1,6 @@
 // @flow
 import EventEmitter from 'events';
-import irsdk from 'node-irsdk';
+import irsdk from '@evo/irsdk';
 import {SessionDto} from '@evo/common';
 import SessionMapper from './Session/SessionMapper';
 import {EVENTS} from './IRacingConstants';

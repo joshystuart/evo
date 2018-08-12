@@ -13,14 +13,10 @@
   "homepage": "./",
   "main": "build/index.js",
   "scripts": {
-  },
-  "devDependencies": {
-  },
-  "lint-staged": {
-    "*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "build": "yarn build:clean && yarn build:lib && yarn build:index",
+    "build:clean": "rm -rf ./build",
+    "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js",
+    "build:lib": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
   },
   "engines": {
     "node": ">=9"

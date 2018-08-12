@@ -1,7 +1,7 @@
 const path = require('path');
 const url = require('url');
 const {app, BrowserWindow} = require('electron');
-
+const {webSocketsServer} = require('@evo/server');
 let mainWindow = null;
 let forceQuit = false;
 
@@ -15,12 +15,17 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
+    // start the server
+    webSocketsServer.connect();
+
     mainWindow = new BrowserWindow({
         width: 1150, height: 750,
         webPreferences: {
             webSecurity: false
         },
-        show: false
+        show: false,
+        transparent: true,
+        frame: false
     });
 
 

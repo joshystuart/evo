@@ -1,5 +1,5 @@
 // @flow
-import SpeedTelemetryMapper from 'packages/evo-server/src/IRacing/Telemetry/Speed/SpeedTelemetryMapper';
+import SpeedTelemetryMapper from './SpeedTelemetryMapper';
 
 /**
  * @type {SpeedTelemetryMapper} speedTelemetryMapper

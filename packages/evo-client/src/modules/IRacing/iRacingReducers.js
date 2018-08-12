@@ -1,5 +1,5 @@
 // @flow
-import {EVENTS} from '@evo/common';
+import {IRacingConstants} from '@evo/common';
 import {ACTIONS} from '../Utils/webSocketMiddleware';
 import {telemetryMapper} from './Telemetry/Dao/TelemetryMapperFactory';
 
@@ -32,7 +32,7 @@ export const iRacingReducers = (state = {}, action) => {
         const {data, type} = payload;
         let newState = {...state};
 
-        if (type === EVENTS.TELEMETRY) {
+        if (type === IRacingConstants.TELEMETRY) {
             newState = {
                 ...newState,
                 [TYPES.TELEMETRY]: telemetryMapper.convert(data)

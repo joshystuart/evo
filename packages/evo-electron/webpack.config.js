@@ -4,7 +4,8 @@ const PACKAGES = {
     APP: fs.realpathSync('app'),
     EVO_COMMON: fs.realpathSync('../evo-common'),
     EVO_CLIENT: fs.realpathSync('../evo-client'),
-    EVO_SERVER: fs.realpathSync('../evo-server')
+    EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
+    EVO_SERVER: fs.realpathSync('../evo-server'),
 };
 
 module.exports = {

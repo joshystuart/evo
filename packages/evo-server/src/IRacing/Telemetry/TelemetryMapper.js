@@ -1,7 +1,7 @@
 // @flow
 import {TelemetryDto} from '@evo/common';
-import type PedalsTelemetryMapper from './Pedals/PedalsTelemetryMapper';
 import type GearsTelemetryMapper from './Gear/GearsTelemetryMapper';
+import type PedalsTelemetryMapper from './Pedals/PedalsTelemetryMapper';
 import type SpeedTelemetryMapper from './Speed/SpeedTelemetryMapper';
 import type {TelemetryData} from './TelemetryData';
 
