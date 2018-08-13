@@ -12,18 +12,20 @@
   "private": true,
   "main": "init.js",
   "scripts": {
-    "clean": "rimraf ./build",
+    "clean:build": "rimraf ./build",
     "clean:dist": "rimraf ./dist",
-    "build": "yarn clean && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
     "start": "electron ./build/main",
-    "package": "electron-builder --win",
-    "package:win": "electron-builder --win --x64"
+    "pack": "electron-builder --dir --config ./electron-builder.yml",
+    "package": "yarn clean:dist && electron-builder --win --config ./electron-builder.yml",
+    "package:win": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml"
   },
   "dependencies": {
     "@evo/common": "0.0.1",
     "@evo/server": "0.0.1",
     "@evo/client": "0.0.1",
-    "electron-config": "1.0.0"
+    "electron-config": "1.0.0",
+    "@babel/runtime": "7.0.0-beta.55"
   },
   "devDependencies": {
     "electron": "2.0.7",

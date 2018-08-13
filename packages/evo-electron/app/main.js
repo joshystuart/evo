@@ -23,9 +23,9 @@ app.on('ready', () => {
         webPreferences: {
             webSecurity: false
         },
-        show: false,
-        transparent: true,
-        frame: false
+        // show: false,
+        // transparent: true,
+        // frame: false
     });
 
 

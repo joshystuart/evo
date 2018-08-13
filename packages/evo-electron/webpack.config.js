@@ -5,7 +5,7 @@ const PACKAGES = {
     EVO_COMMON: fs.realpathSync('../evo-common'),
     EVO_CLIENT: fs.realpathSync('../evo-client'),
     EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
-    EVO_SERVER: fs.realpathSync('../evo-server'),
+    EVO_SERVER: fs.realpathSync('../evo-server')
 };
 
 module.exports = {
@@ -30,13 +30,14 @@ module.exports = {
                     loader: require.resolve('babel-loader'),
                     options: {
                         presets: [
-                            require.resolve('@babel/preset-env'),
                             [
-                                require.resolve('@babel/preset-react'),
+                                require.resolve('@babel/preset-env'),
                                 {
-                                    useBuiltIns: true
+                                    'targets': {'node': 10},
+                                    useBuiltIns: 'usage'
                                 }
                             ],
+                            require.resolve('@babel/preset-react'),
                             require.resolve('@babel/preset-flow')
                         ],
                         plugins: [

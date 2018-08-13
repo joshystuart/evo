@@ -12,7 +12,8 @@
     "server:start": "cd ./packages/evo-server && yarn start",
     "server:build": "cd ./packages/evo-server && yarn build",
     "electron:start": "cd ./packages/evo-electron && yarn start",
-    "electron:build": "cd ./packages/evo-electron && yarn build"
+    "electron:build": "cd ./packages/evo-electron && yarn build",
+    "electron:package": "cd ./packages/evo-electron && yarn package"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.55",
