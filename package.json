@@ -11,9 +11,13 @@
     "common:build": "cd ./packages/evo-common && yarn build",
     "server:start": "cd ./packages/evo-server && yarn start",
     "server:build": "cd ./packages/evo-server && yarn build",
+    "static-web-server:build": "cd ./packages/evo-static-web-server && yarn build",
     "electron:start": "cd ./packages/evo-electron && yarn start",
     "electron:build": "cd ./packages/evo-electron && yarn build",
     "electron:package": "cd ./packages/evo-electron && yarn package"
+  },
+  "dependencies": {
+    "express": "4.16.3"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.55",
@@ -21,6 +25,7 @@
     "@babel/plugin-proposal-class-properties": "7.0.0-beta.55",
     "@babel/plugin-proposal-object-rest-spread": "7.0.0-beta.55",
     "@babel/plugin-syntax-dynamic-import": "7.0.0-beta.55",
+    "@babel/plugin-syntax-export-default-from": "^7.0.0-rc.1",
     "@babel/plugin-transform-classes": "7.0.0-beta.55",
     "@babel/plugin-transform-destructuring": "7.0.0-beta.55",
     "@babel/plugin-transform-react-constant-elements": "7.0.0-beta.55",

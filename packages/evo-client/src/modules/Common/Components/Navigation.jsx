@@ -35,9 +35,6 @@ class Navigation extends Component <Props> {
                 <List>
                     <ListItem
                         button
-                        onClick={() => {
-                            this.navigate('/overlays');
-                        }}
                     >
                         <ListItemIcon>
                             <PictureInPicture/>
@@ -55,9 +52,6 @@ class Navigation extends Component <Props> {
                 <List>
                     <ListItem
                         button
-                        onClick={() => {
-                            this.navigate('/overlays/saved');
-                        }}
                     >
                         <ListItemIcon>
                             <FeaturedVideo/>

@@ -2,9 +2,9 @@ const path = require('path');
 const url = require('url');
 const {app, BrowserWindow} = require('electron');
 const {webSocketsServer} = require('@evo/server');
+const {staticWebServerFactory} = require('@evo/static-web-server');
 let mainWindow = null;
 let forceQuit = false;
-
 
 app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
@@ -15,7 +15,11 @@ app.on('window-all-closed', () => {
 });
 
 app.on('ready', () => {
-    // start the server
+    // start the static file server
+    const server = staticWebServerFactory.createInstance(__dirname);
+    server.connect();
+
+    // start the data server
     webSocketsServer.connect();
 
     mainWindow = new BrowserWindow({
@@ -28,12 +32,7 @@ app.on('ready', () => {
         // frame: false
     });
 
-
-    mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
-        protocol: 'file:',
-        slashes: true
-    }));
+    mainWindow.loadURL('http://localhost:3000');
 
     // show window once on first load
     mainWindow.webContents.once('did-finish-load', () => {

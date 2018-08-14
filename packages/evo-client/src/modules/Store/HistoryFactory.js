@@ -1,6 +1,6 @@
 // @flow
-import createHashHistory from 'history/createHashHistory';
+import createHistory from 'history/createBrowserHistory';
 
-export const history = createHashHistory();
+export const history = createHistory();
 
 export default history;

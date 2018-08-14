@@ -34,6 +34,12 @@ const styles = (theme) => ({
         paddingRight: theme.spacing.unit * 4,
         marginTop: theme.spacing.unit,
         textAlign: 'center'
+    },
+    body: {
+        textAlign: 'center'
+    },
+    link: {
+        color: theme.palette.primary.main
     }
 });
 
@@ -66,6 +72,18 @@ function HomeScene(props: Props) {
                         className={classes.headline}
                     >
                         Enhanced vision overlays for iRacing
+                    </Typography>
+                    <Typography
+                        variant="body2"
+                        color="inherit"
+                        gutterBottom
+                        className={classes.body}
+                    >
+                        Use <a
+                        href="http://localhost:3000/overlays/saved"
+                        className={classes.link}
+                        target="_blank">http://localhost:3000/overlays/saved</a> to show
+                        the overlay inside OBS
                     </Typography>
                 </Grid>
             </Grid>

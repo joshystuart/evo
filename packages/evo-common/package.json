@@ -13,10 +13,10 @@
   "homepage": "./",
   "main": "build/index.js",
   "scripts": {
-    "build": "yarn build:clean && yarn build:lib && yarn build:index",
-    "build:clean": "rm -rf ./build",
+    "build": "yarn build:clean && yarn build:src && yarn build:index",
+    "build:clean": "rimraf ./build",
     "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js",
-    "build:lib": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
+    "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
   },
   "engines": {
     "node": ">=10"

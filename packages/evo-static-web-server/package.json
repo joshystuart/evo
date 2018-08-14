@@ -1,0 +1,24 @@
+{
+    "name": "@evo/static-web-server",
+    "productName": "EVO: Static web server",
+    "description": "A server that will serve static files that we built",
+    "version": "0.0.1",
+    "contributors": [
+        {
+            "name": "Josh Stuart",
+            "email": "josh.stuart@horizonstate.com"
+        }
+    ],
+    "private": true,
+    "main": "build/index.js",
+    "scripts": {
+        "build": "yarn clean:build && yarn build:src && yarn build:config && yarn build:index",
+        "clean:build": "rimraf ./build",
+        "build:config": "cross-env NODE_ENV=production BABEL_ENV=production babel config --out-dir ./build/config",
+        "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src",
+        "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js"
+    },
+    "engines": {
+        "node": ">=10"
+    }
+}

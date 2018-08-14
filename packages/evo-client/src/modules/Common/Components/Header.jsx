@@ -65,7 +65,7 @@ class Header extends Component <Props, State> {
                         <Typography variant="title" color="inherit" className={classes.title}>
                             EVO: Enhanced Vision Overlays
                         </Typography>
-                        <Button color="inherit">Download</Button>
+                        <Button color="inherit">Settings</Button>
                     </Toolbar>
                 </AppBar>
                 <Drawer open={isOpen} onClose={this.toggleDrawer(false)}>

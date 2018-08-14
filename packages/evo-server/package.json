@@ -12,11 +12,10 @@
     "private": true,
     "main": "build/src/index.js",
     "scripts": {
-        "build": "yarn build:clean && yarn build:lib && yarn build:config",
-        "build:clean": "rm -rf ./build",
+        "build": "yarn clean:build && yarn build:src && yarn build:config",
+        "clean:build": "rimraf ./build",
         "build:config": "cross-env NODE_ENV=production BABEL_ENV=production babel config --out-dir ./build/config",
-        "build:server": "cross-env NODE_ENV=production BABEL_ENV=production babel ./server.js --out-file ./build/server.js",
-        "build:lib": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
+        "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
     },
     "dependencies": {
         "@evo/common": "0.0.1",

@@ -14,7 +14,7 @@
   "scripts": {
     "clean:build": "rimraf ./build",
     "clean:dist": "rimraf ./dist",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
+    "build": "yarn clean:build && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
     "start": "electron ./build/main",
     "pack": "electron-builder --dir --config ./electron-builder.yml",
     "package": "yarn clean:dist && electron-builder --win --config ./electron-builder.yml",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@evo/common": "0.0.1",
     "@evo/server": "0.0.1",
+    "@evo/static-web-server": "0.0.1",
     "@evo/client": "0.0.1",
     "electron-config": "1.0.0",
     "@babel/runtime": "7.0.0-beta.55"

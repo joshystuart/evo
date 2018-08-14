@@ -1,7 +1,8 @@
 const fs = require('fs');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PACKAGES = {
-    APP: fs.realpathSync('app'),
+    APP: fs.realpathSync('src'),
+    PUBLIC: fs.realpathSync('public'),
     EVO_COMMON: fs.realpathSync('../evo-common'),
     EVO_CLIENT: fs.realpathSync('../evo-client'),
     EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
@@ -9,7 +10,7 @@ const PACKAGES = {
 };
 
 module.exports = {
-    entry: `${PACKAGES.APP}/index.js`,
+    entry: `${PACKAGES.APP}/App.jsx`,
     output: {
         path: `${__dirname}/build`,
         publicPath: '/',
@@ -61,11 +62,11 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin([
             {
-                from: `${PACKAGES.APP}/index.html`,
+                from: `${PACKAGES.PUBLIC}/index.html`,
                 to: 'index.html'
             },
             {
-                from: `${PACKAGES.APP}/main.js`,
+                from: `./main.js`,
                 to: 'main.js'
             }
         ])
