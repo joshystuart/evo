@@ -1,3 +1,3 @@
 // @flow
-export {default as WebSocketsServer} from './WebSocketsServer';
-export {webSocketsServer} from './WebSocketsServerFactory';
+export { default as WebSocketsServer } from './WebSocketsServer';
+export { webSocketsServer } from './WebSocketsServerFactory';

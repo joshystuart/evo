@@ -1,9 +1,11 @@
 ## Getting started
 
 ### For Windows
+
 Download Python 2.x
 
 From an Admin Power Shell
+
 ```
  yarn global add windows-build-tools
 ```
@@ -12,8 +14,8 @@ From an Admin Power Shell
 yarn install
 ```
 
-
 Look at only adding the ones we need rather than the whole react preset requirement
+
 ```
 ├─ babel-plugin-dynamic-import-node@1.1.0
 ├─ babel-plugin-syntax-class-properties@6.13.0
@@ -30,8 +32,8 @@ Look at only adding the ones we need rather than the whole react preset requirem
 └─ babel-preset-react@6.24.1
 ```
 
-
 TODO; we need to compile node-ir with:
+
 ```
     "install": "prebuild-install || node-gyp rebuild --build-from-source --runtime=electron --target_arch=x64 --target=2.0.7 --target_platform=win32  --dist-url=https://atom.io/download/electron",
 ```
@@ -39,4 +41,3 @@ TODO; we need to compile node-ir with:
 Maybe we need to fork it? Or there is a way to set env vars
 https://github.com/electron/electron/blob/master/docs/tutorial/using-native-node-modules.md
 https://github.com/mapbox/node-pre-gyp
-

@@ -6,7 +6,7 @@ const PACKAGES = {
     EVO_COMMON: fs.realpathSync('../evo-common'),
     EVO_CLIENT: fs.realpathSync('../evo-client'),
     EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
-    EVO_SERVER: fs.realpathSync('../evo-server')
+    EVO_SERVER: fs.realpathSync('../evo-server'),
 };
 
 module.exports = {
@@ -14,13 +14,11 @@ module.exports = {
     output: {
         path: `${__dirname}/build`,
         publicPath: '/',
-        filename: 'index.js'
+        filename: 'index.js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
-        modules: [
-            'node_modules'
-        ]
+        modules: ['node_modules'],
     },
     module: {
         rules: [
@@ -34,41 +32,51 @@ module.exports = {
                             [
                                 require.resolve('@babel/preset-env'),
                                 {
-                                    'targets': {'node': 10},
-                                    useBuiltIns: 'usage'
-                                }
+                                    targets: { node: 10 },
+                                    useBuiltIns: 'usage',
+                                },
                             ],
                             require.resolve('@babel/preset-react'),
-                            require.resolve('@babel/preset-flow')
+                            require.resolve('@babel/preset-flow'),
                         ],
                         plugins: [
                             [
-                                require.resolve('@babel/plugin-transform-destructuring'),
+                                require.resolve(
+                                    '@babel/plugin-transform-destructuring',
+                                ),
                                 {
-                                    loose: true
-                                }
+                                    loose: true,
+                                },
                             ],
-                            require.resolve('@babel/plugin-proposal-class-properties'),
-                            require.resolve('@babel/plugin-proposal-object-rest-spread'),
+                            require.resolve(
+                                '@babel/plugin-proposal-class-properties',
+                            ),
+                            require.resolve(
+                                '@babel/plugin-proposal-object-rest-spread',
+                            ),
                             require.resolve('@babel/plugin-transform-runtime'),
-                            require.resolve('@babel/plugin-transform-regenerator'),
-                            require.resolve('@babel/plugin-syntax-dynamic-import')
-                        ]
-                    }
-                }
-            }
-        ]
+                            require.resolve(
+                                '@babel/plugin-transform-regenerator',
+                            ),
+                            require.resolve(
+                                '@babel/plugin-syntax-dynamic-import',
+                            ),
+                        ],
+                    },
+                },
+            },
+        ],
     },
     plugins: [
         new CopyWebpackPlugin([
             {
                 from: `${PACKAGES.PUBLIC}/index.html`,
-                to: 'index.html'
+                to: 'index.html',
             },
             {
                 from: `./main.js`,
-                to: 'main.js'
-            }
-        ])
-    ]
+                to: 'main.js',
+            },
+        ]),
+    ],
 };

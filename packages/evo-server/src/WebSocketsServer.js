@@ -1,11 +1,11 @@
 // @flow
 import EventEmitter from 'events';
-import WebSocket, {Server} from 'ws';
-import {EVENTS as IRACING_EVENTS} from './IRacing/IRacingConstants';
+import WebSocket, { Server } from 'ws';
+import { EVENTS as IRACING_EVENTS } from './IRacing/IRacingConstants';
 import IRacingService from './IRacing/IRacingService';
 
 export const EVENTS = {
-    CONNECTION: 'connection'
+    CONNECTION: 'connection',
 };
 
 export default class WebSocketsServer extends EventEmitter {
@@ -30,21 +30,15 @@ export default class WebSocketsServer extends EventEmitter {
         });
 
         // listen for websocket connections
-        this._websocketServer.on(
-            EVENTS.CONNECTION,
-            (ws: WebSocket) => {
-                console.info(`WebSocketsServer::connect a user has connected to the websocket server`);
+        this._websocketServer.on(EVENTS.CONNECTION, (ws: WebSocket) => {
+            console.info(`WebSocketsServer::connect a user has connected to the websocket server`);
 
-                // We need to get the current session because otherwise we have to wait for an update
-                const session = this._iRacingService.getCurrentSession();
-                if (session) {
-                    this.send(
-                        ws,
-                        session
-                    );
-                }
+            // We need to get the current session because otherwise we have to wait for an update
+            const session = this._iRacingService.getCurrentSession();
+            if (session) {
+                this.send(ws, session);
             }
-        );
+        });
     };
     /**
      * @param {WebSocket} ws
@@ -54,33 +48,24 @@ export default class WebSocketsServer extends EventEmitter {
         ws.send(JSON.stringify(data));
     };
 
-    constructor(
-        iRacingService: IRacingService,
-        httpServer: any,
-        port: number = 3000,
-        events: string[] = [IRACING_EVENTS.TELEMETRY, IRACING_EVENTS.SESSION]
-    ) {
+    constructor(iRacingService: IRacingService, httpServer: any, port: number = 3000, events: string[] = [IRACING_EVENTS.TELEMETRY, IRACING_EVENTS.SESSION]) {
         super();
         this._iRacingService = iRacingService;
         this._httpServer = httpServer;
         this._events = events;
         this._port = port;
-
     }
 
     connect() {
         console.info(`WebSocketsServer::connect Starting websocket server`);
-        this._websocketServer = new Server({server: this._httpServer});
+        this._websocketServer = new Server({ server: this._httpServer });
 
         this.initEventListeners();
         this._iRacingService.connect();
 
         // listen to incoming requests
-        this._httpServer.listen(
-            this._port,
-            () => {
-                console.info(`WebSocketsServer::connect Server started on port ${this._port}`);
-            }
-        );
+        this._httpServer.listen(this._port, () => {
+            console.info(`WebSocketsServer::connect Server started on port ${this._port}`);
+        });
     }
 }

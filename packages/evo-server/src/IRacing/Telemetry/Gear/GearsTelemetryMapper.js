@@ -1,5 +1,5 @@
 // @flow
-import {GearsDto} from '@evo/common';
+import { GearsDto } from '@evo/common';
 
 export type GearData = {
     Gear: string,

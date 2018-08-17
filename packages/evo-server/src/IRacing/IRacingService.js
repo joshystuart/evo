@@ -1,19 +1,19 @@
 // @flow
 import EventEmitter from 'events';
 import irsdk from '@evo/irsdk';
-import {SessionDto} from '@evo/common';
+import { SessionDto } from '@evo/common';
 import SessionMapper from './Session/SessionMapper';
-import {EVENTS} from './IRacingConstants';
+import { EVENTS } from './IRacingConstants';
 import type TelemetryMapper from './Telemetry/TelemetryMapper';
-import type {TelemetryData} from './Telemetry/TelemetryData';
-import type {SessionInfoData} from './Session/SessionInfoData';
+import type { TelemetryData } from './Telemetry/TelemetryData';
+import type { SessionInfoData } from './Session/SessionInfoData';
 
 const INTERNAL_EVENTS = {
     CONNECTED: 'Connected',
     DISCONNECTED: 'Disconnected',
     UPDATE: 'update',
     TELEMETRY: 'Telemetry',
-    SESSION: 'SessionInfo'
+    SESSION: 'SessionInfo',
 };
 
 export default class IRacingService extends EventEmitter {
@@ -39,7 +39,7 @@ export default class IRacingService extends EventEmitter {
 
     formatMessage = (eventName: string, data: any): { type: string, data: any } => ({
         type: eventName,
-        data
+        data,
     });
 
     constructor(telemetryMapper: TelemetryMapper, sessionMapper: SessionMapper, telemetryUpdateInterval: number = 100, sessionInfoUpdateInterval: number = 100) {
@@ -50,7 +50,7 @@ export default class IRacingService extends EventEmitter {
         // create the iracing service
         irsdk.init({
             telemetryUpdateInterval,
-            sessionInfoUpdateInterval
+            sessionInfoUpdateInterval,
         });
     }
 
@@ -69,7 +69,7 @@ export default class IRacingService extends EventEmitter {
     getCurrentSession(): { type: string, data: SessionDto } {
         let message;
 
-        const {sessionInfo} = this._iracing;
+        const { sessionInfo } = this._iracing;
         if (sessionInfo && sessionInfo.data) {
             message = this.formatMessage(EVENTS.SESSION, this._sessionMapper.convert(sessionInfo.data.SessionInfo.Sessions));
         }

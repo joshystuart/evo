@@ -9,13 +9,11 @@ module.exports = {
     output: {
         path: `${__dirname}/build`,
         publicPath: '/',
-        filename: 'index.js'
+        filename: 'index.js',
     },
     resolve: {
         extensions: ['.js', '.jsx'],
-        modules: [
-            'node_modules'
-        ]
+        modules: ['node_modules'],
     },
     module: {
         rules: [
@@ -29,27 +27,39 @@ module.exports = {
                             options: {
                                 presets: [
                                     require.resolve('@babel/preset-env'),
-                                    require.resolve('@babel/preset-flow')
+                                    require.resolve('@babel/preset-flow'),
                                 ],
                                 plugins: [
                                     [
-                                        require.resolve('@babel/plugin-transform-destructuring'),
+                                        require.resolve(
+                                            '@babel/plugin-transform-destructuring',
+                                        ),
                                         {
-                                            loose: true
-                                        }
+                                            loose: true,
+                                        },
                                     ],
-                                    require.resolve('@babel/plugin-proposal-class-properties'),
-                                    require.resolve('@babel/plugin-proposal-object-rest-spread'),
-                                    require.resolve('@babel/plugin-transform-runtime'),
-                                    require.resolve('@babel/plugin-transform-regenerator'),
-                                    require.resolve('@babel/plugin-syntax-dynamic-import')
-                                ]
-                            }
-                        }
-                    }
-                ]
-            }
-        ]
+                                    require.resolve(
+                                        '@babel/plugin-proposal-class-properties',
+                                    ),
+                                    require.resolve(
+                                        '@babel/plugin-proposal-object-rest-spread',
+                                    ),
+                                    require.resolve(
+                                        '@babel/plugin-transform-runtime',
+                                    ),
+                                    require.resolve(
+                                        '@babel/plugin-transform-regenerator',
+                                    ),
+                                    require.resolve(
+                                        '@babel/plugin-syntax-dynamic-import',
+                                    ),
+                                ],
+                            },
+                        },
+                    },
+                ],
+            },
+        ],
     },
-    plugins: []
+    plugins: [],
 };

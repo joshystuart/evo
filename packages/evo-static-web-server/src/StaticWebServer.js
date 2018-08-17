@@ -3,7 +3,7 @@ import path from 'path';
 import express from 'express';
 
 export const EVENTS = {
-    CONNECTION: 'connection'
+    CONNECTION: 'connection',
 };
 
 export default class StaticWebServer {
@@ -28,7 +28,9 @@ export default class StaticWebServer {
         this._httpServer.use(express.static(this._staticDir));
 
         this._httpServer.get('*', (request, response) => {
-            response.sendFile(path.resolve(this._staticDir, this._defaultIndex));
+            response.sendFile(
+                path.resolve(this._staticDir, this._defaultIndex),
+            );
         });
 
         this._httpServer.listen(this._port);

@@ -11,17 +11,17 @@ module.exports = {
 
     globals: {
         __DEV__: true,
-        React: true
+        React: true,
     },
 
     env: {
         browser: true,
-        jest: true
+        jest: true,
     },
 
     rules: {
-        quotes: ['error', 'single', {allowTemplateLiterals: true}],
-        indent: ["error", 4, {"SwitchCase": 1}],
+        quotes: ['error', 'single', { allowTemplateLiterals: true }],
+        indent: ['error', 4, { SwitchCase: 1 }],
         'max-len': ['error', 180],
         'no-underscore-dangle': ['off'],
         'class-method-use-this': ['off'],
@@ -45,8 +45,8 @@ module.exports = {
         'no-console': [
             'error',
             {
-                allow: ['warn', 'error', 'info']
-            }
+                allow: ['warn', 'error', 'info'],
+            },
         ],
 
         // Prefer destructuring from arrays and objects
@@ -56,16 +56,16 @@ module.exports = {
             {
                 VariableDeclarator: {
                     array: false,
-                    object: true
+                    object: true,
                 },
                 AssignmentExpression: {
                     array: false,
-                    object: false
-                }
+                    object: false,
+                },
             },
             {
-                enforceForRenamedProperties: false
-            }
+                enforceForRenamedProperties: false,
+            },
         ],
 
         // TODO - investigate why <Link /> button errors on this rule
@@ -74,12 +74,12 @@ module.exports = {
 
         // Allow .js files to use JSX syntax
         // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
-        'react/jsx-filename-extension': ['error', {extensions: ['.js', '.jsx']}],
+        'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx'] }],
         'react/jsx-tag-spacing': ['off'],
         'react/jsx-indent': ['error', 4],
         'react/jsx-indent-props': ['error', 4],
         // Functional and class components are equivalent from React’s point of view
         // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md
-        'react/prefer-stateless-function': 'off'
-    }
+        'react/prefer-stateless-function': 'off',
+    },
 };

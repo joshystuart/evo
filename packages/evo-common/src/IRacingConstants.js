@@ -4,5 +4,5 @@ export const EVENTS = {
     UPDATE: 'UPDATE',
     TELEMETRY: 'TELEMETRY',
     SESSION: 'SESSION',
-    DRIVER: 'DRIVER'
+    DRIVER: 'DRIVER',
 };

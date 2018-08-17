@@ -1,8 +1,8 @@
 const path = require('path');
 const url = require('url');
-const {app, BrowserWindow, shell} = require('electron');
-const {webSocketsServer} = require('@evo/server');
-const {staticWebServerFactory} = require('@evo/static-web-server');
+const { app, BrowserWindow, shell } = require('electron');
+const { webSocketsServer } = require('@evo/server');
+const { staticWebServerFactory } = require('@evo/static-web-server');
 let mainWindow = null;
 let forceQuit = false;
 
@@ -23,9 +23,10 @@ app.on('ready', () => {
     webSocketsServer.connect();
 
     mainWindow = new BrowserWindow({
-        width: 1150, height: 750,
+        width: 1150,
+        height: 750,
         webPreferences: {
-            webSecurity: false
+            webSecurity: false,
         },
         // show: false,
         // transparent: true,

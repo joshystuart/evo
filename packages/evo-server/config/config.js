@@ -1,4 +1,4 @@
 // @flow
 export default {
-    port: 3001
+    port: 3001,
 };

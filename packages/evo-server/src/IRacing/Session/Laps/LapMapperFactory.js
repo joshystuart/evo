@@ -1,5 +1,5 @@
 // @flow
-import {timeFormatter} from '../../Timing/TimeFormatterFactory';
+import { timeFormatter } from '../../Timing/TimeFormatterFactory';
 import LapMapper from './LapMapper';
 
 /**

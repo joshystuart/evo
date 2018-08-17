@@ -1,6 +1,6 @@
 // @flow
 import type { FastestLapData } from '../SessionInfoData';
-import {LapDto} from '@evo/common';
+import { LapDto } from '@evo/common';
 import type TimeFormatter from '../../Timing/TimeFormatter';
 
 export default class LapMapper {
