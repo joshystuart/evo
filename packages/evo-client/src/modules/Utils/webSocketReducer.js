@@ -1,5 +1,5 @@
 // @flow
-import {ACTIONS} from './webSocketMiddleware';
+import { ACTIONS } from './webSocketMiddleware';
 
 export const NAMESPACE = 'websocket';
 
@@ -8,12 +8,12 @@ export const webSocketReducer = (state = {}, action) => {
         case ACTIONS.CONNECTED:
             return {
                 isConnected: true,
-                ...state
+                ...state,
             };
         case ACTIONS.ERROR:
             return {
                 hasError: true,
-                ...state
+                ...state,
             };
         default:
             return state;

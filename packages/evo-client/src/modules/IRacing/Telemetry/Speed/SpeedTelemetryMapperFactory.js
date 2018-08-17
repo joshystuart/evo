@@ -6,4 +6,4 @@ import SpeedTelemetryMapper from './SpeedTelemetryMapper';
  */
 const speedTelemetryMapper = new SpeedTelemetryMapper();
 
-export {speedTelemetryMapper};
+export { speedTelemetryMapper };

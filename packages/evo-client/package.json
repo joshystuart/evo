@@ -11,7 +11,7 @@
     ],
     "private": true,
     "homepage": "./",
-    "main": "src/index.js",
+    "main": "index.js",
     "scripts": {
         "build:dev": "cross-env NODE_ENV=development webpack --mode production --config webpack.config.js"
     },

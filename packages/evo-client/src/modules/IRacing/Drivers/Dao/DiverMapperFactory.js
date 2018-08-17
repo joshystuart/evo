@@ -6,4 +6,4 @@ import DiverMapper from './DiverMapper';
  */
 const diverMapper = new DiverMapper();
 
-export {diverMapper};
+export { diverMapper };

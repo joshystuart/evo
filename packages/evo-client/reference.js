@@ -7,7 +7,7 @@ const MY_DRIVER_ID = 256366;
 const COMMANDS = {
     CHANGE_CAMERA_POSITION: 'cam_switch_pos',
     CHANGE_CAMERA_DRIVER: 'cam_switch_num',
-    CAMERA_SET_STATE: 'cam_set_state'
+    CAMERA_SET_STATE: 'cam_set_state',
 };
 const CAMERA_INTERVAL = 10; // in seconds
 const HIDE_UI_POLLING = 30; // in seconds
@@ -32,12 +32,10 @@ const CAMERAS = {
     SCENIC: 17,
     TV_1: 18,
     TV_2: 19,
-    TV_3: 20
+    TV_3: 20,
 };
 
-const CAMERA_GROUPS = [
-    CAMERAS.CHOPPER
-];
+const CAMERA_GROUPS = [CAMERAS.CHOPPER];
 
 let currentDriver = null;
 const ws = new WebSocket('ws://' + SERVER + '/ws');
@@ -47,7 +45,7 @@ const getData = (requestParams, requestParamsOnce) => {
         fps: FPS,
         readIbt: false,
         requestParams: requestParams,
-        requestParamsOnce: requestParamsOnce
+        requestParamsOnce: requestParamsOnce,
     };
     ws.send(JSON.stringify(request));
 };
@@ -55,7 +53,7 @@ const getData = (requestParams, requestParamsOnce) => {
 const sendCommand = (command, ...args) => {
     const request = {
         command: command,
-        args: args
+        args: args,
     };
     ws.send(JSON.stringify(request));
 };
@@ -67,21 +65,11 @@ const getDriverInfo = () => {
 const changeCamera = (cameraGroup) => {
     // if we have the current driver focus on them
     if (currentDriver) {
-        sendCommand(
-            COMMANDS.CHANGE_CAMERA_DRIVER,
-            currentDriver.CarNumberRaw,
-            cameraGroup,
-            0
-        );
+        sendCommand(COMMANDS.CHANGE_CAMERA_DRIVER, currentDriver.CarNumberRaw, cameraGroup, 0);
         console.info('Changing the camera to ' + cameraGroup + ' on driver ' + currentDriver.UserName);
     } else {
         // else just change camera on current
-        sendCommand(
-            COMMANDS.CHANGE_CAMERA_POSITION,
-            0,
-            cameraGroup,
-            0
-        );
+        sendCommand(COMMANDS.CHANGE_CAMERA_POSITION, 0, cameraGroup, 0);
         console.info('Changing the camera to ' + cameraGroup);
     }
 };
@@ -89,38 +77,26 @@ const changeCamera = (cameraGroup) => {
 const rotateCameraGroups = () => {
     let i = 0;
 
-    setInterval(
-        () => {
-            // reset to the start
-            if (typeof CAMERA_GROUPS[i] === 'undefined') {
-                i = 0;
-            }
+    setInterval(() => {
+        // reset to the start
+        if (typeof CAMERA_GROUPS[i] === 'undefined') {
+            i = 0;
+        }
 
-            changeCamera(CAMERA_GROUPS[i]);
-            i++;
-        },
-        CAMERA_INTERVAL * 1000
-    );
+        changeCamera(CAMERA_GROUPS[i]);
+        i++;
+    }, CAMERA_INTERVAL * 1000);
 };
 
 const hideUi = () => {
     console.info('Hiding the UI elements');
     // hide
-    sendCommand(
-        COMMANDS.CAMERA_SET_STATE,
-        8
-    );
+    sendCommand(COMMANDS.CAMERA_SET_STATE, 8);
     // make sure we hide it if it pops up again
-    setInterval(
-        () => {
-            console.info('Hiding the UI elements');
-            sendCommand(
-                COMMANDS.CAMERA_SET_STATE,
-                8
-            );
-        },
-        HIDE_UI_POLLING * 1000
-    );
+    setInterval(() => {
+        console.info('Hiding the UI elements');
+        sendCommand(COMMANDS.CAMERA_SET_STATE, 8);
+    }, HIDE_UI_POLLING * 1000);
 };
 
 const handleDriverInfoData = (driverInfo) => {
@@ -142,7 +118,6 @@ const parseData = (message) => {
         if (driverInfo) {
             handleDriverInfoData(driverInfo);
         }
-
     } catch (error) {
         console.error(error);
     }

@@ -1,5 +1,5 @@
 // @flow
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import BasicTelemetryOverlay from './BasicTelemetryOverlay';
 import withTelemetry from '../../Telemetry/withTelemetry';
 
@@ -9,12 +9,10 @@ type Props = {
 
 export class BasicTelemetryOverlayContainer extends Component<Props> {
     render() {
-        const {telemetry} = this.props;
-        const {pedals, gears, speed} = telemetry;
+        const { telemetry } = this.props;
+        const { pedals, gears, speed } = telemetry;
 
-        return (
-            <BasicTelemetryOverlay pedals={pedals} gears={gears} speed={speed}/>
-        );
+        return <BasicTelemetryOverlay pedals={pedals} gears={gears} speed={speed} />;
     }
 }
 

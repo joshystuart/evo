@@ -8,7 +8,7 @@ Heads up displays and overlays for iRacing
 ## TODOs
 
 ### Bugs
-* Fix the static server. It's not finding the default url.
+* ~~Fix the static server. It's not finding the default url.~~
 
 ### Dev stuff
 * Clean up the babel configs

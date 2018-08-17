@@ -4,14 +4,14 @@ export default {
             light: '#67acf3',
             main: '#4298f0',
             dark: '#2e6aa8',
-            contrastText: '#fff'
+            contrastText: '#fff',
         },
         secondary: {
             light: '#b74368',
             main: '#a61443',
             dark: '#740e2e',
-            contrastText: '#fff'
-        }
+            contrastText: '#fff',
+        },
     },
     overrides: {
         MuiCard: {
@@ -19,8 +19,8 @@ export default {
                 backgroundColor: 'rgba(0,0,0,0.65)',
                 borderRadius: 10,
                 boxShadow: 'none',
-                height: '100%'
-            }
+                height: '100%',
+            },
         },
         MuiCardContent: {
             root: {
@@ -35,27 +35,27 @@ export default {
                 height: '100%',
                 padding: 0,
                 '&:last-child': {
-                    paddingBottom: 0
-                }
-            }
+                    paddingBottom: 0,
+                },
+            },
         },
         MuiTabs: {
             root: {
                 borderRadius: 10,
-                backgroundColor: 'rgba(0,0,0,0.65)'
+                backgroundColor: 'rgba(0,0,0,0.65)',
             },
             indicator: {
-                height: '100%'
-            }
+                height: '100%',
+            },
         },
         MuiTab: {
             root: {
                 backgroundColor: 'none',
-                zIndex: 10
+                zIndex: 10,
             },
             textColorInherit: {
-                color: '#fff'
-            }
-        }
-    }
+                color: '#fff',
+            },
+        },
+    },
 };

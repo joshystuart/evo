@@ -5,7 +5,7 @@ export const EVENTS = {
     CONNECTED: 'connection',
     DISCONNECTED: 'disconnect',
     MESSAGE: 'event',
-    ERROR: 'error'
+    ERROR: 'error',
 };
 
 export default class WebSocketDao extends EventEmitter {
@@ -19,7 +19,7 @@ export default class WebSocketDao extends EventEmitter {
     };
 
     onMessage = (message: any): void => {
-        const {data} = message;
+        const { data } = message;
         if (data && data.type !== '') {
             this.emit(EVENTS.MESSAGE, JSON.parse(data));
         } else {
@@ -28,7 +28,7 @@ export default class WebSocketDao extends EventEmitter {
     };
 
     onError = (event: Event): void => {
-        const {readyState} = event.target;
+        const { readyState } = event.target;
 
         switch (readyState) {
             case 3:
@@ -42,7 +42,7 @@ export default class WebSocketDao extends EventEmitter {
     };
 
     onClose = (event: Event): void => {
-        const {code} = event;
+        const { code } = event;
 
         switch (code) {
             case 1000:
@@ -68,20 +68,16 @@ export default class WebSocketDao extends EventEmitter {
         this._socket.onclose = this.onClose;
     }
 
-
     reconnect(): void {
         delete this._socket.onopen;
         delete this._socket.onmessage;
         delete this._socket.onerror;
         delete this._socket.onclose;
 
-        setTimeout(
-            () => {
-                console.info('WebSocketDao::reconnect reconnecting...');
-                this.connect();
-            },
-            this._autoReconnectInterval
-        );
+        setTimeout(() => {
+            console.info('WebSocketDao::reconnect reconnecting...');
+            this.connect();
+        }, this._autoReconnectInterval);
     }
 
     send(data: Array<any>): void {

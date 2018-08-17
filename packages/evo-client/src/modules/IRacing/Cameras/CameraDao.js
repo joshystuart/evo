@@ -1,5 +1,5 @@
 // @flow
-import {COMMANDS} from '../IRacingServiceConstants';
+import { COMMANDS } from '../IRacingServiceConstants';
 import type IRacingService from '../IRacingService';
 
 export default class CameraDao {

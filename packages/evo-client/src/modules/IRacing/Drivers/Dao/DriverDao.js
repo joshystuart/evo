@@ -1,5 +1,4 @@
 // @flow
 
 // TODO
-export default class DriverDao {
-}
+export default class DriverDao {}

@@ -1,7 +1,7 @@
 // @flow
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Pedal from './Pedal';
 import Throttle from './Throttle';
@@ -19,13 +19,13 @@ const styles = (theme) => ({
     root: {
         width: '100%',
         height: '100%',
-        padding: '10px 20px'
+        padding: '10px 20px',
     },
     throttle: {
-        height: '100%'
+        height: '100%',
     },
     brake: {
-        height: '100%'
+        height: '100%',
     },
     throttleContainer: {
         marginBottom: 10,
@@ -51,40 +51,41 @@ const styles = (theme) => ({
         [theme.breakpoints.down('md')]: {
             fontSize: '3.3vw',
             lineHeight: '3.3vw',
-        }
-    }
+        },
+    },
 });
 
 class PedalsTelemetry extends Component<Props> {
     render() {
-        const {classes, throttle, brake, clutch, hasClutch = false} = this.props;
+        const { classes, throttle, brake, clutch, hasClutch = false } = this.props;
         return (
             <Grid container spacing={0} className={classes.root}>
                 <Grid container spacing={0} className={classes.throttleContainer}>
                     <Grid item xs={4} className={classes.pedalLabelContainer}>
-                        <Typography variant="subheading" className={classes.pedalLabel}>Throttle</Typography>
+                        <Typography variant="subheading" className={classes.pedalLabel}>
+                            Throttle
+                        </Typography>
                     </Grid>
                     <Grid item xs={8}>
-                        <Throttle
-                            value={throttle * 100}
-                        />
+                        <Throttle value={throttle * 100} />
                     </Grid>
                 </Grid>
                 <Grid container spacing={0} className={classes.brakeContainer}>
                     <Grid item xs={4} className={classes.pedalLabelContainer}>
-                        <Typography variant="subheading" className={classes.pedalLabel}>Brake</Typography>
+                        <Typography variant="subheading" className={classes.pedalLabel}>
+                            Brake
+                        </Typography>
                     </Grid>
                     <Grid item xs={8}>
-                        <Brake
-                            value={brake * 100}
-                        />
+                        <Brake value={brake * 100} />
                     </Grid>
                 </Grid>
-                {hasClutch && clutch && (
-                    <Grid item xs={12} className={classes.root}>
-                        <Pedal value={clutch}/>
-                    </Grid>
-                )}
+                {hasClutch &&
+                    clutch && (
+                        <Grid item xs={12} className={classes.root}>
+                            <Pedal value={clutch} />
+                        </Grid>
+                    )}
             </Grid>
         );
     }

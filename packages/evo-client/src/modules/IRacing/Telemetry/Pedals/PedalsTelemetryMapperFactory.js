@@ -6,4 +6,4 @@ import PedalsTelemetryMapper from './PedalsTelemetryMapper';
  */
 const pedalsTelemetryMapper = new PedalsTelemetryMapper();
 
-export {pedalsTelemetryMapper};
+export { pedalsTelemetryMapper };

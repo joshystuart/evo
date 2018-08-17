@@ -1,6 +1,6 @@
 const path = require('path');
 const url = require('url');
-const {app, BrowserWindow} = require('electron');
+const {app, BrowserWindow, shell} = require('electron');
 const {webSocketsServer} = require('@evo/server');
 const {staticWebServerFactory} = require('@evo/static-web-server');
 let mainWindow = null;
@@ -65,4 +65,14 @@ app.on('ready', () => {
             });
         }
     });
+
+    const handleRedirect = (event, url) => {
+        if (url != mainWindow.webContents.getURL()) {
+            event.preventDefault();
+            shell.openExternal(url);
+        }
+    };
+
+    mainWindow.webContents.on('will-navigate', handleRedirect);
+    mainWindow.webContents.on('new-window', handleRedirect);
 });

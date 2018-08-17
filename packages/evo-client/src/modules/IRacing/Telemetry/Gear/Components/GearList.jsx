@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Gear from './Gear';
 
@@ -12,20 +12,20 @@ type Props = {
 
 const styles = (theme) => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
     },
     tabsIndicator: {
-        backgroundColor: theme.palette.secondary.main
+        backgroundColor: theme.palette.secondary.main,
     },
     flexContainer: {
-        justifyContent: 'space-evenly'
-    }
+        justifyContent: 'space-evenly',
+    },
 });
 
 function GearList(props: Props) {
-    const {classes, currentGear, allGears = ['R', 'N', 1, 2, 3, 4, 5, 6, 7]} = props;
+    const { classes, currentGear, allGears = ['R', 'N', 1, 2, 3, 4, 5, 6, 7] } = props;
 
-    const gearList = allGears.map((gear) => <Gear key={gear} gear={gear}/>);
+    const gearList = allGears.map((gear) => <Gear key={gear} gear={gear} />);
 
     if (allGears && allGears.length > 0) {
         const value = allGears.indexOf(currentGear);
@@ -36,7 +36,7 @@ function GearList(props: Props) {
                 indicatorColor="secondary"
                 textColor="secondary"
                 fullWidth
-                classes={{indicator: classes.tabsIndicator, flexContainer: classes.flexContainer}}
+                classes={{ indicator: classes.tabsIndicator, flexContainer: classes.flexContainer }}
             >
                 {gearList}
             </Tabs>

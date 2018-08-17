@@ -6,4 +6,4 @@ import TimeFormatter from './TimeFormatter';
  */
 const timeFormatter = new TimeFormatter();
 
-export {timeFormatter};
+export { timeFormatter };

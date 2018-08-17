@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import Typography from '@material-ui/core/Typography';
 
@@ -18,22 +18,17 @@ const styles = () => ({
         height: '100%',
     },
     bar: {
-        minHeight: 25
+        minHeight: 25,
     },
     barColorPrimary: {},
-    colorPrimary: {}
+    colorPrimary: {},
 });
 
 function Pedal(props: Props) {
-    const {value, color, classes} = props;
+    const { value, color, classes } = props;
 
     return (
-        <LinearProgress
-            classes={{...classes}}
-            color={color}
-            variant="determinate"
-            value={value}
-        >
+        <LinearProgress classes={{ ...classes }} color={color} variant="determinate" value={value}>
             <Typography>Text</Typography>
         </LinearProgress>
     );

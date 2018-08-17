@@ -1,5 +1,5 @@
 // @flow
-import {PedalsDto} from '@evo/common';
+import { PedalsDto } from '@evo/common';
 
 export type PedalData = {
     throttle: string,

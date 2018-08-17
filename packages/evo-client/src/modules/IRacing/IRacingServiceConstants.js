@@ -2,14 +2,14 @@ const EVENTS = {
     MESSAGE: 'message',
     OPEN: 'open',
     ERROR: 'error',
-    CLOSED: 'closed'
+    CLOSED: 'closed',
 };
 
 // TODO move to camera service
 const COMMANDS = {
     CHANGE_CAMERA_POSITION: 'cam_switch_pos',
     CHANGE_CAMERA_DRIVER: 'cam_switch_num',
-    CAMERA_SET_STATE: 'cam_set_state'
+    CAMERA_SET_STATE: 'cam_set_state',
 };
 
 const CAMERAS = {
@@ -32,7 +32,7 @@ const CAMERAS = {
     SCENIC: 17,
     TV_1: 18,
     TV_2: 19,
-    TV_3: 20
+    TV_3: 20,
 };
 
-export {EVENTS, COMMANDS, CAMERAS};
+export { EVENTS, COMMANDS, CAMERAS };

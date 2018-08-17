@@ -1,4 +1,3 @@
 // @flow
 // TODO
-export default class SessionDao {
-}
+export default class SessionDao {}

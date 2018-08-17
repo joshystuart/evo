@@ -1,5 +1,5 @@
 // @flow
-import {TimeDto} from '@evo/common';
+import { TimeDto } from '@evo/common';
 
 export default class TimeFormatter {
     format(time: number): TimeDto {

@@ -1,7 +1,7 @@
 // @flow
-import {IRacingConstants} from '@evo/common';
-import {ACTIONS} from '../Utils/webSocketMiddleware';
-import {telemetryMapper} from './Telemetry/Dao/TelemetryMapperFactory';
+import { IRacingConstants } from '@evo/common';
+import { ACTIONS } from '../Utils/webSocketMiddleware';
+import { telemetryMapper } from './Telemetry/Dao/TelemetryMapperFactory';
 
 export const TYPES = {
     ERROR: 'error',
@@ -12,30 +12,30 @@ export const TYPES = {
     CURRENT_DRIVER: 'currentDriver',
     SESSION: 'session',
     QUALIFYING: 'qualifying',
-    WEEKEND: 'weekend'
+    WEEKEND: 'weekend',
 };
 
 export type Action = {
     type: string,
     payload: {
-        data: SessionInfoData | DriverInfoData | any
-    }
-}
+        data: SessionInfoData | DriverInfoData | any,
+    },
+};
 
 export const NAMESPACE = 'iracing';
 
 export const iRacingReducers = (state = {}, action) => {
-    const {payload} = action;
+    const { payload } = action;
 
     // look at the data and try to figure out what it is.
     if (action.type === ACTIONS.MESSAGE) {
-        const {data, type} = payload;
-        let newState = {...state};
+        const { data, type } = payload;
+        let newState = { ...state };
 
         if (type === IRacingConstants.TELEMETRY) {
             newState = {
                 ...newState,
-                [TYPES.TELEMETRY]: telemetryMapper.convert(data)
+                [TYPES.TELEMETRY]: telemetryMapper.convert(data),
             };
         }
 
@@ -77,7 +77,7 @@ export const iRacingReducers = (state = {}, action) => {
         return newState;
     } else if (action.type === ACTIONS.ERROR) {
         // TODO make the error contextual
-        const newState = {...state};
+        const newState = { ...state };
         newState[TYPES.ERROR] = payload;
         return newState;
     }

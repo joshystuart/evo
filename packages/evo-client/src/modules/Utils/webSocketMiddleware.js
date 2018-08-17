@@ -1,6 +1,6 @@
 // @flow
-import {webSocketDao} from './WebSocketDaoFactory';
-import {EVENTS as WEBSOCKET_EVENTS} from './WebSocketDao';
+import { webSocketDao } from './WebSocketDaoFactory';
+import { EVENTS as WEBSOCKET_EVENTS } from './WebSocketDao';
 
 const NAMESPACE = 'WEBSOCKET';
 
@@ -11,18 +11,18 @@ export const ACTIONS = {
     CLOSED: `${NAMESPACE}:CLOSED`,
     MESSAGE: `${NAMESPACE}:MESSAGE`,
     ERROR: `${NAMESPACE}:ERROR`,
-    DISCONNECT: `${NAMESPACE}:DISCONNECT`
+    DISCONNECT: `${NAMESPACE}:DISCONNECT`,
 };
 
-export const webSocketMiddleware = ({dispatch}) => next => action => {
+export const webSocketMiddleware = ({ dispatch }) => (next) => (action) => {
     switch (action.type) {
         // User request to connect
         case ACTIONS.CONNECT:
             // Attach the callbacks
-            webSocketDao.on(WEBSOCKET_EVENTS.CONNECTED, () => dispatch({type: ACTIONS.CONNECTED}));
-            webSocketDao.on(WEBSOCKET_EVENTS.CLOSED, (event) => dispatch({type: ACTIONS.CLOSED, payload: event}));
-            webSocketDao.on(WEBSOCKET_EVENTS.MESSAGE, (event) => dispatch({type: ACTIONS.MESSAGE, payload: event}));
-            webSocketDao.on(WEBSOCKET_EVENTS.ERROR, (event) => dispatch({type: ACTIONS.ERROR, payload: event}));
+            webSocketDao.on(WEBSOCKET_EVENTS.CONNECTED, () => dispatch({ type: ACTIONS.CONNECTED }));
+            webSocketDao.on(WEBSOCKET_EVENTS.CLOSED, (event) => dispatch({ type: ACTIONS.CLOSED, payload: event }));
+            webSocketDao.on(WEBSOCKET_EVENTS.MESSAGE, (event) => dispatch({ type: ACTIONS.MESSAGE, payload: event }));
+            webSocketDao.on(WEBSOCKET_EVENTS.ERROR, (event) => dispatch({ type: ACTIONS.ERROR, payload: event }));
             webSocketDao.connect();
 
             break;

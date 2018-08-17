@@ -1,5 +1,5 @@
 // @flow
-import {ComponentType} from 'react';
+import { ComponentType } from 'react';
 import HomeScene from '../Scenes/Home/HomeScene';
 import BasicTelemetryOverlayScene from '../Scenes/Overlays/Telemetry/BasicTelemetryOverlayScene';
 
@@ -10,14 +10,14 @@ export type RouteConfig = {
     exact: boolean,
     component: ComponentType<any>,
     props?: {},
-    routes?: RouteConfig[]
+    routes?: RouteConfig[],
 };
 
 export const routes = {
     home: '/',
     overlays: '/overlays',
     savedOverlays: '/overlays/saved',
-    basicTelemetryOverlay: '/overlays/telemetry/basic'
+    basicTelemetryOverlay: '/overlays/telemetry/basic',
 };
 
 export const routeConfig: RouteConfig[] = [
@@ -25,24 +25,24 @@ export const routeConfig: RouteConfig[] = [
         name: 'home',
         path: routes.home,
         exact: true,
-        component: HomeScene
+        component: HomeScene,
     },
     {
         name: 'my saved overlays',
         path: routes.savedOverlays,
         exact: true,
-        component: BasicTelemetryOverlayScene
+        component: BasicTelemetryOverlayScene,
     },
     {
         name: 'overlays',
         path: routes.overlays,
         exact: true,
-        component: BasicTelemetryOverlayScene
+        component: BasicTelemetryOverlayScene,
     },
     {
         name: 'telemetry',
         path: routes.basicTelemetryOverlay,
         exact: true,
-        component: BasicTelemetryOverlayScene
-    }
+        component: BasicTelemetryOverlayScene,
+    },
 ];

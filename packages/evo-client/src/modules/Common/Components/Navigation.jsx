@@ -1,6 +1,6 @@
 // @flow
-import React, {Component} from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -17,46 +17,42 @@ type Props = {
 
 const styles = {
     root: {
-        flexGrow: 1
-    }
+        flexGrow: 1,
+    },
 };
 
-class Navigation extends Component <Props> {
+class Navigation extends Component<Props> {
     navigate = (url) => {
-        const {history} = this.props;
+        const { history } = this.props;
         history.push(url);
     };
 
     render() {
-        const {classes} = this.props;
+        const { classes } = this.props;
 
         return (
             <div className={classes.root}>
                 <List>
-                    <ListItem
-                        button
-                    >
+                    <ListItem button>
                         <ListItemIcon>
-                            <PictureInPicture/>
+                            <PictureInPicture />
                         </ListItemIcon>
-                        <ListItemText primary="All overlays"/>
+                        <ListItemText primary="All overlays" />
                     </ListItem>
                     <ListItem button>
                         <ListItemIcon>
-                            <FormatListNumbered/>
+                            <FormatListNumbered />
                         </ListItemIcon>
-                        <ListItemText primary="Telemetry"/>
+                        <ListItemText primary="Telemetry" />
                     </ListItem>
                 </List>
-                <Divider/>
+                <Divider />
                 <List>
-                    <ListItem
-                        button
-                    >
+                    <ListItem button>
                         <ListItemIcon>
-                            <FeaturedVideo/>
+                            <FeaturedVideo />
                         </ListItemIcon>
-                        <ListItemText primary="My overlays"/>
+                        <ListItemText primary="My overlays" />
                     </ListItem>
                 </List>
             </div>

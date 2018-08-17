@@ -1,8 +1,8 @@
 // @flow
 import React from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import {UOM} from '@evo/common';
+import { UOM } from '@evo/common';
 
 type Props = {
     classes: any,
@@ -13,22 +13,22 @@ type Props = {
 const styles = () => ({
     card: {
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     details: {
         display: 'flex',
         flexDirection: 'column',
         position: 'relative',
-        right: '-4%'
+        right: '-4%',
     },
     content: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     speed: {
         color: '#fff',
         fontWeight: 700,
-        fontSize: '9vw'
+        fontSize: '9vw',
     },
     uom: {
         color: '#fff',
@@ -38,12 +38,12 @@ const styles = () => ({
         textTransform: 'uppercase',
         position: 'relative',
         left: 10,
-        fontSize: '4vw'
-    }
+        fontSize: '4vw',
+    },
 });
 
 function Speed(props: Props) {
-    const {speed = 0, uom = UOM.KMH, classes} = props;
+    const { speed = 0, uom = UOM.KMH, classes } = props;
 
     const formattedSpeed = parseInt(speed, 10);
 
@@ -51,8 +51,12 @@ function Speed(props: Props) {
         <div className={classes.card}>
             <div className={classes.details}>
                 <div className={classes.content}>
-                    <Typography variant="display1" className={classes.speed}>{formattedSpeed}</Typography>
-                    <Typography variant="subheading" className={classes.uom}>{uom}</Typography>
+                    <Typography variant="display1" className={classes.speed}>
+                        {formattedSpeed}
+                    </Typography>
+                    <Typography variant="subheading" className={classes.uom}>
+                        {uom}
+                    </Typography>
                 </div>
             </div>
         </div>

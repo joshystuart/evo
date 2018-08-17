@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import Tab from '@material-ui/core/Tab';
-import {withStyles} from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 
 type Props = {
     classes: any,
@@ -10,23 +10,17 @@ type Props = {
 
 const styles = () => ({
     tabRoot: {
-        minWidth: 40
+        minWidth: 40,
     },
     label: {
-        fontSize: '6vw'
-    }
+        fontSize: '6vw',
+    },
 });
 
 function Gears(props: Props) {
-    const {gear, classes} = props;
+    const { gear, classes } = props;
 
-    return (
-        <Tab
-            label={gear}
-            value={gear}
-            classes={{root: classes.tabRoot, label: classes.label}}
-        />
-    );
+    return <Tab label={gear} value={gear} classes={{ root: classes.tabRoot, label: classes.label }} />;
 }
 
 export default withStyles(styles)(Gears);

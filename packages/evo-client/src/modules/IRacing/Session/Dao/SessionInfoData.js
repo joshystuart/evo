@@ -15,14 +15,14 @@ export type DriverSessionResultsData = {
     LastTime: number,
     Position: number,
     ClassPosition: number,
-    FastestLap: number
-}
+    FastestLap: number,
+};
 
 export type FastedLapData = {
     CarIdx: number,
     FastestLap: number,
-    FastestTime: number
-}
+    FastestTime: number,
+};
 
 export type SessionData = {
     ResultsNumLeadChanges: number,
@@ -42,9 +42,9 @@ export type SessionData = {
     ResultsAverageLapTime: number,
     SessionRunGroupsUsed: number,
     SessionTrackRubberState: string,
-    ResultsLapsComplete: number
-}
+    ResultsLapsComplete: number,
+};
 
 export type SessionInfoData = {
-    Sessions: SessionData[]
+    Sessions: SessionData[],
 };

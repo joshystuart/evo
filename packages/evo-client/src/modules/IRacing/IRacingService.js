@@ -1,8 +1,8 @@
 // @flow
 import EventEmitter from 'events';
 import type WebSocketDao from 'src/modules/Utils/WebSocketDao';
-import {EVENTS as WS_EVENTS} from 'src/modules/Utils/WebSocketDao';
-import {EVENTS} from 'src/modules/IRacing/IRacingServiceConstants';
+import { EVENTS as WS_EVENTS } from 'src/modules/Utils/WebSocketDao';
+import { EVENTS } from 'src/modules/IRacing/IRacingServiceConstants';
 
 export default class IRacingService extends EventEmitter {
     _isConnected = false;
@@ -26,7 +26,7 @@ export default class IRacingService extends EventEmitter {
     sendCommand(command: string, ...args: Array<any>): void {
         const request = {
             command,
-            args
+            args,
         };
 
         this._webSocketDao.send(JSON.stringify(request));

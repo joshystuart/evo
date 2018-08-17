@@ -1,6 +1,6 @@
 // @flow
-import React, {Component} from 'react';
-import {withStyles} from '@material-ui/core/styles';
+import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
@@ -18,31 +18,25 @@ type State = {
 };
 
 const styles = {
-    root: {}
+    root: {},
 };
 
 class ErrorDialog extends Component<Props, State> {
     state = {
-        open: true
+        open: true,
     };
 
     handleClose = () => {
-        this.setState({open: false});
+        this.setState({ open: false });
     };
 
     render() {
-        const {classes, message} = this.props;
+        const { classes, message } = this.props;
         return (
-            <Dialog
-                open={this.state.open}
-                onClose={this.handleClose}
-                className={classes.root}
-            >
+            <Dialog open={this.state.open} onClose={this.handleClose} className={classes.root}>
                 <DialogTitle>Error</DialogTitle>
                 <DialogContent>
-                    <DialogContentText>
-                        {message}
-                    </DialogContentText>
+                    <DialogContentText>{message}</DialogContentText>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.handleClose} color="secondary" autoFocus>

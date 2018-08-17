@@ -1,10 +1,8 @@
 // @flow
-import {iRacingService} from 'src/modules/IRacing/IRacingServiceFactory';
+import { iRacingService } from 'src/modules/IRacing/IRacingServiceFactory';
 
 describe('IRacingService', () => {
-    beforeEach(() => {
-
-    });
+    beforeEach(() => {});
 
     it('should successfully connect to the iRacing server', async () => {
         console.info('----');

@@ -1,5 +1,5 @@
 // @flow
-import {SpeedDto} from '@evo/common';
+import { SpeedDto } from '@evo/common';
 
 export type SpeedData = {
     speed: string,

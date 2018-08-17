@@ -1,8 +1,8 @@
 // @flow
-import {TelemetryDto} from '@evo/common';
-import type PedalsTelemetryMapper, {PedalData} from '../Pedals/PedalsTelemetryMapper';
-import type GearsTelemetryMapper, {GearsData} from '../Gear/GearsTelemetryMapper';
-import type SpeedTelemetryMapper, {SpeedData} from '../Speed/SpeedTelemetryMapper';
+import { TelemetryDto } from '@evo/common';
+import type PedalsTelemetryMapper, { PedalData } from '../Pedals/PedalsTelemetryMapper';
+import type GearsTelemetryMapper, { GearsData } from '../Gear/GearsTelemetryMapper';
+import type SpeedTelemetryMapper, { SpeedData } from '../Speed/SpeedTelemetryMapper';
 
 type TelemetryData = {
     pedals: PedalData,
@@ -15,11 +15,7 @@ export default class TelemetryMapper {
     _gearsTelemetryMapper: GearsTelemetryMapper;
     _speedTelemetryMapper: SpeedTelemetryMapper;
 
-    constructor(
-        pedalsTelemetryMapper: PedalsTelemetryMapper,
-        gearsTelemetryMapper: GearsTelemetryMapper,
-        speedTelemetryMapper: SpeedTelemetryMapper
-    ) {
+    constructor(pedalsTelemetryMapper: PedalsTelemetryMapper, gearsTelemetryMapper: GearsTelemetryMapper, speedTelemetryMapper: SpeedTelemetryMapper) {
         this._pedalsTelemetryMapper = pedalsTelemetryMapper;
         this._gearsTelemetryMapper = gearsTelemetryMapper;
         this._speedTelemetryMapper = speedTelemetryMapper;

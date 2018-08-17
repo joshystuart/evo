@@ -6,4 +6,4 @@ import GearsTelemetryMapper from './GearsTelemetryMapper';
  */
 const gearsTelemetryMapper = new GearsTelemetryMapper();
 
-export {gearsTelemetryMapper};
+export { gearsTelemetryMapper };

@@ -7,4 +7,4 @@ import config from '../../../config/config';
  */
 const webSocketDao = new WebSocketDao(config.api.endpoint);
 
-export {webSocketDao};
+export { webSocketDao };

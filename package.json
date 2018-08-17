@@ -14,7 +14,8 @@
     "static-web-server:build": "cd ./packages/evo-static-web-server && yarn build",
     "electron:start": "cd ./packages/evo-electron && yarn start",
     "electron:build": "cd ./packages/evo-electron && yarn build",
-    "electron:package": "cd ./packages/evo-electron && yarn package"
+    "electron:package": "cd ./packages/evo-electron && yarn package",
+    "format": "./node_modules/.bin/prettier --write \"packages/evo-client/**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
     "express": "4.16.3"
@@ -65,5 +66,11 @@
     "rimraf": "2.6.2",
     "webpack": "4.16.5",
     "webpack-cli": "3.1.0"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

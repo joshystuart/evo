@@ -1,6 +1,6 @@
 // @flow
-import {SessionDto} from '@evo/common';
-import type {SessionData} from './SessionInfoData';
+import { SessionDto } from '@evo/common';
+import type { SessionData } from './SessionInfoData';
 import type LapMapper from '../Laps/LapMapper';
 
 export default class SessionMapper {

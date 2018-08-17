@@ -1,6 +1,6 @@
 // @flow
-import {LapDto} from '@evo/common';
-import type {FastedLapData} from '../Dao/SessionInfoData';
+import { LapDto } from '@evo/common';
+import type { FastedLapData } from '../Dao/SessionInfoData';
 import type TimeFormatter from '../../Timing/TimeFormatter';
 
 export default class LapMapper {
