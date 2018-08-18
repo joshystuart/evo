@@ -14,16 +14,16 @@ Heads up displays and overlays for iRacing
 
 ### Dev stuff
 
+*   Add dev mode with hot reloading etc
 *   Clean up the babel configs
 *   Enable eslint
 *   Enable flow
-*   Setup prettier
+*   ~~Setup prettier~~
 *   Link configs to all modules ie. so we can share port numbers etc
 *   Setup Jest
 *   Write some tests
 *   Ensure dependencies up set up on the packages correctly
 *   Rewrite electron main.js to be ES6/7 and transpile
-*   Add dev mode with hot reloading etc
 *   Modularise all of the components
 
 ### Features

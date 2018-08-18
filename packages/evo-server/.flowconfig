@@ -1,9 +1,0 @@
-[ignore]
-.*/dist/.*
-
-[libs]
-./src
-flow-typed
-
-[options]
-munge_underscores=true
