@@ -61,17 +61,6 @@ function HomeScene(props: Props) {
                     <Typography variant="headline" component="h2" color="inherit" gutterBottom className={classes.headline}>
                         Enhanced vision overlays for iRacing
                     </Typography>
-                    <Typography variant="title" component="h3" color="inherit" gutterBottom className={classes.headline}>
-                        Getting started
-                    </Typography>
-
-                    <Typography variant="body2" color="inherit" gutterBottom className={classes.body}>
-                        Add{' '}
-                        <a href="http://localhost:3000/overlays/saved" className={classes.link} target="_blank">
-                            http://localhost:3000/overlays/saved
-                        </a>{' '}
-                        to show the overlay inside OBS
-                    </Typography>
                 </Grid>
             </Grid>
         </div>

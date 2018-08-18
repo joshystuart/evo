@@ -16,7 +16,7 @@ Heads up displays and overlays for iRacing
 
 *   Add dev mode with hot reloading etc
 *   Clean up the babel configs
-*   Enable eslint
+*   ~~Enable eslint~~
 *   Enable flow
 *   ~~Setup prettier~~
 *   Link configs to all modules ie. so we can share port numbers etc

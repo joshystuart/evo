@@ -1,8 +1,7 @@
-const path = require('path');
-const url = require('url');
 const { app, BrowserWindow, shell } = require('electron');
-const { webSocketsServer } = require('@evo/server');
+const { irServerFactory } = require('@evo/server');
 const { staticWebServerFactory } = require('@evo/static-web-server');
+
 let mainWindow = null;
 let forceQuit = false;
 
@@ -20,6 +19,7 @@ app.on('ready', () => {
     server.connect();
 
     // start the data server
+    const webSocketsServer = irServerFactory.createInstance();
     webSocketsServer.connect();
 
     mainWindow = new BrowserWindow({
@@ -28,9 +28,6 @@ app.on('ready', () => {
         webPreferences: {
             webSecurity: false,
         },
-        // show: false,
-        // transparent: true,
-        // frame: false
     });
 
     mainWindow.loadURL('http://localhost:3000');

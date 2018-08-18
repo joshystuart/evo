@@ -1,11 +1,12 @@
 // @flow
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import React, {Component} from 'react';
+import {withStyles} from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
+import Home from '@material-ui/icons/Home';
 import PictureInPicture from '@material-ui/icons/PictureInPicture';
 import FeaturedVideo from '@material-ui/icons/FeaturedVideo';
 import FormatListNumbered from '@material-ui/icons/FormatListNumbered';
@@ -23,38 +24,42 @@ const styles = {
 
 class Navigation extends Component<Props> {
     navigate = (url) => {
-        const { history } = this.props;
+        const {history} = this.props;
         history.push(url);
     };
 
     render() {
-        const { classes } = this.props;
+        const {classes} = this.props;
 
         return (
             <div className={classes.root}>
                 <List>
-                    <ListItem button>
+                    <ListItem
+                        button
+                        onClick={() => {
+                            this.navigate('/');
+                        }}
+                    >
                         <ListItemIcon>
-                            <PictureInPicture />
+                            <Home/>
                         </ListItemIcon>
-                        <ListItemText primary="All overlays" />
-                    </ListItem>
-                    <ListItem button>
-                        <ListItemIcon>
-                            <FormatListNumbered />
-                        </ListItemIcon>
-                        <ListItemText primary="Telemetry" />
+                        <ListItemText primary="Home"/>
                     </ListItem>
                 </List>
-                <Divider />
                 <List>
-                    <ListItem button>
+                    <ListItem
+                        button
+                        onClick={() => {
+                            this.navigate('/overlays');
+                        }}
+                    >
                         <ListItemIcon>
-                            <FeaturedVideo />
+                            <PictureInPicture/>
                         </ListItemIcon>
-                        <ListItemText primary="My overlays" />
+                        <ListItemText primary="Overlays"/>
                     </ListItem>
                 </List>
+                <Divider/>
             </div>
         );
     }

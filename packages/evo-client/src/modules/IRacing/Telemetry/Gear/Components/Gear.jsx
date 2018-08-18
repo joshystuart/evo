@@ -13,7 +13,7 @@ const styles = () => ({
         minWidth: 40,
     },
     label: {
-        fontSize: '6vw',
+        fontSize: '6vmax',
     },
 });
 

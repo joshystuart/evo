@@ -3,6 +3,8 @@ const PACKAGES = {
     APP: fs.realpathSync('src'),
     EVO_COMMON: fs.realpathSync('../evo-common'),
     EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
+    TEMP1: fs.realpathSync('../evo-irsdk/node_modules'),
+    TEMP2: fs.realpathSync('../evo-irsdk/build'),
 };
 
 const nodeModules = {};
@@ -17,11 +19,12 @@ fs
 
 module.exports = {
     target: 'node',
-    entry: `${PACKAGES.APP}/index.js`,
+    // entry: `${PACKAGES.APP}/index.js`,
+    entry: `${__dirname}/start.js`,
     output: {
         path: `${__dirname}/build`,
         publicPath: '/',
-        filename: 'index.js',
+        filename: 'start.js',
     },
     resolve: {
         extensions: ['.js', '.jsx', '.node'],

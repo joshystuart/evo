@@ -23,7 +23,7 @@ module.exports = {
         quotes: ['error', 'single', { allowTemplateLiterals: true }],
         indent: ['error', 4, { SwitchCase: 1 }],
         'max-len': ['error', 180],
-        // 'no-underscore-dangle': ['off'],
+        'no-underscore-dangle': ['off'],
         'class-method-use-this': ['off'],
         'class-methods-use-this': ['off'],
         'react/jsx-boolean-value': ['off'],

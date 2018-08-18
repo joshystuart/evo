@@ -13,7 +13,7 @@
     "homepage": "./",
     "main": "index.js",
     "scripts": {
-        "build:dev": "cross-env NODE_ENV=development webpack --mode production --config webpack.config.js"
+        "start:dev": "node ./bin/start"
     },
     "dependencies": {
         "@evo/common": "0.0.1"

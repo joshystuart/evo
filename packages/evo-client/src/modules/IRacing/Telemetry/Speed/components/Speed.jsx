@@ -28,7 +28,7 @@ const styles = () => ({
     speed: {
         color: '#fff',
         fontWeight: 700,
-        fontSize: '9vw',
+        fontSize: '9vmax',
     },
     uom: {
         color: '#fff',
@@ -38,7 +38,7 @@ const styles = () => ({
         textTransform: 'uppercase',
         position: 'relative',
         left: 10,
-        fontSize: '4vw',
+        fontSize: '4vmax',
     },
 });
 

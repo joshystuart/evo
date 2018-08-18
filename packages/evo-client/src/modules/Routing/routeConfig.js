@@ -2,6 +2,8 @@
 import { ComponentType } from 'react';
 import HomeScene from '../Scenes/Home/HomeScene';
 import BasicTelemetryOverlayScene from '../Scenes/Overlays/Telemetry/BasicTelemetryOverlayScene';
+import OverlaysScene from '../Scenes/Overlays/OverlaysScene';
+import BasicTelemetryOverlayDemoScene from '../Scenes/Overlays/Telemetry/BasicTelemetryOverlayDemoScene';
 
 export type RouteConfig = {
     name: string,
@@ -18,6 +20,7 @@ export const routes = {
     overlays: '/overlays',
     savedOverlays: '/overlays/saved',
     basicTelemetryOverlay: '/overlays/telemetry/basic',
+    basicTelemetryOverlayDemo: '/overlays/telemetry/basic-demo',
 };
 
 export const routeConfig: RouteConfig[] = [
@@ -28,21 +31,27 @@ export const routeConfig: RouteConfig[] = [
         component: HomeScene,
     },
     {
+        name: 'overlays',
+        path: routes.overlays,
+        exact: true,
+        component: OverlaysScene,
+    },
+    {
         name: 'my saved overlays',
         path: routes.savedOverlays,
         exact: true,
         component: BasicTelemetryOverlayScene,
     },
     {
-        name: 'overlays',
-        path: routes.overlays,
+        name: 'basic telemetry overlay',
+        path: routes.basicTelemetryOverlay,
         exact: true,
         component: BasicTelemetryOverlayScene,
     },
     {
-        name: 'telemetry',
-        path: routes.basicTelemetryOverlay,
+        name: 'basic telemetry overlay demo',
+        path: routes.basicTelemetryOverlayDemo,
         exact: true,
-        component: BasicTelemetryOverlayScene,
+        component: BasicTelemetryOverlayDemoScene,
     },
 ];

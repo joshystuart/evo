@@ -18,6 +18,9 @@
         "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src",
         "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js"
     },
+    "dependencies": {
+        "express": "4.16.3"
+    },
     "engines": {
         "node": ">=10"
     }

@@ -46,11 +46,11 @@ const styles = (theme) => ({
         textTransform: 'uppercase',
         textAlign: 'left',
         position: 'relative',
-        fontSize: '4vw',
-        lineHeight: '4vw',
+        fontSize: '4vmax',
+        lineHeight: '4vmax',
         [theme.breakpoints.down('md')]: {
-            fontSize: '3.3vw',
-            lineHeight: '3.3vw',
+            fontSize: '3.3vmax',
+            lineHeight: '3.3vmax',
         },
     },
 });

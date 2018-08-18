@@ -40,6 +40,7 @@ class Header extends Component<Props, State> {
     state = {
         isOpen: false,
     };
+
     toggleDrawer = (isOpen) => () => {
         this.setState({
             isOpen,
@@ -60,7 +61,7 @@ class Header extends Component<Props, State> {
                         <Typography variant="title" color="inherit" className={classes.title}>
                             EVO: Enhanced Vision Overlays
                         </Typography>
-                        <Button color="inherit">Settings</Button>
+                        {/*<Button color="inherit">Settings</Button>*/}
                     </Toolbar>
                 </AppBar>
                 <Drawer open={isOpen} onClose={this.toggleDrawer(false)}>
