@@ -1,0 +1,14 @@
+# except
+lerna.json
+yarn.lock
+package.json
+package-lock.json
+
+node_modules
+/packages/evo-client/build
+/packages/evo-common/build
+/packages/evo-electron/build
+/packages/evo-electron/dist
+/packages/evo-irsdk/build
+/packages/evo-server/build
+/packages/evo-static-web-server/build

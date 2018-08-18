@@ -1,0 +1,39 @@
+{
+  "name": "@evo/electron",
+  "productName": "EVO: Electron App",
+  "description": "Enhanced Vision Overlays and heads up displays for iRacing Apps",
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Josh Stuart",
+      "email": "joshstuartx@gmail.com"
+    }
+  ],
+  "private": true,
+  "main": "init.js",
+  "scripts": {
+    "clean:build": "rimraf ./build",
+    "clean:dist": "rimraf ./dist",
+    "build": "yarn clean:build && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
+    "start": "electron ./build/main",
+    "pack": "electron-builder --dir --config ./electron-builder.yml",
+    "package": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml",
+    "package:win": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml"
+  },
+  "dependencies": {
+    "@evo/common": "0.0.1",
+    "@evo/server": "0.0.1",
+    "@evo/static-web-server": "0.0.1",
+    "@evo/client": "0.0.1",
+    "electron-config": "1.0.0",
+    "@babel/runtime": "7.0.0-beta.55"
+  },
+  "devDependencies": {
+    "electron": "2.0.7",
+    "electron-builder": "20.27.1",
+    "electron-devtools-installer": "2.2.4"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}

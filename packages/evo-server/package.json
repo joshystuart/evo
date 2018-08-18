@@ -1,0 +1,33 @@
+{
+    "name": "@evo/server",
+    "productName": "EVO: Server",
+    "description": "A server which grabs data from iRacing",
+    "version": "0.0.1",
+    "contributors": [
+        {
+            "name": "Josh Stuart",
+            "email": "josh.stuart@horizonstate.com"
+        }
+    ],
+    "private": true,
+    "main": "build/index.js",
+    "scripts": {
+        "build": "yarn clean:build && yarn build:src && yarn build:config && yarn build:index",
+        "clean:build": "rimraf ./build",
+        "build:config": "cross-env NODE_ENV=production BABEL_ENV=production babel config --out-dir ./build/config",
+        "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src",
+        "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js"
+    },
+    "dependencies": {
+        "@evo/common": "0.0.1",
+        "@evo/irsdk": "0.0.1",
+        "express": "4.16.3",
+        "ws": "6.0.0"
+    },
+    "devDependencies": {
+        "pm2": "3.0.3"
+    },
+    "engines": {
+        "node": ">=10"
+    }
+}

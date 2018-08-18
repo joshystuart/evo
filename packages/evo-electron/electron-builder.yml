@@ -1,0 +1,19 @@
+appId: crimsonronin.evo
+copyright: evo.io
+productName: EVO
+
+asar: true
+
+directories:
+  buildResources: dist-build/
+  output: dist/
+
+files:
+  - package.json
+  - init.js
+  - build/
+  - node_modules/
+  - ../../node_modules/
+
+win:
+  target: nsis

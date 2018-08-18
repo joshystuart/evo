@@ -1,0 +1,24 @@
+{
+    "name": "@evo/client",
+    "productName": "EVO: Client",
+    "description": "Enhanced Vision Overlays and heads up displays for iRacing Apps",
+    "version": "0.0.1",
+    "contributors": [
+        {
+            "name": "Josh Stuart",
+            "email": "joshstuartx@gmail.com"
+        }
+    ],
+    "private": true,
+    "homepage": "./",
+    "main": "index.js",
+    "scripts": {
+        "start:dev": "node ./bin/start"
+    },
+    "dependencies": {
+        "@evo/common": "0.0.1"
+    },
+    "engines": {
+        "node": ">=10"
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "@evo/common",
+  "productName": "EVO: Common",
+  "description": "Enhanced Vision Overlays and heads up displays for iRacing Apps",
+  "version": "0.0.1",
+  "contributors": [
+    {
+      "name": "Josh Stuart",
+      "email": "joshstuartx@gmail.com"
+    }
+  ],
+  "private": true,
+  "homepage": "./",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "yarn build:clean && yarn build:src && yarn build:index",
+    "build:clean": "rimraf ./build",
+    "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js",
+    "build:src": "cross-env NODE_ENV=production BABEL_ENV=production babel src --out-dir ./build/src"
+  },
+  "engines": {
+    "node": ">=10"
+  }
+}
