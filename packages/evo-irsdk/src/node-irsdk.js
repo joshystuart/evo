@@ -1,3 +1,4 @@
+console.log('============', require.resolve('../build/Release/IrSdkNodeBindings'));
 var IrSdkNodeWrapper = require('../build/Release/IrSdkNodeBindings');
 var JsIrSdk = require('./JsIrSdk');
 

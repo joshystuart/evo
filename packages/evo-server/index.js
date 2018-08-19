@@ -1,1 +1,1 @@
-export {irServerFactory} from './src/WebSocketsServerFactory';
+export {irServerFactory} from './src/WebSocketServerFactory';

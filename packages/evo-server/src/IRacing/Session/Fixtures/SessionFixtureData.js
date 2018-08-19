@@ -81,7 +81,25 @@ const test = {
                 SessionNumLapsToAvg: 0,
                 SessionType: 'Offline Testing',
                 SessionTrackRubberState: 'moderate usage',
-                ResultsPositions: null,
+                ResultsPositions: [
+                    {
+                        Position: 1,
+                        ClassPosition: 0,
+                        CarIdx: 2,
+                        Lap: 11,
+                        Time: 77.996,
+                        FastestLap: 11,
+                        FastestTime: 77.996,
+                        LastTime: 78.5109,
+                        LapsLed: 0,
+                        LapsComplete: 12,
+                        JokerLapsComplete: 0,
+                        LapsDriven: 0,
+                        Incidents: 0,
+                        ReasonOutId: 0,
+                        ReasonOutStr: 'Running',
+                    },
+                ],
                 ResultsFastestLap: [
                     {
                         CarIdx: 255,

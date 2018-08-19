@@ -1,10 +1,11 @@
 // @flow
-import SessionMapper from 'src/modules/IRacing/Session/Dao/SessionMapper';
-import { lapMapper } from 'src/modules/IRacing/Session/Laps/LapMapperFactory';
+import SessionMapper from './SessionMapper';
+import {driverMapper} from '../../Drivers/Dao/DriverMapperFactory';
+import {driverPositionsMapper} from './DriverPositionsMapperFactory';
 
 /**
  * @type {SessionMapper} sessionMapper
  */
-const sessionMapper = new SessionMapper(lapMapper);
+const sessionMapper = new SessionMapper(driverMapper, driverPositionsMapper);
 
-export { sessionMapper };
+export {sessionMapper};

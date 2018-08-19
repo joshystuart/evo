@@ -12,6 +12,8 @@
     "private": true,
     "main": "build/index.js",
     "scripts": {
+        "start:dev": "pm2 start ./scripts/start.js --watch",
+        "stop:dev": "pm2 stop ./scripts/start.js --watch",
         "build": "yarn clean:build && yarn build:src && yarn build:config && yarn build:index",
         "clean:build": "rimraf ./build",
         "build:config": "cross-env NODE_ENV=production BABEL_ENV=production babel config --out-dir ./build/config",

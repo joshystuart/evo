@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const APP_DIR = fs.realpathSync('src');
 const EVO_COMMON_DIR = fs.realpathSync('node_modules/@evo/common');
 

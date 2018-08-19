@@ -2,18 +2,18 @@
 import { DriverDto } from '@evo/common';
 import type { DriverData } from './DriverInfoData';
 
-export default class DiverMapper {
-    _convertMultiple = (messages: DriverData[]): DriverDto[] => {
+export default class DriverMapper {
+    convertMultiple = (messages: DriverData[]): DriverDto[] => {
         const drivers = [];
 
         messages.forEach((message) => {
-            drivers.push(this._convertSingle(message));
+            drivers.push(this.convertSingle(message));
         });
 
         return drivers;
     };
 
-    _convertSingle = (message: DriverData): DriverDto => {
+    convertSingle = (message: DriverData): DriverDto => {
         const driver = new DriverDto();
         driver.id = message.UserID;
         driver.sessionId = message.CarIdx;
@@ -29,8 +29,8 @@ export default class DiverMapper {
 
     convert(message: DriverData | DriverData[]): DriverDto | DriverDto[] {
         if (message instanceof Array) {
-            return this._convertMultiple(message);
+            return this.convertMultiple(message);
         }
-        return this._convertSingle(message);
+        return this.convertSingle(message);
     }
 }

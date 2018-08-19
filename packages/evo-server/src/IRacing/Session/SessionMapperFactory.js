@@ -1,10 +1,16 @@
 // @flow
 import SessionMapper from './SessionMapper';
-import { lapMapper } from './Laps/LapMapperFactory';
+import {driverPositionsMapper} from './DriverPositionsMapperFactory';
+import {driverHelper} from '../Drivers/DriverHelperFactory';
+import {driverMapper} from '../Drivers/DriverMapperFactory';
 
 /**
  * @type {SessionMapper} sessionMapper
  */
-const sessionMapper = new SessionMapper(lapMapper);
+const sessionMapper = new SessionMapper(
+    driverPositionsMapper,
+    driverMapper,
+    driverHelper,
+);
 
-export { sessionMapper };
+export {sessionMapper};

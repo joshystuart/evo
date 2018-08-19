@@ -1,9 +1,9 @@
 // @flow
-import { TelemetryDto } from '@evo/common';
+import {TelemetryDto} from '@evo/common';
 import type GearsTelemetryMapper from './Gear/GearsTelemetryMapper';
 import type PedalsTelemetryMapper from './Pedals/PedalsTelemetryMapper';
 import type SpeedTelemetryMapper from './Speed/SpeedTelemetryMapper';
-import type { TelemetryData } from './TelemetryData';
+import type {TelemetryData} from './TelemetryData';
 
 export default class TelemetryMapper {
     _pedalsTelemetryMapper: PedalsTelemetryMapper;

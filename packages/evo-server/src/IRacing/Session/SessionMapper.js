@@ -1,36 +1,48 @@
+import type {DriverDto} from '@evo/common';
 // @flow
-import { SessionDto } from '@evo/common';
-import type { SessionData } from './SessionInfoData';
-import type LapMapper from './Laps/LapMapper';
+import {SessionDto} from '@evo/common';
+import type {SessionData} from './SessionInfoData';
+import type DriverHelper from '../Drivers/DriverHelper';
+import type DriverPositionsMapper from './DriverPositionsMapper';
+import type {FullSessionInfoData} from './FullSessionInfoData';
 
 export default class SessionMapper {
-    _lapMapper: LapMapper;
-    _convertMultiple = (messages: SessionData[]): SessionDto[] => {
-        const drivers = [];
+    _driverMapper: DriverMapper;
+    _driverPositionsMapper: DriverPositionsMapper;
+    _driverHelper: DriverHelper;
+
+    convertMultipleSessions = (messages: SessionData[], drivers: DriverDto[], currentDriver: DriverDto): SessionDto[] => {
+        const sessions = [];
 
         messages.forEach((message) => {
-            drivers.push(this._convertSingle(message));
+            sessions.push(this.convertSingleSession(message, drivers, currentDriver));
         });
 
-        return drivers;
+        return sessions;
     };
-    _convertSingle = (message: SessionData): SessionDto => {
+
+    convertSingleSession = (message: SessionData, drivers: DriverDto[], currentDriver: DriverDto): SessionDto => {
         const session = new SessionDto();
         session.type = message.SessionType;
-        if (message.ResultsFastestLap) {
-            session.fastestLaps = this._lapMapper.convert(message.ResultsFastestLap);
-        }
+        session.positions = this._driverPositionsMapper.convert(message.ResultsPositions, drivers);
+        session.drivers = drivers;
+        session.currentDriver = currentDriver;
         return session;
     };
 
-    constructor(lapMapper: LapMapper) {
-        this._lapMapper = lapMapper;
+    constructor(driverPositionsMapper: DriverPositionsMapper, driverMapper: DriverMapper, driverHelper: DriverHelper) {
+        this._driverPositionsMapper = driverPositionsMapper;
+        this._driverMapper = driverMapper;
+        this._driverHelper = driverHelper;
     }
 
-    convert(message: SessionData | SessionData[]): SessionDto | SessionDto[] {
-        if (message instanceof Array) {
-            return this._convertMultiple(message);
+    convert(message: FullSessionInfoData): SessionDto | SessionDto[] {
+        const drivers = this._driverMapper.convert(message.DriverInfo.Drivers);
+        const currentDriver = this._driverHelper.findDriverBySessionId(message.DriverInfo.DriverCarIdx, drivers);
+
+        if (message.SessionInfo.Sessions instanceof Array) {
+            return this.convertMultipleSessions(message.SessionInfo.Sessions, drivers, currentDriver);
         }
-        return this._convertSingle(message);
+        return this.convertSingleSession(message.SessionInfo.Sessions, drivers, currentDriver);
     }
 }

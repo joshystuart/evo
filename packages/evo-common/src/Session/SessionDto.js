@@ -1,13 +1,20 @@
 // @flow
+import find from 'lodash.find';
 import type DriverPositionDto from './DriverPositionDto';
-import type LapDto from './LapDto';
+import DriverDto from '../Drivers/DriverDto';
+import TrackDto from '../Tracks/TrackDto';
 
 export default class SessionDto {
     id: string;
     type: string;
-    // trackState: string; TODO
     totalNumberOfLaps: number | null = null;
     numberOfLapsCompleted: number | null = null;
     positions: DriverPositionDto[];
-    fastestLaps: LapDto[];
+    drivers: DriverDto[];
+    currentDriver: DriverDto;
+    track: TrackDto;
+    //
+    // getDriverPosition(findDriver: DriverDto) {
+    //     return find(this.positions, ())
+    // }
 }

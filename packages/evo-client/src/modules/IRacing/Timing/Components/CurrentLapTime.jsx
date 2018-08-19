@@ -1,10 +1,10 @@
 // @flow
+import find from 'lodash.find';
 import React from 'react';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import type { DriverDto, SessionDto } from '@evo/common';
-import withCurrentSession from '../../Session/withCurrentSession';
+import type {DriverDto, SessionDto} from '@evo/common';
 
 type Props = {
     currentSession: SessionDto,
@@ -16,13 +16,26 @@ const styles = {
     root: {
         flexGrow: 1,
     },
-    driverNameLabel: {},
+    driverNameLabel: {
+        color: '#fff',
+        fontWeight: 700,
+        fontSize: '4vmax',
+    },
+    lastLapTime: {
+        color: '#fff',
+        fontWeight: 700,
+        fontSize: '4vmax',
+    },
 };
 
 function CurrentLapTime(props: Props) {
-    const { currentSession, currentDriver, classes } = props;
+    const {currentSession, currentDriver, classes} = props;
+    const currentPosition = find(currentSession.positions, (position) => position.driver.id === currentDriver.id);
+    let lastLap = 'N/A';
 
-    const fastestLap = currentSession.fastestLaps[0];
+    if (currentPosition && currentPosition.lastLap) {
+        lastLap = currentPosition.lastLap.time.format;
+    }
 
     return (
         <Grid container spacing={0} className={classes.root}>
@@ -32,12 +45,12 @@ function CurrentLapTime(props: Props) {
                 </Typography>
             </Grid>
             <Grid item xs={6}>
-                <Typography variant="subheading" className={classes.driverNameLabel}>
-                    {fastestLap.time.format}
+                <Typography variant="subheading" className={classes.lastLapTime}>
+                    {lastLap}
                 </Typography>
             </Grid>
         </Grid>
     );
 }
 
-export default withStyles(styles)(withCurrentSession(CurrentLapTime));
+export default withStyles(styles)(CurrentLapTime);

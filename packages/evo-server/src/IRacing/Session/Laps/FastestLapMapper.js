@@ -1,27 +1,25 @@
 // @flow
-import type { FastestLapData } from '../SessionInfoData';
-import { LapDto } from '@evo/common';
+import {LapDto} from '@evo/common';
+import type {FastestLapData} from '../SessionInfoData';
 import type TimeFormatter from '../../Timing/TimeFormatter';
 
-export default class LapMapper {
+export default class FastestLapMapper {
     _timeFormatter: TimeFormatter;
 
-    _convertMultiple = (messages: FastestLapData[]): LapDto[] => {
+    convertMultiple = (messages: FastestLapData[]): LapDto[] => {
         const drivers = [];
 
         messages.forEach((message) => {
-            drivers.push(this._convertSingle(message));
+            drivers.push(this.convertSingle(message));
         });
 
         return drivers;
     };
-    _convertSingle = (message: FastestLapData): LapDto => {
+
+    convertSingle = (message: FastestLapData): LapDto => {
         const lap = new LapDto();
         lap.id = message.FastestLap;
         lap.time = this._timeFormatter.format(message.FastestTime);
-
-        // TODO use the driver mapper and some kind of state lookup to augment this
-        lap.driver = message.CarIdx;
         return lap;
     };
 
@@ -31,8 +29,8 @@ export default class LapMapper {
 
     convert(message: FastestLapData | FastestLapData[]): LapDto | LapDto[] {
         if (message instanceof Array) {
-            return this._convertMultiple(message);
+            return this.convertMultiple(message);
         }
-        return this._convertSingle(message);
+        return this.convertSingle(message);
     }
 }

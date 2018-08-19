@@ -1,9 +1,9 @@
 // @flow
-import React, { Component } from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import type { DriverDto } from '@evo/common';
-import { NAMESPACE, TYPES } from '../iRacingReducers';
+import React, {Component} from 'react';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import type {DriverDto} from '@evo/common';
+import {NAMESPACE, TYPES} from '../iRacingReducers';
 import withWebSocket from '../../Utils/withWebSocket';
 import LoadingMessage from '../../Common/Components/LoadingMessage';
 
@@ -13,25 +13,24 @@ export const mapStateToProps = (state: any) => ({
 });
 
 type Props = {
-    dispatch: any,
     error: string,
     currentDriver: DriverDto,
 };
 
 const withCurrentDriver = (WrappedComponent: Component) =>
-    class WithDriver extends Component<Props> {
+    class WithCurrentDriver extends Component<Props> {
         render() {
-            const { currentDriver, error, ...rest } = this.props;
+            const {currentDriver, error, ...rest} = this.props;
 
             if (error) {
-                return <div />;
+                return <div/>;
             }
 
             if (currentDriver) {
                 return <WrappedComponent currentDriver={currentDriver} {...rest} />;
             }
 
-            return <LoadingMessage message=" Waiting for driver data..." />;
+            return <LoadingMessage message=" Waiting for driver data..."/>;
         }
     };
 

@@ -1,10 +1,9 @@
 // @flow
-import LapMapper from 'src/modules/IRacing/Session/Laps/LapMapper';
-import { timeFormatter } from 'src/modules/IRacing/Timing/TimeFormatterFactory';
+import LapMapper from './LapMapper';
 
 /**
- * @type {LapMapper} lapMapper
+ * @type {LapMapper} fastestLapMapper
  */
-const lapMapper = new LapMapper(timeFormatter);
+const lapMapper = new LapMapper();
 
 export { lapMapper };
