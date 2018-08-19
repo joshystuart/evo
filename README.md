@@ -6,7 +6,13 @@ Heads up displays and overlays for iRacing
 
 ![](https://user-images.githubusercontent.com/3791360/44296751-d77a1180-a307-11e8-9504-6b3b0b8c3c37.jpg)
 
+![](https://user-images.githubusercontent.com/3791360/44304586-3c367a00-a3a3-11e8-8fd2-78227ac0f55d.gif)
+
 ## Getting started
+
+You will need:
+* [iRacing](https://www.iracing.com/)
+* The [latest version of EVO](https://github.com/crimsonronin/evo/releases)
 
 ### Installation
 
