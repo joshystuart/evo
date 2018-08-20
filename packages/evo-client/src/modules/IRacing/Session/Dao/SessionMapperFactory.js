@@ -1,11 +1,11 @@
 // @flow
 import SessionMapper from './SessionMapper';
 import {driverMapper} from '../../Drivers/Dao/DriverMapperFactory';
-import {driverPositionsMapper} from './DriverPositionsMapperFactory';
+import {driverStandingsMapper} from './DriverStandingsMapperFactory';
 
 /**
  * @type {SessionMapper} sessionMapper
  */
-const sessionMapper = new SessionMapper(driverMapper, driverPositionsMapper);
+const sessionMapper = new SessionMapper(driverMapper, driverStandingsMapper);
 
 export {sessionMapper};

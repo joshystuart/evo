@@ -1,13 +1,13 @@
 // @flow
-import {DriverPositionDto} from '@evo/common';
+import {DriverStandingDto} from '@evo/common';
 import type DriverMapper from '../../Drivers/Dao/DriverMapper';
 import type LapMapper from '../Laps/LapMapper';
 
-export default class DriverPositionsMapper {
+export default class DriverStandingsMapper {
     _driverMapper: DriverMapper;
     _lapMapper: LapMapper;
 
-    convertMultiple = (messages: DriverPositionDto[]): DriverPositionDto[] => {
+    convertMultiple = (messages: DriverStandingDto[]): DriverStandingDto[] => {
         const drivers = [];
 
         messages.forEach((message) => {
@@ -17,8 +17,8 @@ export default class DriverPositionsMapper {
         return drivers;
     };
 
-    convertSingle = (message: DriverPositionDto): DriverPositionDto => {
-        const driverPosition = new DriverPositionDto();
+    convertSingle = (message: DriverStandingDto): DriverStandingDto => {
+        const driverPosition = new DriverStandingDto();
 
         driverPosition.position = message.position;
         driverPosition.numberOfLaps = message.numberOfLaps;
@@ -38,7 +38,7 @@ export default class DriverPositionsMapper {
         this._lapMapper = lapMapper;
     }
 
-    convert(message: DriverPositionDto | DriverPositionDto[]): DriverPositionDto | DriverPositionDto[] {
+    convert(message: DriverStandingDto | DriverStandingDto[]): DriverStandingDto | DriverStandingDto[] {
         if (message instanceof Array) {
             return this.convertMultiple(message);
         }

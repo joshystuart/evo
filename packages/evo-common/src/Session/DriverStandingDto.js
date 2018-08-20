@@ -2,7 +2,7 @@
 import type DriverDto from '../Drivers/DriverDto';
 import type LapDto from './LapDto';
 
-export default class DriverPositionDto {
+export default class DriverStandingDto {
     position: number;
     classPosition: number;
     driver: DriverDto;

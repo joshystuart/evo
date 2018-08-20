@@ -1,0 +1,331 @@
+{
+    "type": "Practice",
+    "totalNumberOfLaps": null,
+    "numberOfLapsCompleted": null,
+    "standings": [
+        {
+            "position": 1,
+            "driver": {
+                "id": 256366,
+                "sessionId": 2,
+                "username": "Joshua Stuart",
+                "nickname": "Stuart, J",
+                "iRating": 3517,
+                "license": 19,
+                "teamName": "Joshua Stuart",
+                "carNumber": "3"
+            },
+            "numberOfLaps": 11,
+            "numberOfLapsCompleted": 12,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 11,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 17,
+                    "milliseconds": 995,
+                    "raw": 77.996
+                }
+            },
+            "lastLap": {
+                "id": 11,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 18,
+                    "milliseconds": 510,
+                    "raw": 78.5109
+                }
+            },
+            "laps": []
+        },
+        {
+            "position": 2,
+            "driver": {
+                "id": 121490,
+                "sessionId": 4,
+                "username": "Roman Litvintsev",
+                "nickname": "Litvintsev, R",
+                "iRating": 2044,
+                "license": 14,
+                "teamName": "Roman Litvintsev",
+                "carNumber": "44"
+            },
+            "numberOfLaps": 8,
+            "numberOfLapsCompleted": 8,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 8,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 18,
+                    "milliseconds": 706,
+                    "raw": 78.7064
+                }
+            },
+            "lastLap": {
+                "id": 8,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 18,
+                    "milliseconds": 706,
+                    "raw": 78.7064
+                }
+            },
+            "laps": []
+        },
+        {
+            "position": 3,
+            "driver": {
+                "id": 213727,
+                "sessionId": 1,
+                "username": "Marcos Bodas5",
+                "nickname": "Bodas5, M",
+                "iRating": 2415,
+                "license": 14,
+                "teamName": "Marcos Bodas5",
+                "carNumber": "13"
+            },
+            "numberOfLaps": 4,
+            "numberOfLapsCompleted": 7,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 4,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 19,
+                    "milliseconds": 507,
+                    "raw": 79.507
+                }
+            },
+            "lastLap": {
+                "id": 4,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 33,
+                    "milliseconds": 653,
+                    "raw": 93.654
+                }
+            },
+            "laps": []
+        },
+        {
+            "position": 4,
+            "driver": {
+                "id": 180784,
+                "sessionId": 0,
+                "username": "Raul M Blanco",
+                "nickname": "Blanco, R",
+                "iRating": 1551,
+                "license": 17,
+                "teamName": "Raul M Blanco",
+                "carNumber": "1"
+            },
+            "numberOfLaps": 5,
+            "numberOfLapsCompleted": 7,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 5,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 20,
+                    "milliseconds": 12,
+                    "raw": 80.0128
+                }
+            },
+            "lastLap": {
+                "id": 5,
+                "time": {
+                    "hours": -1,
+                    "minutes": -1,
+                    "seconds": -1,
+                    "milliseconds": 0,
+                    "raw": -1
+                }
+            },
+            "laps": []
+        },
+        {
+            "position": 5,
+            "driver": {
+                "id": 62675,
+                "sessionId": 6,
+                "username": "Kazunori Kawakami",
+                "nickname": "Kawakami, K",
+                "iRating": 1363,
+                "license": 15,
+                "teamName": "Kazunori Kawakami",
+                "carNumber": "7"
+            },
+            "numberOfLaps": 7,
+            "numberOfLapsCompleted": 11,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 7,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 20,
+                    "milliseconds": 696,
+                    "raw": 80.6966
+                }
+            },
+            "lastLap": {
+                "id": 7,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 20,
+                    "milliseconds": 935,
+                    "raw": 80.9357
+                }
+            },
+            "laps": []
+        },
+        {
+            "position": 6,
+            "driver": {
+                "id": 211708,
+                "sessionId": 5,
+                "username": "Pommereau Frederic2",
+                "nickname": "Frederic2, P",
+                "iRating": 666,
+                "license": 10,
+                "teamName": "Pommereau Frederic2",
+                "carNumber": "33"
+            },
+            "numberOfLaps": 5,
+            "numberOfLapsCompleted": 6,
+            "numberOfLapsLed": 0,
+            "fastestLap": {
+                "id": 5,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 23,
+                    "milliseconds": 310,
+                    "raw": 83.3108
+                }
+            },
+            "lastLap": {
+                "id": 5,
+                "time": {
+                    "hours": 0,
+                    "minutes": 1,
+                    "seconds": 23,
+                    "milliseconds": 730,
+                    "raw": 83.7306
+                }
+            },
+            "laps": []
+        }
+    ],
+    "drivers": [
+        {
+            "id": 180784,
+            "sessionId": 0,
+            "username": "Raul M Blanco",
+            "nickname": "Blanco, R",
+            "iRating": 1551,
+            "license": 17,
+            "teamName": "Raul M Blanco",
+            "carNumber": "1"
+        },
+        {
+            "id": 213727,
+            "sessionId": 1,
+            "username": "Marcos Bodas5",
+            "nickname": "Bodas5, M",
+            "iRating": 2415,
+            "license": 14,
+            "teamName": "Marcos Bodas5",
+            "carNumber": "13"
+        },
+        {
+            "id": 256366,
+            "sessionId": 2,
+            "username": "Joshua Stuart",
+            "nickname": "Stuart, J",
+            "iRating": 3517,
+            "license": 19,
+            "teamName": "Joshua Stuart",
+            "carNumber": "3"
+        },
+        {
+            "id": 330078,
+            "sessionId": 3,
+            "username": "Florian PÃ¼tz",
+            "nickname": null,
+            "iRating": 1791,
+            "license": 11,
+            "teamName": "Florian PÃ¼tz",
+            "carNumber": "4"
+        },
+        {
+            "id": 121490,
+            "sessionId": 4,
+            "username": "Roman Litvintsev",
+            "nickname": "Litvintsev, R",
+            "iRating": 2044,
+            "license": 14,
+            "teamName": "Roman Litvintsev",
+            "carNumber": "44"
+        },
+        {
+            "id": 211708,
+            "sessionId": 5,
+            "username": "Pommereau Frederic2",
+            "nickname": "Frederic2, P",
+            "iRating": 666,
+            "license": 10,
+            "teamName": "Pommereau Frederic2",
+            "carNumber": "33"
+        },
+        {
+            "id": 62675,
+            "sessionId": 6,
+            "username": "Kazunori Kawakami",
+            "nickname": "Kawakami, K",
+            "iRating": 1363,
+            "license": 15,
+            "teamName": "Kazunori Kawakami",
+            "carNumber": "7"
+        },
+        {
+            "id": 321485,
+            "sessionId": 7,
+            "username": "Daniel Bucher",
+            "nickname": "Bucher, D",
+            "iRating": 2416,
+            "license": 19,
+            "teamName": "Daniel Bucher",
+            "carNumber": "8"
+        },
+        {
+            "id": 296994,
+            "sessionId": 8,
+            "username": "Karl Townsend",
+            "nickname": "Townsend, K",
+            "iRating": 2076,
+            "license": 19,
+            "teamName": "Karl Townsend",
+            "carNumber": "9"
+        }
+    ],
+    "currentDriver": {
+        "id": 256366,
+        "sessionId": 2,
+        "username": "Joshua Stuart",
+        "nickname": "Stuart, J",
+        "iRating": 3517,
+        "license": 19,
+        "teamName": "Joshua Stuart",
+        "carNumber": "3"
+    }
+}

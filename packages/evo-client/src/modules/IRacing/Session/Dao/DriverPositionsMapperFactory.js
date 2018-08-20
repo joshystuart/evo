@@ -1,11 +1,11 @@
 // @flow
-import DriverPositionsMapper from './DriverPositionsMapper';
+import DriverStandingsMapper from './DriverStandingsMapper';
 import {driverMapper} from '../../Drivers/Dao/DriverMapperFactory';
 import {lapMapper} from '../Laps/LapMapperFactory';
 
 /**
- * @type {DriverPositionsMapper} driverPositionsMapper
+ * @type {DriverStandingsMapper} driverStandingsMapper
  */
-const driverPositionsMapper = new DriverPositionsMapper(driverMapper, lapMapper);
+const driverStandingsMapper = new DriverStandingsMapper(driverMapper, lapMapper);
 
-export {driverPositionsMapper};
+export {driverStandingsMapper};

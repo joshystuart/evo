@@ -1,30 +1,31 @@
 // @flow
 import type {DriverDto} from '@evo/common';
-import {DriverPositionDto, LapDto} from '@evo/common';
+import {DriverStandingDto, LapDto} from '@evo/common';
 import type {PositionData} from './SessionInfoData';
 import type TimeFormatter from '../Timing/TimeFormatter';
 import type DriverHelper from '../Drivers/DriverHelper';
+import type {TelemetryData} from '../Telemetry/TelemetryData';
 
-export default class DriverPositionsMapper {
+export default class DriverStandingsMapper {
     _timeFormatter: TimeFormatter;
     _driverHelper: DriverHelper;
 
-    convertMultiple = (messages: PositionData[], drivers: DriverDto[]): DriverPositionDto[] => {
+    convertMultiple = (messages: PositionData[], telemetryData: TelemetryData, drivers: DriverDto[]): DriverStandingDto[] => {
         const positions = [];
 
         messages.forEach((message) => {
-            positions.push(this.convertSingle(message, drivers));
+            positions.push(this.convertSingle(message, telemetryData, drivers));
         });
 
         return positions;
     };
 
-    convertSingle = (message: PositionData, drivers: DriverDto[]): DriverPositionDto => {
-        const driverPosition = new DriverPositionDto();
+    convertSingle = (message: PositionData, telemetryData: TelemetryData, drivers: DriverDto[]): DriverStandingDto => {
+        const driverPosition = new DriverStandingDto();
         driverPosition.position = message.Position;
         driverPosition.laps = [];
         driverPosition.driver = this._driverHelper.findDriverBySessionId(message.CarIdx, drivers);
-        driverPosition.lastLap = this.convertLastLap(message);
+        driverPosition.lastLap = this.convertLastLap(driverPosition.driver, telemetryData);
         driverPosition.fastestLap = this.convertFastestLap(message);
         driverPosition.numberOfLaps = message.Lap;
         driverPosition.numberOfLapsCompleted = message.LapsComplete;
@@ -32,10 +33,14 @@ export default class DriverPositionsMapper {
         return driverPosition;
     };
 
-    convertLastLap = (message: PositionData) => {
+    convertLastLap = (driver: DriverDto, telemetryData: TelemetryData) => {
+        const lastLap = telemetryData.CarIdxLapCompleted[driver.sessionId];
+        const lastTime = telemetryData.CarIdxF2Time[driver.sessionId];
+
         const lap = new LapDto();
-        lap.id = message.Lap;
-        lap.time = this._timeFormatter.format(message.LastTime);
+        lap.id = lastLap > 0 ? lastLap : 0;
+        lap.time = this._timeFormatter.format(lastTime);
+
         return lap;
     };
 
@@ -51,10 +56,10 @@ export default class DriverPositionsMapper {
         this._driverHelper = driverHelper;
     }
 
-    convert(message: PositionData | PositionData[], drivers: DriverDto[]): DriverPositionDto | DriverPositionDto[] {
-        if (message instanceof Array) {
-            return this.convertMultiple(message, drivers);
+    convert(positionData: PositionData | PositionData[], telemetryData: TelemetryData, drivers: DriverDto[]): DriverStandingDto | DriverStandingDto[] {
+        if (positionData instanceof Array) {
+            return this.convertMultiple(positionData, telemetryData, drivers);
         }
-        return this.convertSingle(message, drivers);
+        return this.convertSingle(positionData, telemetryData, drivers);
     }
 }

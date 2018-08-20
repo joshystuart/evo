@@ -2,11 +2,10 @@
 import EventEmitter from 'events';
 import irsdk from '@evo/irsdk';
 import {SessionDto} from '@evo/common';
-import SessionMapper from './Session/SessionMapper';
 import {EVENTS} from './IRacingConstants';
-import type TelemetryMapper from './Telemetry/TelemetryMapper';
+import type IRacingDataMapper from './IRacingDataMapper';
 import type {TelemetryData} from './Telemetry/TelemetryData';
-import type {FullSessionInfoData} from './Session/FullSessionInfoData';
+import type {IRacingData} from './IRacingData';
 
 const INTERNAL_EVENTS = {
     CONNECTED: 'Connected',
@@ -17,10 +16,11 @@ const INTERNAL_EVENTS = {
 };
 
 export default class IRacingService extends EventEmitter {
-    _telemetryMapper: TelemetryMapper;
-    _sessionMapper: SessionMapper;
-    _iracing: any;
+    _iRacingDataMapper: IRacingDataMapper;
+    _iRacing: any;
     _isConnected: boolean = false;
+    _telemetryCache: any;
+    _sessionCache: any;
 
     onConnected = () => {
         this._isConnected = true;
@@ -33,19 +33,26 @@ export default class IRacingService extends EventEmitter {
     };
 
     onTelemetry = (event: { values: TelemetryData }) => {
-        this.emitMessage(EVENTS.TELEMETRY, this._telemetryMapper.convert(event.values));
+        this._telemetryCache = event.values;
+        // this.emitMessage(EVENTS.TELEMETRY, this._iRacingDataMapper.convert(event.values));
     };
 
-    onSession = (event: { data: FullSessionInfoData }) => {
-        this.emitMessage(EVENTS.SESSION, this._sessionMapper.convert(event.data));
+    onSession = (event: { data: IRacingData }) => {
+        this._sessionCache = event.data;
+
+        const augmentedEvent = {
+            ...this._sessionCache,
+            TelemetryData: this._telemetryCache,
+        };
+
+        this.emitMessage(EVENTS.SESSION, this._iRacingDataMapper.convert(augmentedEvent));
     };
 
-    constructor(telemetryMapper: TelemetryMapper, sessionMapper: SessionMapper, telemetryUpdateInterval: number = 100, sessionInfoUpdateInterval: number = 100) {
+    constructor(iRacingDataMapper: IRacingDataMapper, telemetryUpdateInterval: number = 100, sessionInfoUpdateInterval: number = 100) {
         super();
+        this._iRacingDataMapper = iRacingDataMapper;
 
-        this._telemetryMapper = telemetryMapper;
-        this._sessionMapper = sessionMapper;
-        // create the iracing service
+        // create the iRacing service
         irsdk.init({
             telemetryUpdateInterval,
             sessionInfoUpdateInterval,
@@ -57,19 +64,19 @@ export default class IRacingService extends EventEmitter {
     }
 
     start() {
-        this._iracing = irsdk.getInstance();
-        this._iracing.on(INTERNAL_EVENTS.CONNECTED, this.onConnected);
-        this._iracing.on(INTERNAL_EVENTS.DISCONNECTED, this.onDisconnected);
-        this._iracing.on(INTERNAL_EVENTS.TELEMETRY, this.onTelemetry);
-        this._iracing.on(INTERNAL_EVENTS.SESSION, this.onSession);
+        this._iRacing = irsdk.getInstance();
+        this._iRacing.on(INTERNAL_EVENTS.CONNECTED, this.onConnected);
+        this._iRacing.on(INTERNAL_EVENTS.DISCONNECTED, this.onDisconnected);
+        this._iRacing.on(INTERNAL_EVENTS.TELEMETRY, this.onTelemetry);
+        this._iRacing.on(INTERNAL_EVENTS.SESSION, this.onSession);
     }
 
     getCurrentSession(): { type: string, data: SessionDto } {
         let data;
 
-        const {sessionInfo} = this._iracing;
+        const {sessionInfo} = this._iRacing;
         if (sessionInfo && sessionInfo.data) {
-            data = this._sessionMapper.convert(sessionInfo.data);
+            // data = this._sessionMapper.convert(sessionInfo.data);
         }
 
         return data;

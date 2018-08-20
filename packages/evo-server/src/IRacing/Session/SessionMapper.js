@@ -3,12 +3,12 @@ import type {DriverDto} from '@evo/common';
 import {SessionDto} from '@evo/common';
 import type {SessionData} from './SessionInfoData';
 import type DriverHelper from '../Drivers/DriverHelper';
-import type DriverPositionsMapper from './DriverPositionsMapper';
-import type {FullSessionInfoData} from './FullSessionInfoData';
+import type DriverStandingsMapper from './DriverStandingsMapper';
+import type {IRacingData} from '../IRacingData';
 
 export default class SessionMapper {
     _driverMapper: DriverMapper;
-    _driverPositionsMapper: DriverPositionsMapper;
+    _driverStandingsMapper: DriverStandingsMapper;
     _driverHelper: DriverHelper;
 
     convertMultipleSessions = (messages: SessionData[], drivers: DriverDto[], currentDriver: DriverDto): SessionDto[] => {
@@ -21,28 +21,32 @@ export default class SessionMapper {
         return sessions;
     };
 
-    convertSingleSession = (message: SessionData, drivers: DriverDto[], currentDriver: DriverDto): SessionDto => {
+    convertSingleSession = (sessionData: SessionData, iRacingData: IRacingData): SessionDto => {
+        const drivers = this._driverMapper.convert(iRacingData.DriverInfo.Drivers);
+        const currentDriver = this._driverHelper.findDriverBySessionId(iRacingData.DriverInfo.DriverCarIdx, drivers);
+        const currentSession = iRacingData.TelemetryData.SessionNum;
+
         const session = new SessionDto();
-        session.type = message.SessionType;
-        session.positions = this._driverPositionsMapper.convert(message.ResultsPositions, drivers);
+
+        session.type = sessionData.SessionType;
+        session.standings = this._driverStandingsMapper.convert(sessionData.ResultsPositions, iRacingData.TelemetryData, drivers);
         session.drivers = drivers;
         session.currentDriver = currentDriver;
+
         return session;
     };
 
-    constructor(driverPositionsMapper: DriverPositionsMapper, driverMapper: DriverMapper, driverHelper: DriverHelper) {
-        this._driverPositionsMapper = driverPositionsMapper;
+    constructor(driverStandingsMapper: DriverStandingsMapper, driverMapper: DriverMapper, driverHelper: DriverHelper) {
+        this._driverStandingsMapper = driverStandingsMapper;
         this._driverMapper = driverMapper;
         this._driverHelper = driverHelper;
     }
 
-    convert(message: FullSessionInfoData): SessionDto | SessionDto[] {
-        const drivers = this._driverMapper.convert(message.DriverInfo.Drivers);
-        const currentDriver = this._driverHelper.findDriverBySessionId(message.DriverInfo.DriverCarIdx, drivers);
-
-        if (message.SessionInfo.Sessions instanceof Array) {
-            return this.convertMultipleSessions(message.SessionInfo.Sessions, drivers, currentDriver);
+    convert(iRacingData: IRacingData): SessionDto | SessionDto[] {
+        if (iRacingData.SessionInfo.Sessions instanceof Array) {
+            return this.convertMultipleSessions(iRacingData.SessionInfo.Sessions, iRacingData);
         }
-        return this.convertSingleSession(message.SessionInfo.Sessions, drivers, currentDriver);
+
+        return this.convertSingleSession(iRacingData.SessionInfo.Sessions, iRacingData);
     }
 }

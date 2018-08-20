@@ -1,11 +1,11 @@
 // @flow
 import {SessionDto} from '@evo/common';
 import type DriverMapper from '../../Drivers/Dao/DriverMapper';
-import type DriverPositionsMapper from './DriverPositionsMapper';
+import type DriverStandingsMapper from './DriverStandingsMapper';
 
 export default class SessionMapper {
     _driverMapper: DriverMapper;
-    _driverPositionsMapper: DriverPositionsMapper;
+    _driverStandingsMapper: DriverStandingsMapper;
 
     convertMultiple = (messages: SessionDto[]): SessionDto[] => {
         const drivers = [];
@@ -30,7 +30,7 @@ export default class SessionMapper {
         }
 
         if (message.positions) {
-            session.positions = this._driverPositionsMapper.convert(message.positions);
+            session.positions = this._driverStandingsMapper.convert(message.positions);
         }
 
         // TODO map position
@@ -38,9 +38,9 @@ export default class SessionMapper {
         return session;
     };
 
-    constructor(driverMapper: DriverMapper, driverPositionsMapper: DriverPositionsMapper) {
+    constructor(driverMapper: DriverMapper, driverStandingsMapper: DriverStandingsMapper) {
         this._driverMapper = driverMapper;
-        this._driverPositionsMapper = driverPositionsMapper;
+        this._driverStandingsMapper = driverStandingsMapper;
     }
 
     convert(message: SessionDto | SessionDto[]): SessionDto | SessionDto[] {

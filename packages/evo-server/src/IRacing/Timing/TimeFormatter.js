@@ -1,12 +1,13 @@
 // @flow
-import { TimeDto } from '@evo/common';
+import {TimeDto} from '@evo/common';
 
 export default class TimeFormatter {
     format(time: number): TimeDto {
         const timeDto = new TimeDto();
+        timeDto.raw = time;
 
         const tempSeconds = parseInt(time, 10);
-        timeDto.milliseconds = parseInt((time - tempSeconds) * 1000);
+        timeDto.milliseconds = parseInt((time - tempSeconds) * 1000, 10);
 
         timeDto.hours = Math.floor(tempSeconds / (60 * 60));
 
