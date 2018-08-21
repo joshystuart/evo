@@ -4,6 +4,7 @@ import {GearsDto, PedalsDto, SpeedDto, TelemetryDto} from '@evo/common';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import {BasicTelemetryOverlayContainer} from '../../../IRacing/Overlay/Components/BasicTelemetryOverlayContainer';
+import {SessionDto, DriverDto, DriverStandingDto, LapDto, TimeDto} from '@evo/common/index';
 
 type Props = {
     classes: any,
@@ -34,11 +35,38 @@ function BasicTelemetryOverlayDemoScene(props: Props) {
     telemetry.gears = gears;
     telemetry.pedals = pedals;
 
+    const driver = new DriverDto();
+    driver.username = 'Daniel Ricciardo';
+
+    const time = new TimeDto();
+    time.raw = 70.1;
+    time.minutes = 1;
+    time.seconds = 10;
+    time.milliseconds = 100;
+
+    const lap = new LapDto();
+    lap.time = time;
+
+    const standings = new DriverStandingDto();
+    standings.driver = driver;
+    standings.lastLap = lap;
+    standings.fastestLap = lap;
+
+    const session = new SessionDto();
+    session.drivers = [driver];
+    session.standings = [standings];
+
+
     return (
         <div className={classes.root}>
             <Grid container spacing={0}>
                 <Grid item xs={12}>
-                    <BasicTelemetryOverlayContainer telemetry={telemetry} {...rest}/>
+                    <BasicTelemetryOverlayContainer
+                        currentDriver={driver}
+                        currentSession={session}
+                        telemetry={telemetry}
+                        {...rest}
+                    />
                 </Grid>
             </Grid>
         </div>

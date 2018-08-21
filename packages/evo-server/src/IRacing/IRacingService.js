@@ -1,7 +1,7 @@
 // @flow
 import EventEmitter from 'events';
 import irsdk from '@evo/irsdk';
-import {SessionDto} from '@evo/common';
+import type {SessionDto, TelemetryDto, IRacingDto} from '@evo/common';
 import {EVENTS} from './IRacingConstants';
 import type IRacingDataMapper from './IRacingDataMapper';
 import type {TelemetryData} from './Telemetry/TelemetryData';
@@ -34,18 +34,17 @@ export default class IRacingService extends EventEmitter {
 
     onTelemetry = (event: { values: TelemetryData }) => {
         this._telemetryCache = event.values;
-        // this.emitMessage(EVENTS.TELEMETRY, this._iRacingDataMapper.convert(event.values));
+
+        const data = this.getIRacingData();
+        this.emitMessage(EVENTS.TELEMETRY, data.telemetry);
+        // this.emitMessage(EVENTS.SESSION, data.sessions);
     };
 
     onSession = (event: { data: IRacingData }) => {
         this._sessionCache = event.data;
 
-        const augmentedEvent = {
-            ...this._sessionCache,
-            TelemetryData: this._telemetryCache,
-        };
-
-        this.emitMessage(EVENTS.SESSION, this._iRacingDataMapper.convert(augmentedEvent));
+        const sessions = this.getSessionsData();
+        this.emitMessage(EVENTS.SESSION, sessions);
     };
 
     constructor(iRacingDataMapper: IRacingDataMapper, telemetryUpdateInterval: number = 100, sessionInfoUpdateInterval: number = 100) {
@@ -71,15 +70,23 @@ export default class IRacingService extends EventEmitter {
         this._iRacing.on(INTERNAL_EVENTS.SESSION, this.onSession);
     }
 
-    getCurrentSession(): { type: string, data: SessionDto } {
-        let data;
+    getIRacingData(): IRacingDto {
+        const augmentedEvent = {
+            ...this._sessionCache,
+            TelemetryData: this._telemetryCache,
+        };
 
-        const {sessionInfo} = this._iRacing;
-        if (sessionInfo && sessionInfo.data) {
-            // data = this._sessionMapper.convert(sessionInfo.data);
-        }
+        return this._iRacingDataMapper.convert(augmentedEvent);
+    }
 
-        return data;
+    getSessionsData(): SessionDto {
+        const iRacingData = this.getIRacingData();
+        return iRacingData.sessions;
+    }
+
+    getTelemetryData(): TelemetryDto {
+        const iRacingData = this.getIRacingData();
+        return iRacingData.telemetry;
     }
 
     isConnected(): boolean {

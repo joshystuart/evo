@@ -24,7 +24,7 @@ export default class WebSocketServer extends EventEmitter {
             this.send(ws, IRACING_EVENTS.CONNECTED);
         }
 
-        const session = this._iRacingService.getCurrentSession();
+        const session = this._iRacingService.getSessionsData();
         if (session) {
             this.send(ws, IRACING_EVENTS.SESSION, session);
         }

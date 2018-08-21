@@ -8,7 +8,7 @@ import type {GearsDto, PedalsDto, SpeedDto, DriverDto, SessionDto} from '@evo/co
 import PedalsTelemetry from '../../Telemetry/Pedals/Components/PedalsTelemetry';
 import GearList from '../../Telemetry/Gear/Components/GearList';
 import Speed from '../../Telemetry/Speed/components/Speed';
-import CurrentLapTime from '../../Timing/Components/CurrentLapTime';
+import CurrentLapTime from '../../Timing/Components/LastLapTime';
 
 type Props = {
     pedals: PedalsDto,
@@ -47,11 +47,7 @@ export class BasicTelemetryOverlay extends Component<Props> {
             <Grid container spacing={0}>
                 <Grid container spacing={0} className={classes.row1}>
                     <Grid item xs={12}>
-                        <Card>
-                            <CardContent className={classes.content}>
-                                <CurrentLapTime currentSession={currentSession} currentDriver={currentDriver}/>
-                            </CardContent>
-                        </Card>
+                        <CurrentLapTime currentSession={currentSession} currentDriver={currentDriver}/>
                     </Grid>
                 </Grid>
                 <Grid container spacing={0} className={classes.row2}>

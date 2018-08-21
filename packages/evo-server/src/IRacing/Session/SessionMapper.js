@@ -24,11 +24,13 @@ export default class SessionMapper {
     convertSingleSession = (sessionData: SessionData, iRacingData: IRacingData): SessionDto => {
         const drivers = this._driverMapper.convert(iRacingData.DriverInfo.Drivers);
         const currentDriver = this._driverHelper.findDriverBySessionId(iRacingData.DriverInfo.DriverCarIdx, drivers);
-        const currentSession = iRacingData.TelemetryData.SessionNum;
-
+// console.log('-----------------------')
+// console.log(JSON.stringify(iRacingData.TelemetryData))
+// console.log('-----------------------')
         const session = new SessionDto();
 
         session.type = sessionData.SessionType;
+        session.isActive = iRacingData.TelemetryData.SessionNum === sessionData.SessionNum;
         session.standings = this._driverStandingsMapper.convert(sessionData.ResultsPositions, iRacingData.TelemetryData, drivers);
         session.drivers = drivers;
         session.currentDriver = currentDriver;

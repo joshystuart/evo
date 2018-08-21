@@ -6,7 +6,7 @@ import TrackDto from '../Tracks/TrackDto';
 export default class SessionDto {
     id: string;
     type: string;
-    isFinished: boolean;
+    isActive: boolean = false;
     totalNumberOfLaps: number | null = null;
     numberOfLapsCompleted: number | null = null;
     standings: DriverStandingDto[];

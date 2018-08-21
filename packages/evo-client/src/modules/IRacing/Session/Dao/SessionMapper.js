@@ -20,6 +20,7 @@ export default class SessionMapper {
     convertSingle = (message: SessionDto): SessionDto => {
         const session = new SessionDto();
         session.type = message.type;
+        session.isActive = message.isActive;
 
         if (message.currentDriver) {
             session.currentDriver = this._driverMapper.convert(message.currentDriver);
@@ -29,11 +30,9 @@ export default class SessionMapper {
             session.drivers = this._driverMapper.convert(message.drivers);
         }
 
-        if (message.positions) {
-            session.positions = this._driverStandingsMapper.convert(message.positions);
+        if (message.standings) {
+            session.standings = this._driverStandingsMapper.convert(message.standings);
         }
-
-        // TODO map position
 
         return session;
     };

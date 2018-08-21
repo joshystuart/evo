@@ -3,7 +3,7 @@ import {TelemetryDto} from '@evo/common';
 import type GearsTelemetryMapper from './Gear/GearsTelemetryMapper';
 import type PedalsTelemetryMapper from './Pedals/PedalsTelemetryMapper';
 import type SpeedTelemetryMapper from './Speed/SpeedTelemetryMapper';
-import type {TelemetryData} from './TelemetryData';
+import type {IRacingData} from '../IRacingData';
 
 export default class TelemetryMapper {
     _pedalsTelemetryMapper: PedalsTelemetryMapper;
@@ -16,12 +16,13 @@ export default class TelemetryMapper {
         this._speedTelemetryMapper = speedTelemetryMapper;
     }
 
-    convert(data: TelemetryData): TelemetryDto {
+    convert(data: IRacingData): TelemetryDto {
+        const telemetryData = data.TelemetryData;
         const telemetry = new TelemetryDto();
 
-        telemetry.pedals = this._pedalsTelemetryMapper.convert(data);
-        telemetry.gears = this._gearsTelemetryMapper.convert(data);
-        telemetry.speed = this._speedTelemetryMapper.convert(data);
+        telemetry.pedals = this._pedalsTelemetryMapper.convert(telemetryData);
+        telemetry.gears = this._gearsTelemetryMapper.convert(telemetryData);
+        telemetry.speed = this._speedTelemetryMapper.convert(telemetryData);
 
         return telemetry;
     }

@@ -13,16 +13,19 @@ export default class LapMapper {
     };
 
     convertSingle = (message: LapDto): LapDto => {
-        const time = new TimeDto();
-        time.milliseconds = message.time.milliseconds;
-        time.seconds = message.time.seconds;
-        time.minutes = message.time.minutes;
-        time.hours = message.time.hours;
-
         const lap = new LapDto();
-
         lap.id = message.id;
-        lap.time = time;
+
+        if (message.time) {
+            const time = new TimeDto();
+            time.milliseconds = message.time.milliseconds;
+            time.seconds = message.time.seconds;
+            time.minutes = message.time.minutes;
+            time.hours = message.time.hours;
+            time.raw = message.time.raw;
+
+            lap.time = time;
+        }
 
         return lap;
     };

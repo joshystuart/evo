@@ -25,7 +25,8 @@ export default class DriverStandingsMapper {
         driverPosition.position = message.Position;
         driverPosition.laps = [];
         driverPosition.driver = this._driverHelper.findDriverBySessionId(message.CarIdx, drivers);
-        driverPosition.lastLap = this.convertLastLap(driverPosition.driver, telemetryData);
+        // driverPosition.lastLap = this.convertLastLap(driverPosition.driver, telemetryData);
+        driverPosition.lastLap = this.convertLastLap2(message);
         driverPosition.fastestLap = this.convertFastestLap(message);
         driverPosition.numberOfLaps = message.Lap;
         driverPosition.numberOfLapsCompleted = message.LapsComplete;
@@ -34,20 +35,32 @@ export default class DriverStandingsMapper {
     };
 
     convertLastLap = (driver: DriverDto, telemetryData: TelemetryData) => {
+        // we can use this approach for qualifying times ??
         const lastLap = telemetryData.CarIdxLapCompleted[driver.sessionId];
         const lastTime = telemetryData.CarIdxF2Time[driver.sessionId];
-
         const lap = new LapDto();
         lap.id = lastLap > 0 ? lastLap : 0;
-        lap.time = this._timeFormatter.format(lastTime);
-
+        if (lastTime > 0) {
+            lap.time = this._timeFormatter.format(lastTime);
+        }
         return lap;
     };
 
     convertFastestLap = (message: PositionData) => {
         const lap = new LapDto();
         lap.id = message.FastestLap;
-        lap.time = this._timeFormatter.format(message.FastestTime);
+        if (message.FastestTime > 0) {
+            lap.time = this._timeFormatter.format(message.FastestTime);
+        }
+        return lap;
+    };
+
+    convertLastLap2 = (message: PositionData) => {
+        const lap = new LapDto();
+        lap.id = message.LapsComplete;
+        if (message.LastTime > 0) {
+            lap.time = this._timeFormatter.format(message.LastTime);
+        }
         return lap;
     };
 

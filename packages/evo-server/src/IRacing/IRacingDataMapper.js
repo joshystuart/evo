@@ -8,20 +8,26 @@ export default class IRacingDataMapper {
     _sessionMapper: SessionMapper;
     _telemetryMapper: TelemetryMapper;
 
-    convertMultipleSessions = (messages: IRacingData[]): IRacingDto[] => {
+    convertMultipleDataSets = (messages: IRacingData[]): IRacingDto[] => {
         const sessions = [];
 
         messages.forEach((message) => {
-            sessions.push(this.convertSingleSession(message));
+            sessions.push(this.convertSingleDataSet(message));
         });
 
         return sessions;
     };
 
-    convertSingleSession = (message: IRacingData): IRacingDto => {
+    convertSingleDataSet = (message: IRacingData): IRacingDto => {
         const iRacingDto = new IRacingDto();
-        iRacingDto.sessions = this._sessionMapper.convert(message);
-        // iRacingDto.telemetry = this._telemetryMapper.convert(message);
+
+        if (message && message.SessionInfo) {
+            iRacingDto.sessions = this._sessionMapper.convert(message);
+        }
+
+        if (message && message.TelemetryData) {
+            iRacingDto.telemetry = this._telemetryMapper.convert(message);
+        }
         return iRacingDto;
     };
 
@@ -32,8 +38,8 @@ export default class IRacingDataMapper {
 
     convert(message: IRacingData | IRacingData[]): IRacingDto | IRacingDto[] {
         if (message instanceof Array) {
-            return this.convertMultipleSessions(message);
+            return this.convertMultipleDataSets(message);
         }
-        return this.convertSingleSession(message);
+        return this.convertSingleDataSet(message);
     }
 }
