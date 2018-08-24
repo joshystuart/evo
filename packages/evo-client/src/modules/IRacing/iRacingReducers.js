@@ -1,6 +1,5 @@
 // @flow
 import {IRacingConstants} from '@evo/common';
-import find from 'lodash.find';
 import {ACTIONS} from '../Utils/webSocketMiddleware';
 import {telemetryMapper} from './Telemetry/Dao/TelemetryMapperFactory';
 import {sessionMapper} from './Session/Dao/SessionMapperFactory';
@@ -45,7 +44,8 @@ export const iRacingReducers = (state = {}, action) => {
         if (type === IRacingConstants.SESSION) {
             const sessions = sessionMapper.convert(data) || [];
             if (sessions.length > 0) {
-                const currentSession = find(sessions, {isActive: true}) || sessions[0];
+                const currentSession = sessions.find((session) => session.isActive === true) || sessions[0];
+
                 newState = {
                     ...newState,
                     [TYPES.SESSIONS]: sessions,

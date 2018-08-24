@@ -24,7 +24,7 @@ export default class StaticWebServer {
         this._defaultIndex = defaultIndex;
     }
 
-    connect() {
+    start() {
         this._httpServer.use(express.static(this._staticDir));
 
         this._httpServer.get('*', (request, response) => {

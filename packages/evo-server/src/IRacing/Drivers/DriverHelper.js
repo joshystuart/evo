@@ -1,6 +1,5 @@
 // @flow
 import type {DriverDto} from '@evo/common';
-import find from 'lodash.find';
 
 export default class DriverHelper {
     /**
@@ -11,6 +10,6 @@ export default class DriverHelper {
      * @param drivers
      */
     findDriverBySessionId(id: number, drivers: DriverDto[]) {
-        return find(drivers, (driver) => id === driver.sessionId);
+        return drivers.find((driver) => id === driver.sessionId);
     }
 }

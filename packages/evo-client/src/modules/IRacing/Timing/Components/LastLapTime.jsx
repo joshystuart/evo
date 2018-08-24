@@ -1,5 +1,4 @@
 // @flow
-import find from 'lodash.find';
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -36,7 +35,7 @@ const styles = {
 function LastLapTime(props: Props) {
     const {currentSession, currentDriver, classes} = props;
     if (currentSession && currentDriver) {
-        const currentStanding = find(currentSession.standings, (driverStanding) => driverStanding.driver.id === currentDriver.id);
+        const currentStanding = currentSession.standings.find((driverStanding) => driverStanding.driver.id === currentDriver.id);
         let lastLapTime = 'N/A';
         let lastLapNumber = 0;
 
