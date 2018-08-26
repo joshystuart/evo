@@ -1,6 +1,6 @@
 const { app, BrowserWindow, shell } = require('electron');
-const { irServerFactory } = require('@evo/server');
-const { staticWebServerFactory } = require('@evo/static-web-server');
+const { irServerFactory } = require('@evo/iracing-server');
+const { staticWebServerFactory } = require('@evo/web-server');
 
 let mainWindow = null;
 let forceQuit = false;

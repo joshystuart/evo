@@ -11,4 +11,4 @@ node_modules
 /packages/evo-electron/dist
 /packages/evo-irsdk/build
 /packages/evo-server/build
-/packages/evo-static-web-server/build
+/packages/evo-web-server/build

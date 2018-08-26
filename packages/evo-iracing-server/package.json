@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "@evo/common": "0.0.1",
-        "@evo/irsdk": "0.0.1",
+        "@evo/iracing-sdk": "0.0.1",
         "express": "4.16.3",
         "ws": "6.0.0"
     },

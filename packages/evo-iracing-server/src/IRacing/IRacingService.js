@@ -1,6 +1,6 @@
 // @flow
 import EventEmitter from 'events';
-import irsdk from '@evo/irsdk';
+import irsdk from '@evo/iracing-sdk';
 import type {SessionDto, TelemetryDto, IRacingDto} from '@evo/common';
 import {EVENTS} from './IRacingConstants';
 import type IRacingDataMapper from './IRacingDataMapper';

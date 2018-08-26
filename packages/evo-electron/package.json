@@ -22,8 +22,8 @@
   },
   "dependencies": {
     "@evo/common": "0.0.1",
-    "@evo/server": "0.0.1",
-    "@evo/static-web-server": "0.0.1",
+    "@evo/iracing-server": "0.0.1",
+    "@evo/web-server": "0.0.1",
     "@evo/client": "0.0.1",
     "electron-config": "1.0.0",
     "@babel/runtime": "7.0.0-beta.55"
