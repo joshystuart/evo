@@ -1,7 +1,7 @@
 {
-    "name": "@evo/static-web-server",
-    "productName": "EVO: Static web server",
-    "description": "A server that will serve static files that we built",
+    "name": "@evo/iracing-server",
+    "productName": "EVO: iRacing server",
+    "description": "A server which grabs data from iRacing",
     "version": "0.0.1",
     "contributors": [
         {
@@ -12,6 +12,8 @@
     "private": true,
     "main": "build/index.js",
     "scripts": {
+        "start:dev": "pm2 start ./scripts/start.js --watch",
+        "stop:dev": "pm2 stop ./scripts/start.js --watch",
         "build": "yarn clean:build && yarn build:src && yarn build:config && yarn build:index",
         "clean:build": "rimraf ./build",
         "build:config": "cross-env NODE_ENV=production BABEL_ENV=production babel config --out-dir ./build/config",
@@ -19,7 +21,13 @@
         "build:index": "cross-env NODE_ENV=production BABEL_ENV=production babel ./index.js --out-file ./build/index.js"
     },
     "dependencies": {
-        "express": "4.16.3"
+        "@evo/common": "0.0.1",
+        "@evo/irsdk": "0.0.1",
+        "express": "4.16.3",
+        "ws": "6.0.0"
+    },
+    "devDependencies": {
+        "pm2": "3.0.3"
     },
     "engines": {
         "node": ">=10"

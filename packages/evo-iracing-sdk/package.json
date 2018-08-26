@@ -1,5 +1,5 @@
 {
-  "name": "@evo/irsdk",
+  "name": "@evo/iracing-sdk",
   "version": "0.0.1",
   "description": "iRacing SDK implementation for Node.js",
   "main": "src/node-irsdk.js",
@@ -13,7 +13,8 @@
     "doc": "jsdoc2md -d 3 -t src/doc/README.hbs --partial src/doc/examples.hbs -m none -g none src/node-irsdk.js src/JsIrSdk.js src/IrSdkConsts.js > README.md",
     "ready": "npm test && node test/smoke-test.js && npm run doc",
     "release-notes": "node_modules/.bin/changelog node-irsdk latest",
-    "build:electron": "node-gyp rebuild --build-from-source --runtime=electron --target_arch=x64 --target=2.0.7 --target_platform=win32  --dist-url=https://atom.io/download/electron"
+    "build:dev": "node-gyp rebuild --build-from-source",
+    "build": "node-gyp rebuild --build-from-source --runtime=electron --target_arch=x64 --target=2.0.7 --target_platform=win32  --dist-url=https://atom.io/download/electron"
   },
   "keywords": [
     "iracing"

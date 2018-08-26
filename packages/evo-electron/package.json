@@ -15,8 +15,8 @@
     "clean:build": "rimraf ./build",
     "clean:dist": "rimraf ./dist",
     "build": "yarn clean:build && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
-    "start": "electron ./build/main",
-    "pack": "electron-builder --dir --config ./electron-builder.yml",
+    "start:dev": "yarn package:dev && yarn build && electron ./build/main",
+    "package:dev": "electron-builder --dir --config ./electron-builder.yml",
     "package": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml",
     "package:win": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml"
   },
