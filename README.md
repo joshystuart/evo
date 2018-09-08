@@ -50,3 +50,11 @@ You will need:
 *   Delta to car behind and in front
 *   List of drivers and the interval
 *   Allow an overlay to be created with components
+
+## FAQ
+
+### Windows build
+
+```
+yarn global add windows-build-tools
+```

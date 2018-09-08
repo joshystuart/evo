@@ -2,9 +2,9 @@ const fs = require('fs');
 const PACKAGES = {
     APP: fs.realpathSync('src'),
     EVO_COMMON: fs.realpathSync('../evo-common'),
-    EVO_IRSDK: fs.realpathSync('../evo-irsdk'),
-    TEMP1: fs.realpathSync('../evo-irsdk/node_modules'),
-    TEMP2: fs.realpathSync('../evo-irsdk/build'),
+    EVO_IRSDK: fs.realpathSync('../evo-iracing-sdk'),
+    TEMP1: fs.realpathSync('../evo-iracing-sdk/node_modules'),
+    TEMP2: fs.realpathSync('../evo-iracing-sdk/build'),
 };
 
 const nodeModules = {};

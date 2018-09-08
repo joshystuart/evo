@@ -14,7 +14,7 @@
   "scripts": {
     "clean:build": "rimraf ./build",
     "clean:dist": "rimraf ./dist",
-    "build": "yarn clean:build && cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.config.js",
     "start:dev": "yarn package:dev && yarn build && electron ./build/main",
     "package:dev": "electron-builder --dir --config ./electron-builder.yml",
     "package": "yarn clean:dist && electron-builder --win --x64 --config ./electron-builder.yml",
@@ -29,7 +29,7 @@
     "@babel/runtime": "7.0.0-beta.55"
   },
   "devDependencies": {
-    "electron": "2.0.7",
+    "electron": "2.0.8",
     "electron-builder": "20.27.1",
     "electron-devtools-installer": "2.2.4"
   },

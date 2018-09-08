@@ -12,6 +12,7 @@
     "private": true,
     "main": "build/index.js",
     "scripts": {
+        "start": "node ./scripts/start.js",
         "start:dev": "pm2 start ./scripts/start.js --watch",
         "stop:dev": "pm2 stop ./scripts/start.js --watch",
         "build": "yarn clean:build && yarn build:src && yarn build:config && yarn build:index",

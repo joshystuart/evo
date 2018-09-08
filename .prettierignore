@@ -9,6 +9,6 @@ node_modules
 /packages/evo-common/build
 /packages/evo-electron/build
 /packages/evo-electron/dist
-/packages/evo-irsdk/build
-/packages/evo-server/build
+/packages/evo-iracing-sdk/build
+/packages/evo-iracing-server/build
 /packages/evo-web-server/build
