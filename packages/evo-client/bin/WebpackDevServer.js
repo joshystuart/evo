@@ -2,7 +2,7 @@ const Server = require('webpack-dev-server');
 const webpack = require('webpack');
 
 module.exports = class WebpackDevServer {
-    constructor(config, host = '0.0.0.0', port = 4000) {
+    constructor(config, host = '0.0.0.0', port = 3000) {
         this._config = config;
         this._host = host;
         this._port = parseInt(port, 10);

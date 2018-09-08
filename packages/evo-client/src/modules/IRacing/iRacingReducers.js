@@ -1,7 +1,8 @@
 // @flow
-import { IRacingConstants } from '@evo/common';
-import { ACTIONS } from '../Utils/webSocketMiddleware';
-import { telemetryMapper } from './Telemetry/Dao/TelemetryMapperFactory';
+import {IRacingConstants} from '@evo/common';
+import {ACTIONS} from '../Utils/webSocketMiddleware';
+import {telemetryMapper} from './Telemetry/Dao/TelemetryMapperFactory';
+import {sessionMapper} from './Session/Dao/SessionMapperFactory';
 
 export const TYPES = {
     ERROR: 'error',
@@ -10,7 +11,8 @@ export const TYPES = {
     TELEMETRY: 'telemetry',
     ALL_DRIVERS: 'allDrivers',
     CURRENT_DRIVER: 'currentDriver',
-    SESSION: 'session',
+    SESSIONS: 'sessions',
+    CURRENT_SESSION: 'currentSession',
     QUALIFYING: 'qualifying',
     WEEKEND: 'weekend',
 };
@@ -25,12 +27,12 @@ export type Action = {
 export const NAMESPACE = 'iracing';
 
 export const iRacingReducers = (state = {}, action) => {
-    const { payload } = action;
+    const {payload} = action;
 
     // look at the data and try to figure out what it is.
     if (action.type === ACTIONS.MESSAGE) {
-        const { data, type } = payload;
-        let newState = { ...state };
+        const {data, type} = payload;
+        let newState = {...state};
 
         if (type === IRacingConstants.TELEMETRY) {
             newState = {
@@ -39,47 +41,27 @@ export const iRacingReducers = (state = {}, action) => {
             };
         }
 
-        // if (iRacingMessageHelper.hasTelemetryData(data)) {
-        //     newState = {
-        //         ...newState,
-        //         [TYPES.TELEMETRY]: telemetryMapper.convert(data)
-        //     };
-        // }
-        //
-        // if (iRacingMessageHelper.hasDriverData(data)) {
-        //     newState = {
-        //         ...newState,
-        //         [TYPES.ALL_DRIVERS]: diverMapper.convert(
-        //             driverDaoHelper.getAllDriverData(data)
-        //         ),
-        //         [TYPES.CURRENT_DRIVER]: diverMapper.convert(
-        //             driverDaoHelper.getCurrentDriverData(data)
-        //         )
-        //     };
-        // }
-        //
-        // if (iRacingMessageHelper.hasQualifyingData(data)) {
-        //     newState = {
-        //         ...newState,
-        //         [TYPES.QUALIFYING]: telemetryMapper.convert(data)
-        //     };
-        // }
-        //
-        // if (iRacingMessageHelper.hasSessionData(data)) {
-        //     newState = {
-        //         ...newState,
-        //         [TYPES.SESSION]: sessionMapper.convert(
-        //             sessionDaoHelper.getCurrentSessionData(data)
-        //         )
-        //     };
-        // }
+        if (type === IRacingConstants.SESSION) {
+            const sessions = sessionMapper.convert(data) || [];
+            if (sessions.length > 0) {
+                const currentSession = sessions.find((session) => session.isActive === true) || sessions[0];
+
+                newState = {
+                    ...newState,
+                    [TYPES.SESSIONS]: sessions,
+                    [TYPES.CURRENT_SESSION]: currentSession,
+                    [TYPES.CURRENT_DRIVER]: currentSession.currentDriver,
+                };
+            }
+        }
 
         return newState;
     } else if (action.type === ACTIONS.ERROR) {
         // TODO make the error contextual
-        const newState = { ...state };
+        const newState = {...state};
         newState[TYPES.ERROR] = payload;
         return newState;
     }
+
     return state;
 };

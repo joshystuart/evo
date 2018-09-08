@@ -1,34 +1,51 @@
 // @flow
-import { SessionDto } from '@evo/common';
-import type { SessionData } from './SessionInfoData';
-import type LapMapper from '../Laps/LapMapper';
+import {SessionDto} from '@evo/common';
+import type DriverMapper from '../../Drivers/Dao/DriverMapper';
+import type DriverStandingsMapper from './DriverStandingsMapper';
 
 export default class SessionMapper {
-    _lapMapper: LapMapper;
-    _convertMultiple = (messages: SessionData[]): SessionDto[] => {
+    _driverMapper: DriverMapper;
+    _driverStandingsMapper: DriverStandingsMapper;
+
+    convertMultiple = (messages: SessionDto[]): SessionDto[] => {
         const drivers = [];
 
         messages.forEach((message) => {
-            drivers.push(this._convertSingle(message));
+            drivers.push(this.convertSingle(message));
         });
 
         return drivers;
     };
-    _convertSingle = (message: SessionData): SessionDto => {
+
+    convertSingle = (message: SessionDto): SessionDto => {
         const session = new SessionDto();
-        session.type = message.SessionType;
-        session.fastestLaps = this._lapMapper.convert(message.ResultsFastestLap);
+        session.type = message.type;
+        session.isActive = message.isActive;
+
+        if (message.currentDriver) {
+            session.currentDriver = this._driverMapper.convert(message.currentDriver);
+        }
+
+        if (message.drivers) {
+            session.drivers = this._driverMapper.convert(message.drivers);
+        }
+
+        if (message.standings) {
+            session.standings = this._driverStandingsMapper.convert(message.standings);
+        }
+
         return session;
     };
 
-    constructor(lapMapper: LapMapper) {
-        this._lapMapper = lapMapper;
+    constructor(driverMapper: DriverMapper, driverStandingsMapper: DriverStandingsMapper) {
+        this._driverMapper = driverMapper;
+        this._driverStandingsMapper = driverStandingsMapper;
     }
 
-    convert(message: SessionData | SessionData[]): SessionDto | SessionDto[] {
+    convert(message: SessionDto | SessionDto[]): SessionDto | SessionDto[] {
         if (message instanceof Array) {
-            return this._convertMultiple(message);
+            return this.convertMultiple(message);
         }
-        return this._convertSingle(message);
+        return this.convertSingle(message);
     }
 }

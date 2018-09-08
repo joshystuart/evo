@@ -1,9 +1,11 @@
 const { app, BrowserWindow, shell } = require('electron');
-const { irServerFactory } = require('@evo/server');
-const { staticWebServerFactory } = require('@evo/static-web-server');
+const { irServerFactory } = require('@evo/iracing-server');
+const { staticWebServerFactory } = require('@evo/web-server');
 
 let mainWindow = null;
 let forceQuit = false;
+const server = staticWebServerFactory.createInstance(__dirname);
+const webSocketsServer = irServerFactory.createInstance();
 
 app.on('window-all-closed', () => {
     // On OS X it is common for applications and their menu bar
@@ -15,12 +17,10 @@ app.on('window-all-closed', () => {
 
 app.on('ready', () => {
     // start the static file server
-    const server = staticWebServerFactory.createInstance(__dirname);
-    server.connect();
+    server.start();
 
     // start the data server
-    const webSocketsServer = irServerFactory.createInstance();
-    webSocketsServer.connect();
+    webSocketsServer.start();
 
     mainWindow = new BrowserWindow({
         width: 1150,

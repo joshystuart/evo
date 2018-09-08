@@ -1,13 +1,16 @@
 // @flow
-import type DriverPositionDto from './DriverPositionDto';
-import type LapDto from './LapDto';
+import type DriverStandingDto from './DriverStandingDto';
+import DriverDto from '../Drivers/DriverDto';
+import TrackDto from '../Tracks/TrackDto';
 
 export default class SessionDto {
     id: string;
     type: string;
-    // trackState: string; TODO
+    isActive: boolean = false;
     totalNumberOfLaps: number | null = null;
     numberOfLapsCompleted: number | null = null;
-    positions: DriverPositionDto[];
-    fastestLaps: LapDto[];
+    standings: DriverStandingDto[];
+    drivers: DriverDto[];
+    currentDriver: DriverDto;
+    track: TrackDto;
 }

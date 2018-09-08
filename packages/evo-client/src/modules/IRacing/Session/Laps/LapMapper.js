@@ -1,38 +1,39 @@
 // @flow
-import { LapDto } from '@evo/common';
-import type { FastedLapData } from '../Dao/SessionInfoData';
-import type TimeFormatter from '../../Timing/TimeFormatter';
+import {LapDto, TimeDto} from '@evo/common';
 
 export default class LapMapper {
-    _timeFormatter: TimeFormatter;
-
-    _convertMultiple = (messages: FastedLapData[]): LapDto[] => {
+    convertMultiple = (messages: LapDto[]): LapDto[] => {
         const drivers = [];
 
         messages.forEach((message) => {
-            drivers.push(this._convertSingle(message));
+            drivers.push(this.convertSingle(message));
         });
 
         return drivers;
     };
-    _convertSingle = (message: FastedLapData): LapDto => {
-        const lap = new LapDto();
-        lap.id = message.FastestLap;
-        lap.time = this._timeFormatter.format(message.FastestTime);
 
-        // TODO use the driver mapper and some kind of state lookup to augment this
-        lap.driver = message.CarIdx;
+    convertSingle = (message: LapDto): LapDto => {
+        const lap = new LapDto();
+        lap.id = message.id;
+
+        if (message.time) {
+            const time = new TimeDto();
+            time.milliseconds = message.time.milliseconds;
+            time.seconds = message.time.seconds;
+            time.minutes = message.time.minutes;
+            time.hours = message.time.hours;
+            time.raw = message.time.raw;
+
+            lap.time = time;
+        }
+
         return lap;
     };
 
-    constructor(timeFormatter: TimeFormatter) {
-        this._timeFormatter = timeFormatter;
-    }
-
-    convert(message: FastedLapData | FastedLapData[]): LapDto | LapDto[] {
+    convert(message: LapDto | LapDto[]): LapDto | LapDto[] {
         if (message instanceof Array) {
-            return this._convertMultiple(message);
+            return this.convertMultiple(message);
         }
-        return this._convertSingle(message);
+        return this.convertSingle(message);
     }
 }

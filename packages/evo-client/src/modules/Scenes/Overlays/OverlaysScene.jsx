@@ -52,7 +52,7 @@ function OverlaysScene(props: Props) {
                     </Typography>
                     <Iframe
                         url={routes.basicTelemetryOverlayDemo}
-                        height="210px"
+                        height="280px"
                         display="initial"
                         position="relative"
                         allowFullScreen
@@ -88,7 +88,7 @@ function OverlaysScene(props: Props) {
                                     500
                                 </TableCell>
                                 <TableCell component="th" scope="row">
-                                    136
+                                    170
                                 </TableCell>
                             </TableRow>
                         </TableBody>
