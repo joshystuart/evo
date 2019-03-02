@@ -1,5 +1,5 @@
-import type {DriverDto} from '@evo/common';
 // @flow
+import type {DriverDto} from '@evo/common';
 import {SessionDto} from '@evo/common';
 import type {SessionData} from './SessionInfoData';
 import type DriverHelper from '../Drivers/DriverHelper';
@@ -24,13 +24,10 @@ export default class SessionMapper {
     convertSingleSession = (sessionData: SessionData, iRacingData: IRacingData): SessionDto => {
         const drivers = this._driverMapper.convert(iRacingData.DriverInfo.Drivers);
         const currentDriver = this._driverHelper.findDriverBySessionId(iRacingData.DriverInfo.DriverCarIdx, drivers);
-// console.log('-----------------------')
-// console.log(JSON.stringify(iRacingData.TelemetryData))
-// console.log('-----------------------')
         const session = new SessionDto();
 
         session.type = sessionData.SessionType;
-        session.isActive = iRacingData.TelemetryData.SessionNum === sessionData.SessionNum;
+        session.isActive = iRacingData.TelemetryData ? iRacingData.TelemetryData.SessionNum === sessionData.SessionNum : false;
         session.standings = this._driverStandingsMapper.convert(sessionData.ResultsPositions, iRacingData.TelemetryData, drivers);
         session.drivers = drivers;
         session.currentDriver = currentDriver;

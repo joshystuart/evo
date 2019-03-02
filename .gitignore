@@ -17,3 +17,4 @@ build
 npm-debug.log*
 nohup.out
 stats.json
+packages/evo-iracing-sdk/prebuilds/@evo/iracing-sdk-v*
